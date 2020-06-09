@@ -1,7 +1,7 @@
 {{> header}}
 
  <!-- ======= Slider Section ======= -->
- <section id="hero" class="d-flex justify-cntent-center align-items-center">
+ <section id="hero" class="d-flex justify-content-center align-items-center">
             <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 
                 <!-- Slide 1 -->
@@ -41,10 +41,19 @@
         <section id="login" class="contact mt-5">
 
             <div class="" data-aos="fade-up">
-
+                {{#alertSesionCerrada}}
+                <div class="alert alert-{{class}}" role="alert">
+                    {{message}}
+                </div>
+                {{/alertSesionCerrada}}
+                {{#alertRegistroCorrecto}}
+                <div class="alert alert-{{class}}" role="alert">
+                    {{message}}
+                </div>
+                {{/alertRegistroCorrecto}}
                 <!-- Accesos directos a vistas -->
                 <div class="container-fluid row justify-content-center justify-content-around">
-                    <a href="inicio.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como Suscriptor</a>
+                    <a href="inicio.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como Lector</a>
                     <a href="inicio-contenidista.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como
                         Contenidista</a>
                     <a href="inicio-administrador.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como
@@ -59,12 +68,12 @@
                 <!-- Seccion Formularios -->
                 <div class="row mt-1 d-flex justify-content-center">
 
-                    <!-- Formulario de Iniciar Sesion -->
+                    <!-- Formulario de Iniciar Sesión -->
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                         <div class="col-lg-8 mx-auto">
                             <p class="h2 font-weight-bold">Iniciar sesión</p>
 
-                            <form action="/login/validarLogin" method="POST" class="">
+                            <form action="/login/validarLogin" method="POST" class="php-email-form">
                                 <div class="col-md-12 form-group">
                                     <input type="text" name="email" class="form-control"
                                         placeholder="Ingrese su e-mail" required/>
@@ -72,7 +81,7 @@
                                         placeholder="Ingrese su contraseña" required/>
                                         <div class="or-seperator"><i>or</i></div>
                                         <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
-                                        <div class="hint-text small">No tienes cuenta? <a href="index.html#login" class="text-success">Registrate ahora!</a></div>
+                                        <div class="hint-text small">No tienes cuenta? <a href="#login" class="text-success">Registrate ahora!</a></div>
                                 </div>
                                 <div class="text-center"><button type="submit">Iniciar sesión</button></div>
                             </form>
@@ -85,7 +94,7 @@
                         <div class="col-lg-8 mx-auto">
                             <p class="h2 font-weight-bold">Registrarse</p>
 
-                            <form action="registro/registrar" method="POST" class="php-email-form">
+                            <form action="/registro/registrar" method="POST" class="php-email-form">
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="nombre" class="form-control"
@@ -120,11 +129,13 @@
             </div>
         </section>
         <!-- End Contact Section -->
-        {{#alert}}
-            <div class="alert alert-{{class}}" role="alert">
-            {{message}}
-            </div>
-        {{/alert}}
+{{#alert}}
+<div class="alert alert-{{class}}" role="alert">
+    {{message}}
+</div>
+{{/alert}}
+
+
         <!-- ======= Clima de google ======= -->
         <section id="cta" class="cta">
             <div class="container">

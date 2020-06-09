@@ -11,37 +11,39 @@ class LoginController{
     }
 
     public function index(){
+        if(isset($_SESSION["usuario"])){
+            $usuario = $_SESSION["usuario"];
+            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
+        }
         echo $this->renderer->render( "view/homeView.php");
     }
 
     public function validarLogin(){
-        $data["email"] = $_POST["email"];
-        $data["password"] = md5($_POST["password"]);
+        $data["email"] = isset($_POST["email"]) ? $_POST["email"] : null;
+        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : null ;
 
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
+
         if($usuario){
             $data["usuario"] = $usuario;
-            
-            // var_dump($usuario);
-            echo $this->renderer->render( "view/inicioView.php", $data );
-        }else{
-            $data["alert"] = array("class" => "danger", "message" => "usuario y/o contraseña incorrecto/s");
-            echo $this->renderer->render( "view/homeView.php", $data );
+            $_SESSION["usuario"] = $_POST["email"];
 
+            // var_dump($usuario);
+            echo $this->renderer->render("view/inicioLectorView.php", $data);
+        }else{
+            $data["alert"] = array("class" => "danger", "message" => "Usuario y/o Contraseña Incorrecto/s");
+            echo $this->renderer->render("view/homeView.php", $data);
         }
     }
 
     public function cerrarSesion(){
         if(session_destroy()){
-            $data= 
-            array(
-                'mensaje' => "Sesion cerrada con éxito"
-              );
-            echo $this->renderer->render( "view/homeView.php", $data );
+            $data["alertSesionCerrada"] = array("class" => "success", "message" => "Sesión cerrada con éxito");
+            echo $this->renderer->render("view/homeView.php", $data);
         }
 
     }
-    
 
-   
+
+
 }

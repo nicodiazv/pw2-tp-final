@@ -2,17 +2,10 @@
 
 class UsuarioModel{
 
-    private $connexion;
+    private $connection;
 
     public function __construct($database){
-        $this->connexion = $database;
-    }
-
-    public function obtenerUsuarioPorEmail($data){
-        $email = $data['email'];
-        $password = $data['password'];
-
-        return $this->connexion->query("SELECT * FROM usuario where email = '$email' and password = '$password'" );
+        $this->connection = $database;
     }
 
     public function registrarUsuarioLector($data){
@@ -20,7 +13,14 @@ class UsuarioModel{
         $password = $data['password'];
         $nombre = $data['nombre'];
         $apellido = $data['apellido'];
-        $this->connexion->query("INSERT INTO usuario (nombre, apellido, email, password, usuario_tipo_id) VALUES ('$nombre', '$apellido', '$email', '$password', 1) ");
+        $this->connection->query("INSERT INTO usuario (nombre, apellido, email, password, usuario_tipo_id) VALUES ('$nombre', '$apellido', '$email', '$password', 3) ");
+    }
+
+    public function obtenerUsuarioPorEmail($data){
+        $email = $data['email'];
+        $password = $data['password'];
+
+        return $this->connection->query( "SELECT * FROM usuario WHERE email = '$email' AND password = '$password'" );
     }
 
 }

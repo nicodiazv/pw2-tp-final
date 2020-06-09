@@ -72,7 +72,6 @@ class ModuleInitializer
         include_once("model/HomeModel.php");
         include_once("controller/HomeController.php");
         $model = new HomeModel($this->database);
-
         return new HomeController($model,$this->renderer);
     }
 

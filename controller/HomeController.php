@@ -10,22 +10,13 @@ class HomeController{
     }
 
     public function index(){
-        if($_SESSION["usuario"]){
+        if(isset($_SESSION["usuario"])){
             $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioView.php", $usuario);
-        } 
-        echo $this->renderer->render( "view/homeView.php", $usuario);
+            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
+        }
+        echo $this->renderer->render( "view/homeView.php");
     }
 
-    // public function login(){
-    //     $data["email"] = $_POST["email"];
-    //     $data["password"] = md5($_POST["password"]);
 
-    //     $usuario = $this->model->obtenerUsuarioPorEmail($data);
-        
-    //     $data["usuario"] = $usuario;
-    //     echo $this->renderer->render( "view/homeView.php", $data );
-    // }
 
-   
 }

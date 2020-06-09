@@ -1,19 +1,16 @@
 {{> header}}
 
-
-
-{{#usuario}}
-<h1>Bienvenido {{nombre}}</h1>
-{{/usuario}}
-
 <div class="row justify-content-around">
 
             <!-- Sidebar -->
             <div class="col-lg-2 mt-2 ml-3">
 
-                <h3>Ricardo Fort pobre</h3>
+                <h3>{{#usuario}}
+                    Bienvenido {{nombre}}
+                    {{/usuario}}</h3>
                 <h5>Suscriptor</h5>
-                <a href="login/cerrarSesion" class="btn btn-outline-dark btn-sm">Cerrar sesión</a>
+                <?php   echo $_POST["email"];   ?>
+                <a href="/login/cerrarSesion" class="btn btn-outline-dark btn-sm">Cerrar sesión</a>
 
                 <!-- Categorias -->
                 <h3 class="h5 mt-5">Categorías de noticias</h3>
@@ -21,13 +18,12 @@
                     <ul>
                         <li><a href="#">General <span>(25)</span></a></li>
                         <li><a href="#">Salud <span>(12)</span></a></li>
-                        <li><a href="#">Politica <span>(14)</span></a></li>
+                        <li><a href="#">Política <span>(14)</span></a></li>
                         <li><a href="#">Deportes <span>(5)</span></a></li>
-                        <li><a href="#">Espectaculos <span>(22)</span></a></li>
+                        <li><a href="#">Espectáculos <span>(22)</span></a></li>
                     </ul>
                 </div>
-                <!-- End Categorias-->
-
+                <!-- End Categorías-->
                 <!-- Clima de google -->
                 <div class="">
                     <h1 class="display-4 btn-primary p-4">Clima de Google</h1>
