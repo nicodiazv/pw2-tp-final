@@ -19,8 +19,8 @@ class LoginController{
     }
 
     public function validarLogin(){
-        $data["email"] = isset($_POST["email"]) ? $_POST["email"] : null;
-        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : null ;
+        $data["email"] = isset($_POST["email"]) ? $_POST["email"] : false;
+        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false ;
 
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
 

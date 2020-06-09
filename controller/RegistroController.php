@@ -18,14 +18,14 @@ class RegistroController{
     }
 
     public function registrar(){
-        $data["nombre"] = isset($_POST["nombre"]) ?  $_POST["nombre"] : null;
-        $data["apellido"] = isset($_POST["apellido"]) ?  $_POST["apellido"] : null;
-        $data["email"] = isset($_POST["email"]) ?  $_POST["email"] : null;
-        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : null;
+        $data["nombre"] = isset($_POST["nombre"]) ?  $_POST["nombre"] : false;
+        $data["apellido"] = isset($_POST["apellido"]) ?  $_POST["apellido"] : false;
+        $data["email"] = isset($_POST["email"]) ?  $_POST["email"] : false;
+        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false;
 
         // Validación del lado del servidor
-        if($data["nombre"] == null or $data["apellido"] = null or $data["email"] == null or $data["password"]){
-            $data["alertRegistroCorrecto"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos");
+        if(!($data["nombre"]) or !($data["apellido"]) or !($data["email"]) or !($data["email"])){
+            $data["alertRegistroCorrecto"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos del formulario para registrarse");
             echo $this->renderer->render( "view/homeView.php",$data);
         }
 

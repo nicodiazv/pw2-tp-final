@@ -98,7 +98,7 @@
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="nombre" class="form-control"
-                                            placeholder="Ingrese su nombre" required/>
+                                            placeholder="Ingrese su nombre" />
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <input type="text" class="form-control" name="apellido"
