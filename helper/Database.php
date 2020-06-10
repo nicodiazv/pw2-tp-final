@@ -10,10 +10,19 @@ class Database{
     }
 
     public function query($sql){
+        $resultAsAssocArray = array( );
         $result = mysqli_query($this->connection, $sql);
+        // mysqli_query: Para SELECT, SHOW, DESCRIBE o EXPLAIN, va a devolver un objeto
+        // del tipo mysqli_result, pero para INSERT u otros comandos, va a devolver
+        // TRUE o FALSE según el resultado
 
-        //var_dump($result);
-        $resultAsAssocArray = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        // Si el resultado fue del tipo "object", se puede ejecutar mysqli_fetch_all,
+        // si fuese del tipo "boolean" no.
+        $tipo = gettype($result);
+        if ($tipo == "object")
+        {
+            $resultAsAssocArray = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
         return $resultAsAssocArray;
     }
 
