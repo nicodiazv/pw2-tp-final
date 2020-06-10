@@ -13,7 +13,9 @@ class LoginController{
     public function index(){
         if(isset($_SESSION["usuario"])){
             $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
+            $vista = $this->inicioPorTipoDeUsuario();
+            echo $this->renderer->render( "view/$vista.php", $usuario);
+
         }
         echo $this->renderer->render( "view/homeView.php");
     }
@@ -26,10 +28,10 @@ class LoginController{
 
         if($usuario){
             $data["usuario"] = $usuario;
-            $_SESSION["usuario"] = $_POST["email"];
+            $_SESSION["usuario"] = $usuario[0];
 
-            // var_dump($usuario);
-            echo $this->renderer->render("view/inicioLectorView.php", $data);
+            $vista = $this->inicioPorTipoDeUsuario();
+            echo $this->renderer->render("view/$vista.php", $data);
         }else{
             $data["alert"] = array("class" => "danger", "message" => "Usuario y/o Contraseña Incorrecto/s");
             echo $this->renderer->render("view/homeView.php", $data);
@@ -42,6 +44,20 @@ class LoginController{
             echo $this->renderer->render("view/homeView.php", $data);
         }
 
+    }
+
+    public function inicioPorTipoDeUsuario(){
+        switch ($_SESSION['usuario']['usuario_tipo_id']){
+            case 1:
+                return 'inicioAdminView';
+                break;
+            case 2:
+                return 'inicioContenidistaView';
+                break;
+            case 3:
+                return 'inicioLectorView';
+                break;
+        }
     }
 
 

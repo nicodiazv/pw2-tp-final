@@ -1,5 +1,9 @@
 {{> header}}
-
+{{#flashMessage}}
+<div class="alert alert-{{class}}" role="alert">
+    {{message}}
+</div>
+{{/flashMessage}}
  <!-- ======= Slider Section ======= -->
  <section id="hero" class="d-flex justify-content-center align-items-center">
             <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
@@ -51,15 +55,6 @@
                     {{message}}
                 </div>
                 {{/alertRegistroCorrecto}}
-                <!-- Accesos directos a vistas -->
-                <div class="container-fluid row justify-content-center justify-content-around">
-                    <a href="inicio.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como Lector</a>
-                    <a href="inicio-contenidista.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como
-                        Contenidista</a>
-                    <a href="inicio-administrador.html" type="button" class="btn btn-dark mb-2">Iniciar sesión como
-                        Administrador General</a>
-                </div>
-                <!-- End Accesos directos a vistas -->
 
                 <div class="section-title"><a class="h1" href="index.html#login">Inicia Sesión</a></div>
 

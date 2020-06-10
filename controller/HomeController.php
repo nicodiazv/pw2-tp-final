@@ -12,9 +12,26 @@ class HomeController{
     public function index(){
         if(isset($_SESSION["usuario"])){
             $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
+            $vista = $this->inicioPorTipoDeUsuario();
+            echo $this->renderer->render( "view/$vista.php", $usuario);
+            return;
         }
+
         echo $this->renderer->render( "view/homeView.php");
+    }
+
+    public function inicioPorTipoDeUsuario(){
+        switch ($_SESSION['usuario']['usuario_tipo_id']){
+            case 1:
+                return 'inicioAdminView';
+                break;
+            case 2:
+                return 'inicioContenidistaView';
+                break;
+            case 3:
+                return 'inicioLectorView';
+                break;
+        }
     }
 
 

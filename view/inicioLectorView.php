@@ -45,7 +45,7 @@
                     <div class="col-md-12 d-flex align-items-stretch" data-aos="fade-up">
                         <article class="entry d-flex flex-wrap">
 
-                            <img src="img/ricardo-mujeres.jpg" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
+                            <img src="" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
 
                             <div class="col-12 col-sm-12 col-md-2">
                                 <h2 class="entry-title">Revista 1</h2>
@@ -72,7 +72,7 @@
                     <div class="col-md-12 d-flex align-items-stretch" data-aos="fade-up">
                         <article class="entry d-flex flex-wrap">
 
-                            <img src="img/ricado-auto.jpg" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
+                            <img src="" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
 
                             <div class="col-12 col-sm-12 col-md-2">
                                 <h2 class="entry-title">Revista 1</h2>
