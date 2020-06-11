@@ -98,6 +98,18 @@ class ModuleInitializer
         return new InicioContenidistaController($notaModel,$seccionModel,$this->renderer);
     }
 
+    public function createInicioLectorController()
+    {
+        include_once("model/CatalogoModel.php");
+        include_once("controller/InicioLectorController.php");
+        $model = new CatalogoModel($this->database);
+        return new InicioLectorController($model,$this->renderer);
+    }
+
+
+
+
+
     public function createDefaultController()
     {
         return $this->createHomeController();

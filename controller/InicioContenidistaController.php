@@ -36,10 +36,7 @@ class InicioContenidistaController{
         if ($_SESSION["usuario"]["usuario_tipo_id"] == 2) return true;
     }
 
-    public function redirigeAlHome(){
-        header("location: /home");
-        exit();
-    }
+
 
 
 
