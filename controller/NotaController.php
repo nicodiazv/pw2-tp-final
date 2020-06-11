@@ -23,6 +23,7 @@ class NotaController{
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2){
             $data['usuario'] = $_SESSION["usuario"];
             $data['secciones'] = $this->seccionModel->obtenerSecciones();
+            $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
             echo $this->renderer->render( "view/crearNotaView.php", $data);
             return;
         }
@@ -35,20 +36,35 @@ class NotaController{
             echo $this->renderer->render( "view/homeView.php");
             return;
         }
-        $data["usuario"] = $_SESSION["usuario"]["id"];
-        $data["titulo"] = isset($_POST["titulo"]) ?  $_POST["titulo"] : false;
-        $data["ubicacion"] = isset($_POST["ubicacion"]) ?  $_POST["ubicacion"] : false;
-        $data["seccion"] = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
-        $data["cuerpo"] = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
+        $usuario_id = $_SESSION["usuario"]["id"];
+        $titulo = isset($_POST["titulo"]) ?  $_POST["titulo"] : false;
+        $ubicacion = isset($_POST["ubicacion"]) ?  $_POST["ubicacion"] : false;
+        $seccion_id = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
+        $cuerpo = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
 
-        $this->notaModel->guardarNota($data);
+        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo);
+//        $data["usuario"] = $_SESSION["usuario"];
+        header("Location: /InicioContenidista");
         echo $this->renderer->render( "view/inicioContenidistaView.php");
+
         return;
+    }
+
+    public function notasPorCategoria(){
+        $usuario_id = $_SESSION["usuario"]["id"];
+        $seccion_id = $_GET['seccion_id'];
+
+        $data["notas"] = $this->notaModel->notasPorSeccionYUsuario($usuario_id, $seccion_id);
+        $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+        echo $this->renderer->render( "view/notasPorCategoriaView.php", $data);
     }
 
     public function validarUsuarioContenidista(){
         if ($_SESSION["usuario"]["usuario_tipo_id"] == 2) return true;
     }
+
+
+
 
 
 }

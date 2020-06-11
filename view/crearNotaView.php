@@ -1,33 +1,7 @@
 {{> header}}
     <div class="row justify-content-around">
 
-      <!-- Sidebar -->
-      <div class="col-lg-2 mt-2 ml-3">
-
-        <h3>Ricardo Fort</h3>
-        <h5>Contenidista</h5>
-        <a href="index.html" class="btn btn-outline-dark btn-sm">Cerrar sesión</a>
-
-        <!-- Categorias -->
-        <h3 class="h5 mt-5">Mis notas</h3>
-        <div class="categories">
-          <ul>
-            <li><a href="#">General <span>(25)</span></a></li>
-            <li><a href="#">Salud <span>(12)</span></a></li>
-            <li><a href="#">Politica <span>(14)</span></a></li>
-            <li><a href="#">Deportes <span>(5)</span></a></li>
-            <li><a href="#">Espectaculos <span>(22)</span></a></li>
-          </ul>
-        </div>
-        <!-- End Categorias-->
-
-        <!-- Clima de google -->
-        <div class="">
-          <h1 class="display-4 btn-primary p-4">Clima de Google</h1>
-        </div>
-        <!-- End Clima de google -->
-      </div>
-      <!-- End Sidebar -->
+        {{> sideBarContenidista}}
 
       <!-- ======= Crear nota Section ======= -->
       <section id="" class="contact col-md-9">

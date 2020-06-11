@@ -7,16 +7,17 @@ class NotaModel{
         $this->connexion = $database;
     }
 
-    public function guardarNota($data){
-        $nota_id = $this->connexion->query("INSERT INTO nota 
-            (titulo, ubicacion, seccion_id, cuerpo) 
-            VALUES ('{$data["titulo"]}','{$data["ubicacion"]}', {$data['seccion']},'{$data['cuerpo']}'  )");
+    public function guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo){
+        return $this->connexion->query("INSERT INTO nota 
+            (titulo, ubicacion, seccion_id, cuerpo, usuario_id) 
+            VALUES ('$titulo','$ubicacion', $seccion_id,'$cuerpo', $usuario_id  )");
 
-
-        $this->connexion->query("INSERT INTO contenidista_escribe_nota 
-            (usuario_id, nota_id) 
-            VALUES ('{$data['usuario']}',$nota_id)");
-
-}
+    }
+    public function notasPorSeccionYUsuario($usuario_id, $seccion_id){
+        return $this->connexion->query("SELECT * from nota WHERE usuario_id = $usuario_id AND seccion_id = $seccion_id");
+    }
+    public function cantidadNotasPorSeccionYUsuario($usuario_id){
+        return $this->connexion->query("SELECT count(*) as cantidad,s.nombre,s.id FROM nota n join seccion s on s.id = n.seccion_id where usuario_id = $usuario_id group by seccion_id, usuario_id ");
+    }
 
 }

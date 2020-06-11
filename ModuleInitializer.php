@@ -87,6 +87,17 @@ class ModuleInitializer
         return new notaController($notaModel,$seccionModel,$this->renderer);
     }
 
+    public function createInicioContenidistaController()
+    {
+        include_once("model/NotaModel.php");
+        include_once("model/SeccionModel.php");
+
+        include_once("controller/InicioContenidistaController.php");
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        return new InicioContenidistaController($notaModel,$seccionModel,$this->renderer);
+    }
+
     public function createDefaultController()
     {
         return $this->createHomeController();
