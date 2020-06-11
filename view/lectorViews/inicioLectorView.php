@@ -24,10 +24,7 @@
                     <div class="col-12 entry-content col-md-8">
                         <p>{{descripcion}}</p>
                         <div class="read-more col-12 row justify-content-end ">
-                            <a href="../../index.php" class="font-weight-bold mt-2 mr-4">Suscripción
-                                Mensual</a>
-                            <a href="../../index.php" class="font-weight-bold mt-2 mr-5">Comprar
-                                Diario</a>
+                            <a href="../../index.php" class="font-weight-bold mt-2 mr-5">Ver revistas</a>
                         </div>
                     </div>
                 </article>

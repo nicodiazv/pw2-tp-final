@@ -1,4 +1,3 @@
--- Los delete permiten ejecutar el dll entero sin necesidad de que fallen por duplicate keys
 DELETE FROM pw2.catalogo;
 DELETE FROM pw2.catalogo_agrupa_revistas;
 DELETE FROM pw2.nota;
@@ -12,8 +11,6 @@ DELETE FROM pw2.usuario;
 DELETE FROM pw2.usuario_compra_nro_revista;
 DELETE FROM pw2.usuario_suscribe_revista;
 DELETE FROM pw2.usuario_tipo;
--- Los delete permiten ejecutar el dll entero sin necesidad de que fallen por duplicate keys
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,11 +27,11 @@ DELETE FROM pw2.usuario_tipo;
 LOCK TABLES `catalogo` WRITE;
 /*!40000 ALTER TABLE `catalogo` DISABLE KEYS */;
 INSERT INTO pw2.catalogo (id,nombre,descripcion) VALUES
-(1,'Catálogo 1','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  deportes'),
-(2,'Catálogo 2','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica'),
-(3,'Catálogo 3','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia'),
-(4,'Catálogo 4','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos'),
-(5,'Catálogo 5','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa');
+(1,'Deportes','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  deportes Esta es la descripcion del catalogo'),
+(2,'Politica','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica Esta es la descripcion del catalogo'),
+(3,'Ciencia','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
+(4,'Espectaculos','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
+(5,'Otra cosa','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 /*!40000 ALTER TABLE `catalogo` ENABLE KEYS */;
 UNLOCK TABLES;
 
