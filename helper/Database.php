@@ -22,8 +22,10 @@ class Database{
         if ($tipo == "object")
         {
             $resultAsAssocArray = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            return $resultAsAssocArray;
+        }else{
+            return mysqli_insert_id($this->connection);
         }
-        return $resultAsAssocArray;
     }
 
 
