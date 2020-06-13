@@ -1,7 +1,13 @@
 {{> header}}
+{{#flashMessage}}
+<div class="alert alert-{{class}}" role="alert">
+    {{message}}
+</div>
+{{/flashMessage}}
     <div class="row justify-content-around">
 
         {{> sideBarContenidista}}
+
 
       <!-- ======= Crear nota Section ======= -->
       <section id="" class="contact col-md-9">
@@ -11,7 +17,7 @@
               <h2>Agregar una nota</h2>
             </div>
             <!-- formulario para crear una nota -->
-            <form action="/nota/guardarNota" method="POST" role="form" class="php-email-form">
+            <form action="/nota/guardarNota" method="POST" role="form" enctype="multipart/form-data">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título de la nota"
@@ -32,7 +38,7 @@
                     required />
                 </div>
                 <div class="col-md-6 form-group ">
-                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                  <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
                     aria-describedby="inputGroupFileAddon01">
                   <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen para la nota</label>
                 </div>

@@ -1,9 +1,11 @@
 <?php
-
+include_once ('helper/UploadImage.php');
 class NotaController{
+
     private $renderer;
     private $notaModel;
     private $seccionModel;
+    private $error = array();
 
 
     public function __construct($notaModel,$seccionModel, $renderer){
@@ -17,6 +19,7 @@ class NotaController{
             $usuario = $_SESSION["usuario"];
             echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
         }
+
         echo $this->renderer->render( "view/homeView.php");
     }
     public function crearNota(){
@@ -24,9 +27,14 @@ class NotaController{
             $data['usuario'] = $_SESSION["usuario"];
             $data['secciones'] = $this->seccionModel->obtenerSecciones();
             $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+            if($this->error){
+                $data["flashMessage"] = $this->error;
+            }
+
             echo $this->renderer->render( "view/crearNotaView.php", $data);
             return;
         }
+
         $data["flashMessage"] = array("class"=>"danger","message"=>"No posee permisos para crear notas");
         echo $this->renderer->render( "view/homeView.php",$data);
     }
@@ -42,7 +50,19 @@ class NotaController{
         $seccion_id = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
         $cuerpo = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
 
-        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo);
+        $uploadedImage = new UploadImage($_FILES['uploadedImage']);
+        try{
+            $imagenNombre = $uploadedImage->subirFoto();
+        }catch(Exception $e){
+
+            $this->error["class"] = "danger";
+            $this->error["message"] = "No se pudo subir la foto";
+            $this->crearNota();
+            return;
+        }
+
+        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo, $imagenNombre);
+
 //        $data["usuario"] = $_SESSION["usuario"];
         header("Location: /InicioContenidista");
         echo $this->renderer->render( "view/inicioContenidistaView.php");
