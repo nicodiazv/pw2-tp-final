@@ -31,7 +31,7 @@ class UploadImage{
 
                  $dest_path = $uploadFileDir . $newFileName;
 
-                 if(move_uploaded_file('as', $dest_path))
+                 if(move_uploaded_file($this->fileTmpPath, $dest_path))
                  {
                      $message ='File is successfully uploaded.';
                      return $newFileName;
