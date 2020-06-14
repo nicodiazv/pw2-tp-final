@@ -7,10 +7,10 @@ class NotaModel{
         $this->connexion = $database;
     }
 
-    public function guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo, $imagenNombre){
+    public function guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo){
         return $this->connexion->query("INSERT INTO nota 
-            (titulo, ubicacion, seccion_id, cuerpo, usuario_id, imagen_nombre) 
-            VALUES ('$titulo','$ubicacion', $seccion_id,'$cuerpo', $usuario_id, '$imagenNombre'  )");
+            (titulo, ubicacion, seccion_id, cuerpo, usuario_id) 
+            VALUES ('$titulo','$ubicacion', $seccion_id,'$cuerpo', $usuario_id  )");
 
     }
     public function notasPorSeccionYUsuario($usuario_id, $seccion_id){

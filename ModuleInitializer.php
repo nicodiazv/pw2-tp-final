@@ -106,9 +106,35 @@ class ModuleInitializer
         return new InicioLectorController($model,$this->renderer);
     }
 
+    public function createRevistasController()
+    {
+        include_once("model/RevistaModel.php");
+        include_once("model/CatalogoModel.php");
+        include_once("controller/RevistasController.php");
+        $revistaModel = new RevistaModel($this->database);
+        $catalogoModel = new CatalogoModel($this->database);
+        return new RevistasController($revistaModel,$catalogoModel,$this->renderer);
+    }
 
+    public function createCatalogosController()
+    {
+        include_once("model/CatalogoModel.php");
+        include_once("controller/CatalogosController.php");
+        $model = new CatalogoModel($this->database);
+        return new CatalogosController($model,$this->renderer);
+    }
 
-
+    public function createMisSuscripcionesController()
+    {
+        include_once("model/SuscripcionModel.php");
+        include_once("model/RevistaModel.php");
+        include_once("model/CatalogoModel.php");
+        include_once("controller/MisSuscripcionesController.php");
+        $suscripcionModel = new SuscripcionModel($this->database);
+        $catalogoModel = new CatalogoModel($this->database);
+        $revistaModel = new RevistaModel($this->database);
+        return new MisSuscripcionesController($suscripcionModel,$catalogoModel,$revistaModel,$this->renderer);
+    }
 
     public function createDefaultController()
     {
