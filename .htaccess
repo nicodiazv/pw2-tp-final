@@ -2,8 +2,12 @@
     RewriteEngine On
     RewriteBase /
 
+
     #Regla para las carpetas de views
-    RewriteRule ^(.*)Views?/(.*)$ index.php?module=$2&action=index [L,QSA]
+    RewriteRule ^(.*)Views?/(.*)$ isndex.php?module=$2&action=index [L,QSA]
+
+    #Regla para enviar a la pantalla de acceso denegado 403
+    RewriteRule accesoProhibido403 view/accesoProhibido403.php [L,QSA]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -30,12 +30,11 @@ class LoginController{
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
 
         if($usuario){
-            $data["usuario"] = $usuario;
             $_SESSION["usuario"] = $usuario[0];
+            $data["usuario"] = $usuario;
 
             $this->inicioPorTipoDeUsuario();
             exit();
-//            echo $this->renderer->render("view/$vista.php", $data);
         }else{
             $data["alert"] = array("class" => "danger", "message" => "Usuario y/o Contraseña Incorrecto/s");
             echo $this->renderer->render("view/homeView.php", $data);

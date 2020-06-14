@@ -1,6 +1,7 @@
 <?php
 require_once("ModuleInitializer.php");
 require_once("Router.php");
+require_once("helper/ValidateSession.php");
 
 session_start();
 

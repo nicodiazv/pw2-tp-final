@@ -37,7 +37,10 @@ class InicioContenidistaController{
     }
 
 
-
+    public function redirigeAlHome(){
+        header("location: /home");
+        exit();
+    }
 
 
 

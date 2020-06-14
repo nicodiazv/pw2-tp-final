@@ -1,16 +1,16 @@
-DELETE FROM pw2.catalogo;
 DELETE FROM pw2.catalogo_agrupa_revistas;
+DELETE FROM pw2.nro_revista_tiene_notas;
+DELETE FROM pw2.usuario_compra_nro_revista;
+DELETE FROM pw2.usuario_suscribe_revista;
 DELETE FROM pw2.nota;
 DELETE FROM pw2.nro_revista;
-DELETE FROM pw2.nro_revista_tiene_notas;
 DELETE FROM pw2.revista;
 DELETE FROM pw2.seccion;
 DELETE FROM pw2.tipo_pago;
 DELETE FROM pw2.transaccion;
 DELETE FROM pw2.usuario;
-DELETE FROM pw2.usuario_compra_nro_revista;
-DELETE FROM pw2.usuario_suscribe_revista;
 DELETE FROM pw2.usuario_tipo;
+DELETE FROM pw2.catalogo;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,16 +31,12 @@ INSERT INTO pw2.catalogo (id,nombre,descripcion) VALUES
 (2,'Politica','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica Esta es la descripcion del catalogo'),
 (3,'Ciencia','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
 (4,'Espectaculos','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
-(5,'Otra cosa','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
+(5,'Economia','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 /*!40000 ALTER TABLE `catalogo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
--- Dumping data for table `catalogo_agrupa_revistas` --
-LOCK TABLES `catalogo_agrupa_revistas` WRITE;
-/*!40000 ALTER TABLE `catalogo_agrupa_revistas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `catalogo_agrupa_revistas` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 -- Dumping data for table `nota` --
@@ -90,6 +86,20 @@ UNLOCK TABLES;
 -- Dumping data for table `revista` --
 LOCK TABLES `revista` WRITE;
 /*!40000 ALTER TABLE `revista` DISABLE KEYS */;
+INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual) VALUES
+(1,'Clarín',1200),
+(2,'Olé',1300),
+(3,'La Nación',1400),
+(4,'Pronto',1500),
+(5,'Gente',1600),
+(6,'UNLAM',600),
+(7,'El Clasico',1800),
+(8,'UBA',800),
+(9,'Telefe',2000),
+(10,'Todo Politica',1400),
+(11,'Economia Argentina',1400),
+(12,'Economia Mundial',1500);
+
 /*!40000 ALTER TABLE `revista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,10 +155,31 @@ UNLOCK TABLES;
 -- Dumping data for table `usuario_suscribe_revista` --
 LOCK TABLES `usuario_suscribe_revista` WRITE;
 /*!40000 ALTER TABLE `usuario_suscribe_revista` DISABLE KEYS */;
+INSERT INTO `usuario_suscribe_revista` VALUES
+(1,1,1,1,'2020-01-01','2020-02-01'),
+(1,1,2,2,'2020-01-01','2020-02-01'),
+(1,1,3,3,'2020-01-01','2020-02-01');
 /*!40000 ALTER TABLE `usuario_suscribe_revista` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+-- Dumping data for table `catalogo_agrupa_revistas` --
+LOCK TABLES `catalogo_agrupa_revistas` WRITE;
+/*!40000 ALTER TABLE `catalogo_agrupa_revistas` DISABLE KEYS */;
+INSERT INTO `catalogo_agrupa_revistas` VALUES
+(1,1),
+(1,2),
+(2,3),
+(2,4),
+(4,5),
+(2,6),
+(1,7),
+(2,8),
+(4,9),
+(2,10),
+(5,11),
+(5,12);
+/*!40000 ALTER TABLE `catalogo_agrupa_revistas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- Dumping data for table `usuario_tipo` --
 LOCK TABLES `usuario_tipo` WRITE;
