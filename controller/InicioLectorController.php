@@ -4,23 +4,19 @@ class InicioLectorController {
     private $model;
 
     public function __construct($model, $renderer){
+        ValidateSession::validarSesionLector();
         $this->renderer = $renderer;
         $this->model = $model;
     }
 
     public function index(){
-        if(!isset($_SESSION["usuario"])) $this->redirigeAlHome();
-
-        $data["usuario"] = $_SESSION["usuario"];
         $data["catalogos"] = $this->model->obtenerCatalogos();
-
+        $this->modelSideBar($data);
         echo $this->renderer->render( "view/lectorViews/inicioLectorView.php",$data);
     }
 
-
-    public function redirigeAlHome(){
-        header("location: /home");
-        exit();
+    public function modelSideBar(&$data){
+        $data["usuario"] = $_SESSION["usuario"];
+        $data["cantRevistasPorCatalogo"]  = $this->model->cantRevistasPorCatalogo();
     }
-
 }
