@@ -67,7 +67,7 @@
                         <li>Agregamos un campo de descripción para las revistas?</li>
                     </ul>
                     <div class="btn-wrap">
-                        <a href="/misSuscripciones/suscripcionRevista/idRevista={{id}}" class="btn btn-success">Suscribirse</a>
+                        <a href="/suscripciones/suscripcionRevista/idRevista={{id}}" class="btn btn-success">Suscribirse</a>
                     </div>
                 </div>
             </div>

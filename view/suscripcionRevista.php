@@ -23,7 +23,7 @@
                         .
                     </li>
                 </ul>
-                <form action="/misSuscripciones/suscribir" method="post">
+                <form action="/suscripciones/suscribir" method="post">
                     <div class="btn-wrap">
                         <input type="hidden" name="idRevista" value="{{id}}">
                         <input type="submit" class="btn btn-success btn-block mr-5" value="Suscribir">

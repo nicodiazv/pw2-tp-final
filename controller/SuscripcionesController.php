@@ -1,7 +1,7 @@
 <?php
 
 
-class MisSuscripcionesController {
+class SuscripcionesController {
     private $renderer;
     private $suscripcionModel;
     private $catalogoModel;
@@ -23,7 +23,7 @@ class MisSuscripcionesController {
         $this->modelSideBar($data);
         $data["misSuscripciones"] = $this->suscripcionModel->revistasALasQueEstaSuscrito($data["usuario"]["id"]);
         $data["revistasNoSuscripto"] = $this->suscripcionModel->revistasALasQueEstaNoEstaSuscrito($data["usuario"]["id"]);
-        echo $this->renderer->render( "view/misSuscripcionesView.php",$data);
+        echo $this->renderer->render( "view/SuscripcionesView.php",$data);
     }
 
     public function suscripcionRevista(){
@@ -37,13 +37,12 @@ class MisSuscripcionesController {
         $this->modelSideBar($data);
         $idRevista = $_POST["idRevista"];
         $idUsuario = $data["usuario"]["id"];
-        $idTipoUsuario = $data["usuario"]["usuario_tipo_id"];
         $idTransaccion = "1";
         $fechaInicio = '2020-03-03';
         $fechaFin = '2020-03-04';
-        $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idTipoUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
-        header("Location: view/misSuscripcionesView.php");
-        echo $this->renderer->render( "view/misSuscripcionesView.php",$data);
+        $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
+        header("Location: view/SuscripcionesView.php");
+        echo $this->renderer->render( "view/SuscripcionesView.php",$data);
     }
 
 
