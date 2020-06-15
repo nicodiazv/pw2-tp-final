@@ -25,5 +25,9 @@ class SuscripcionModel {
                                                         WHERE usuario_id = $usuario_id)");
     }
 
-
+    public function suscribir($idUsuario,$idTipoUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin){
+        return $this->connection->query("INSERT INTO usuario_suscribe_revista (usuario_id, usuario_usuario_tipo_id, revista_id, transaccion_id, fecha_inicio, fecha_fin)
+                                         VALUES
+                                         ($idUsuario,$idTipoUsuario , $idRevista , $idTransaccion , '$fechaInicio','$fechaFin')");
+    }
 }

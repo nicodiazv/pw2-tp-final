@@ -26,6 +26,25 @@ class MisSuscripcionesController {
         echo $this->renderer->render( "view/misSuscripcionesView.php",$data);
     }
 
+    public function suscripcionRevista(){
+        $this->modelSideBar($data);
+        $idRevista = $_GET["idRevista"];
+        $data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
+        echo $this->renderer->render( "view/suscripcionRevista.php",$data);
+    }
+
+    public function suscribir(){
+        $this->modelSideBar($data);
+        $idRevista = $_POST["idRevista"];
+        $idUsuario = $data["usuario"]["id"];
+        $idTipoUsuario = $data["usuario"]["usuario_tipo_id"];
+        $idTransaccion = "1";
+        $fechaInicio = '2020-03-03';
+        $fechaFin = '2020-03-04';
+        $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idTipoUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
+        header("Location: view/misSuscripcionesView.php");
+        echo $this->renderer->render( "view/misSuscripcionesView.php",$data);
+    }
 
 
     public function modelSideBar(&$data){
