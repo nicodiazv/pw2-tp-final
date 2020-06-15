@@ -30,4 +30,9 @@ class SuscripcionModel {
                                          VALUES
                                          ($idUsuario, $idRevista , $idTransaccion , '$fechaInicio','$fechaFin')");
     }
+
+    public function desuscribir($idUsuario,$idRevista){
+        return $this->connection->query("DELETE FROM usuario_suscribe_revista
+                                         WHERE usuario_id = $idUsuario AND revista_id = $idRevista;");
+    }
 }

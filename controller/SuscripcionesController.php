@@ -37,10 +37,19 @@ class SuscripcionesController {
         $this->modelSideBar($data);
         $idRevista = $_POST["idRevista"];
         $idUsuario = $data["usuario"]["id"];
-        $idTransaccion = "1";
+        $idTransaccion = "1"; // Todavia no aplicada la transaccion
         $fechaInicio = '2020-03-03';
         $fechaFin = '2020-03-04';
         $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
+        header("Location: view/SuscripcionesView.php");
+        echo $this->renderer->render( "view/SuscripcionesView.php",$data);
+    }
+
+    public function desuscribir(){
+        $this->modelSideBar($data);
+        $idRevista = $_POST["idRevista"];
+        $idUsuario = $data["usuario"]["id"];
+        $data["revista"] = $this->suscripcionModel->desuscribir($idUsuario,$idRevista);
         header("Location: view/SuscripcionesView.php");
         echo $this->renderer->render( "view/SuscripcionesView.php",$data);
     }
