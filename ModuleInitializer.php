@@ -106,6 +106,12 @@ class ModuleInitializer
         return new InicioLectorController($model,$this->renderer);
     }
 
+    public function createInicioAdministradorController()
+    {
+        include_once("controller/InicioAdministradorController.php");
+        return new InicioAdministradorController($this->renderer);
+    }
+
     public function createRevistasController()
     {
         include_once("model/RevistaModel.php");
@@ -114,6 +120,14 @@ class ModuleInitializer
         $revistaModel = new RevistaModel($this->database);
         $catalogoModel = new CatalogoModel($this->database);
         return new RevistasController($revistaModel,$catalogoModel,$this->renderer);
+    }
+
+    public function createUsuariosController()
+    {
+        include_once("model/UsuarioModel.php");
+        include_once("controller/UsuariosController.php");
+        $Model = new UsuarioModel($this->database);
+        return new UsuariosController($Model,$this->renderer);
     }
 
     public function createCatalogosController()
