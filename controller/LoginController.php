@@ -52,7 +52,7 @@ class LoginController{
     public function inicioPorTipoDeUsuario(){
         switch ($_SESSION['usuario']['usuario_tipo_id']){
             case 1:
-                header('location: /inicioAdmin');
+                header('location: /administradorViews/inicioAdministrador');
                 return;
                 break;
             case 2:
