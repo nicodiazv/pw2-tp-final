@@ -25,5 +25,14 @@ class SuscripcionModel {
                                                         WHERE usuario_id = $usuario_id)");
     }
 
+    public function suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin){
+        return $this->connection->query("INSERT INTO usuario_suscribe_revista (usuario_id, revista_id, transaccion_id, fecha_inicio, fecha_fin)
+                                         VALUES
+                                         ($idUsuario, $idRevista , $idTransaccion , '$fechaInicio','$fechaFin')");
+    }
 
+    public function desuscribir($idUsuario,$idRevista){
+        return $this->connection->query("DELETE FROM usuario_suscribe_revista
+                                         WHERE usuario_id = $idUsuario AND revista_id = $idRevista;");
+    }
 }
