@@ -37,25 +37,17 @@ INSERT INTO `seccion` VALUES
 (8,' Ciencia'),
 (9,' Salud');
 
-INSERT INTO `nota` (id,titulo,cuerpo,ubicacion,imagen_nombre,gratis,seccion_id,usuario_id) VALUES
-(1,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 1','imagen_1',0,1,1),
-(2,'Titulo de una nota de Deportes','Cuerpo de una nota de Deportes','Ubicación 2','imagen_2',0,2,1),
-(3,'Titulo de una nota de Política Nacional','Cuerpo de una nota de Política Nacional','Ubicación 3','imagen_3',0,3,1),
-(4,'Titulo de una nota de Política Internacional','Cuerpo de una nota de Política Internacional','Ubicación 4','imagen_4',0,4,1),
-(5,'Titulo de una nota de Economía','Cuerpo de una nota de Economía','Ubicación 5','imagen_5',0,5,1),
-(6,'Titulo de una nota de Educación','Cuerpo de una nota de Educación','Ubicación 6','imagen_6',0,6,1),
-(7,'Titulo de una nota de Espectáculos','Cuerpo de una nota de Espectáulos','Ubicación 7','imagen_7',0,7,1),
-(8,'Titulo de una nota de Ciencia','Cuerpo de una nota de Ciencia','Ubicación 8','imagen_8',0,8,2),
-(9,'Titulo de una nota de Salud','Cuerpo de una nota de Salud','Ubicación 9','imagen_9',0,9,2),
-(10,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 10','imagen_10',1,1,2),
-(11,'Titulo de una nota de Deportes','Cuerpo de una nota de Deportes','Ubicación 11','imagen_11',1,2,2),
-(12,'Titulo de una nota de Política Nacional','Cuerpo de una nota de Política Nacional','Ubicación 12','imagen_12',1,3,2),
-(13,'Titulo de una nota de Política Internacional','Cuerpo de una nota de Política Internacional','Ubicación 13','imagen_13',1,4,3),
-(14,'Titulo de una nota de Economía','Cuerpo de una nota de Economía','Ubicación 14','imagen_14',1,5,3),
-(15,'Titulo de una nota de Educación','Cuerpo de una nota de Educación','Ubicación 15','imagen_15',1,6,3),
-(16,'Titulo de una nota de Espectaculos','Cuerpo de una nota de Espectaculos','Ubicación 16','imagen_16',1,7,3),
-(17,'Titulo de una nota de Ciencia','Cuerpo de una nota de Ciencia','Ubicación 17','imagen_17',1,8,3),
-(18,'Titulo de una nota de Salud','Cuerpo de una nota de Salud','Ubicación 18','imagen_18',1,9,3);
+INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng,imagen_nombre,enlace,gratis,aprobada,seccion_id,usuario_id) VALUES
+(1,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 1',0,0,0,'imagen_1','enlace_1',0,0,1,1),
+(2,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 2',0,0,0,'imagen_2','enlace_2',0,0,2,1),
+(3,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 3',0,0,0,'imagen_3','enlace_3',0,0,3,1),
+(4,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 4',0,0,0,'imagen_4','enlace_4',0,0,4,1),
+(5,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 5',0,0,0,'imagen_5','enlace_5',0,0,5,1),
+(6,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 6',0,0,0,'imagen_6','enlace_6',0,0,6,1),
+(7,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 7',0,0,0,'imagen_7','enlace_7',0,0,7,1),
+(8,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 8',0,0,0,'imagen_8','enlace_8',0,0,8,1);
+
+
 
 INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual) VALUES
 (1,'Clarín',1200),
