@@ -36,6 +36,9 @@
                 <div class="col-md-6 form-group">
                   <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="Ubicación de la nota"
                     required />
+                    <input type="hidden" name="place_id" id="place_id">
+                    <input type="hidden" name="lat" id="lat">
+                    <input type="hidden" name="lng" id="lng">
                 </div>
                 <div class="col-md-6 form-group ">
                   <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
@@ -51,7 +54,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">https://</span>
                   </div>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" >
+                  <input type="text" class="form-control" id="basic-url" name="enlace" aria-describedby="basic-addon3" >
                 </div>
                 <div class="text-center col-md-12">
                   <button type="submit" class="btn-block">Crear nota</button>
@@ -63,5 +66,9 @@
       </section>
       <!-- ======= END Crear nota Section ======= -->
     </div>
+
+<script src="/view/js/ubicacion.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
+
 
 {{> footer}}
