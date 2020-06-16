@@ -18,5 +18,9 @@ class InicioLectorController {
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
         $data["cantRevistasPorCatalogo"]  = $this->model->cantRevistasPorCatalogo();
+
+        $clima = new Clima();
+        $climaActual = $clima->getClimaActualResumido();
+        $data["climaActual"] = $climaActual;
     }
 }
