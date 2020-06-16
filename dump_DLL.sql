@@ -138,7 +138,10 @@ LOCK TABLES `usuario` WRITE;
 INSERT INTO `usuario` (nombre,apellido,email,password,direccion,telefono,usuario_tipo_id) VALUES
 ('AdminJuan','Fort','admin@gmail.com','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1),
 ('ContenidistaJuan','Perez','contenidista@gmail.com','16c1429d2df4d965ecc3bc6169617fff',NULL,NULL,2),
-('LectorJuan','Gonzalez','lector@gmail.com','dd381a050f1987e7b5c7b73296fd49a5',NULL,NULL,3);
+('LectorJuan','Gonzalez','lector@gmail.com','dd381a050f1987e7b5c7b73296fd49a5',NULL,NULL,3),
+('admin','admin','admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1),
+('contenidista','contenidista','contenidista','16c1429d2df4d965ecc3bc6169617fff',NULL,NULL,2),
+('lector','lector','lector','dd381a050f1987e7b5c7b73296fd49a5',NULL,NULL,3);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 

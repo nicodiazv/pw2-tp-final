@@ -22,10 +22,12 @@
                         <li>Fecha Inicio: {{fecha_inicio}}</li>
                         <li>Fecha Fin: {{fecha_fin}}</li>
                     </ul>
+                    <form action="/suscripciones/desuscribir" method="post">
                     <div class="btn-wrap">
-                        <a href="#" class="btn btn-danger " tabindex="-1" role="button"
-                           aria-disabled="true">Desuscribirme</a>
+                        <input type="hidden" name="idRevista" value="{{id}}">
+                        <input type="submit" class="btn btn-danger" value="Desuscribir"   tabindex="-1" aria-disabled="true">
                     </div>
+                    </form>
                 </div>
             </div>
             <!-- Tarjeta individual End -->
@@ -59,15 +61,14 @@
             {{#revistasNoSuscripto}}
             <div class="col-lg-3 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="box">
-                    <span class="advanced">NUEVO</span>
+                    <span class="advanced">MENSUAL</span>
                     <h3>{{nombre}}</h3>
                     <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
-                    <h4><sup>$</sup>XX<span> / edición</span></h4>
                     <ul>
-                        <li>Agregagamos un campo de descripcion para las revistas?</li>
+                        <li>Agregamos un campo de descripción para las revistas?</li>
                     </ul>
                     <div class="btn-wrap">
-                        <a href="#" class="btn btn-success">Suscribirse</a>
+                        <a href="/suscripciones/suscripcionRevista/idRevista={{id}}" class="btn btn-success">Suscribirse</a>
                     </div>
                 </div>
             </div>

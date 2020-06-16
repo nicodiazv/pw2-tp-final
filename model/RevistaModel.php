@@ -22,4 +22,5 @@ class RevistaModel {
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
                                         JOIN revista re ON (car.revista_id = re.id)");
     }
+
 }

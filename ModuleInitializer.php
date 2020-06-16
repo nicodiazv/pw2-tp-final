@@ -139,16 +139,16 @@ class ModuleInitializer
         return new CatalogosController($model,$this->renderer);
     }
 
-    public function createMisSuscripcionesController()
+    public function createSuscripcionesController()
     {
         include_once("model/SuscripcionModel.php");
         include_once("model/RevistaModel.php");
         include_once("model/CatalogoModel.php");
-        include_once("controller/MisSuscripcionesController.php");
+        include_once("controller/SuscripcionesController.php");
         $suscripcionModel = new SuscripcionModel($this->database);
         $catalogoModel = new CatalogoModel($this->database);
         $revistaModel = new RevistaModel($this->database);
-        return new MisSuscripcionesController($suscripcionModel,$catalogoModel,$revistaModel,$this->renderer);
+        return new SuscripcionesController($suscripcionModel,$catalogoModel,$revistaModel,$this->renderer);
     }
 
     public function createDefaultController()
