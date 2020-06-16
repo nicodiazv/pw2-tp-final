@@ -1,8 +1,11 @@
 <?php
 
 class Clima
-{   //api_key_vieja "I0t0f6dTgRlfJzCeIK0Ts0IR8AN4r6KG"
-    private $apikey = "4dQbtVBqXnMruaDAA5gQZMZzRsR2dLYg";
+{
+    private $config;
+    //private $apikey = "I0t0f6dTgRlfJzCeIK0Ts0IR8AN4r6KG";
+    //private $apikey = "4dQbtVBqXnMruaDAA5gQZMZzRsR2dLYg";
+    private $apikey; // = "qszJ76JUiTHBYAQxNxnMPJfM5P1kTWuD";
 
     private $ip;
     private $location_key;
@@ -12,9 +15,10 @@ class Clima
 
     public function __construct()
     {
-        $this->ip = self::getIpAddess();
+        $this->config = new Config("config/config.ini");
+        $this->apikey = $this->config->get("clima", "apikey");
 
-        $salida = self::getLocationFromIp($this->ip);
+        $salida = self::getLocationFromCoords();
         $this->location_key = $salida["key"];
         $this->location_name = $salida["name"];
 
@@ -167,6 +171,35 @@ class Clima
 
     }
 
+    private function getLocationFromCoords()
+    {
+        $lat = $_SESSION["latitud"];
+        $long = $_SESSION["longitud"];
+
+        $q = $lat . "," . $long;
+
+        // Seteo URL para llamar a la API
+        $url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
+
+        // Seteo array Data con los parámetros de la API
+        $data = array(  "apikey"    => $this->apikey,
+                        "q"         => $q ,
+                        "language"  => "es",
+                        "details"   => "true",
+                        "toplevel"  => "true");
+
+        // Llamo a la API para obtener el location key
+        $resultado = self::CallAPI("GET", $url, $data);
+
+        // Transformo respuesta de JSON a un array
+        $response = json_decode($resultado, TRUE);
+
+        // Devuelvo de la respuesta la clave de la ubicación y el Nombre
+        $salida["key"] = $response["Key"];
+        $salida["name"] = $response["LocalizedName"];
+
+        return $salida;
+
+    }
+
 }
-
-

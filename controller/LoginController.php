@@ -27,6 +27,9 @@ class LoginController{
         $data["email"] = isset($_POST["email"]) ? $_POST["email"] : false;
         $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false ;
 
+        $_SESSION["latitud"] = isset($_POST["latitud"]) ? $_POST["latitud"] : false;
+        $_SESSION["longitud"] = isset($_POST["longitud"]) ? $_POST["longitud"] : false;
+
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
 
         if($usuario){
