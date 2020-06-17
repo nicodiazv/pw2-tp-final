@@ -45,6 +45,10 @@
                     aria-describedby="inputGroupFileAddon01">
                   <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar imagen para la nota</label>
                 </div>
+                  <div class="form-group col-md-12">
+                  <textarea class="form-control" name="copete" rows="2" placeholder="Escriba el copete de la nota"
+                  ></textarea>
+                  </div>
                 <div class="form-group col-md-12">
                   <textarea class="form-control" name="cuerpo" rows="5" placeholder="Escriba el cuerpo de la nota"
                     ></textarea>

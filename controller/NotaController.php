@@ -55,6 +55,8 @@ class NotaController{
 
         $seccion_id = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
         $cuerpo = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
+        $copete = isset($_POST["copete"]) ?  $_POST["copete"] : false;
+
 
         $uploadedImage = new UploadImage($_FILES['uploadedImage']);
         try{
@@ -67,7 +69,7 @@ class NotaController{
             return;
         }
 
-        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat,$lng,$seccion_id, $cuerpo, $imagenNombre, $enlace);
+        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat,$lng,$seccion_id, $cuerpo, $imagenNombre, $enlace,$copete);
 
 //        $data["usuario"] = $_SESSION["usuario"];
         header("Location: /InicioContenidista");
