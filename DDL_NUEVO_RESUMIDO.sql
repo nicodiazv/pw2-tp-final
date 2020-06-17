@@ -64,7 +64,8 @@ CREATE TABLE `nota` (
   `cuerpo` TEXT NOT NULL,
   `seccion_id` INT(11) NOT NULL,
   `usuario_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`,`seccion_id`),
+  `copete` TEXT,
+   PRIMARY KEY (`id`,`seccion_id`),
   FOREIGN KEY (`seccion_id`) REFERENCES `seccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

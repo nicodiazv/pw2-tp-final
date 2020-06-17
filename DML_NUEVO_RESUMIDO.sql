@@ -37,15 +37,15 @@ INSERT INTO `seccion` VALUES
 (8,' Ciencia'),
 (9,' Salud');
 
-INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng,imagen_nombre,enlace,gratis,aprobada,seccion_id,usuario_id) VALUES
-(1,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 1',0,0,0,'imagen_1','enlace_1',0,0,1,1),
-(2,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 2',0,0,0,'imagen_2','enlace_2',0,0,2,1),
-(3,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 3',0,0,0,'imagen_3','enlace_3',0,0,3,1),
-(4,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 4',0,0,0,'imagen_4','enlace_4',0,0,4,1),
-(5,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 5',0,0,0,'imagen_5','enlace_5',0,0,5,1),
-(6,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 6',0,0,0,'imagen_6','enlace_6',0,0,6,1),
-(7,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 7',0,0,0,'imagen_7','enlace_7',0,0,7,1),
-(8,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 8',0,0,0,'imagen_8','enlace_8',0,0,8,1);
+INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng,imagen_nombre,enlace,gratis,aprobada,seccion_id,usuario_id,copete) VALUES
+(1,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 1',0,0,0,'imagen_1','enlace_1',0,0,1,1,'copete copete copete copete copete copete'),
+(2,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 2',0,0,0,'imagen_2','enlace_2',0,0,2,1,'copete copete copete copete copete copete'),
+(3,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 3',0,0,0,'imagen_3','enlace_3',0,0,3,1,'copete copete copete copete copete copete'),
+(4,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 4',0,0,0,'imagen_4','enlace_4',0,0,4,1,'copete copete copete copete copete copete'),
+(5,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 5',0,0,0,'imagen_5','enlace_5',0,0,5,1,'copete copete copete copete copete copete'),
+(6,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 6',0,0,0,'imagen_6','enlace_6',0,0,6,1,'copete copete copete copete copete copete'),
+(7,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 7',0,0,0,'imagen_7','enlace_7',0,0,7,1,'copete copete copete copete copete copete'),
+(8,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 8',0,0,0,'imagen_8','enlace_8',0,0,8,1,'copete copete copete copete copete copete');
 
 
 
