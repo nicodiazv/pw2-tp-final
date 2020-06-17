@@ -151,6 +151,14 @@ class ModuleInitializer
         return new SuscripcionesController($suscripcionModel,$catalogoModel,$revistaModel,$this->renderer);
     }
 
+    public function createAprobacionesController()
+    {
+        include_once("model/NotaModel.php");
+        include_once("controller/AprobacionesController.php");
+        $Model = new NotaModel($this->database);
+        return new AprobacionesController($Model,$this->renderer);
+    }
+
     public function createDefaultController()
     {
         return $this->createHomeController();
