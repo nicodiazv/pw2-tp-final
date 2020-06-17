@@ -47,8 +47,16 @@ class NotaController{
         $usuario_id = $_SESSION["usuario"]["id"];
         $titulo = isset($_POST["titulo"]) ?  $_POST["titulo"] : false;
         $ubicacion = isset($_POST["ubicacion"]) ?  $_POST["ubicacion"] : false;
+        $place_id = isset($_POST["place_id"]) ?  $_POST["place_id"] : false;
+        $lat = isset($_POST["lat"]) ?  $_POST["lat"] : false;
+        $lng = isset($_POST["lng"]) ?  $_POST["lng"] : false;
+        $enlace = isset($_POST["enlace"]) ?  $_POST["enlace"] : false;
+
+
         $seccion_id = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
         $cuerpo = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
+        $copete = isset($_POST["copete"]) ?  $_POST["copete"] : false;
+
 
         $uploadedImage = new UploadImage($_FILES['uploadedImage']);
         try{
@@ -61,7 +69,7 @@ class NotaController{
             return;
         }
 
-        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $seccion_id, $cuerpo, $imagenNombre);
+        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat,$lng,$seccion_id, $cuerpo, $imagenNombre, $enlace,$copete);
 
 //        $data["usuario"] = $_SESSION["usuario"];
         header("Location: /InicioContenidista");
@@ -73,7 +81,6 @@ class NotaController{
     public function notasPorCategoria(){
         $usuario_id = $_SESSION["usuario"]["id"];
         $seccion_id = $_GET['seccion_id'];
-
         $data["notas"] = $this->notaModel->notasPorSeccionYUsuario($usuario_id, $seccion_id);
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
         echo $this->renderer->render( "view/notasPorCategoriaView.php", $data);

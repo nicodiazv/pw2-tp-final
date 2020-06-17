@@ -53,13 +53,19 @@ CREATE TABLE `nro_revista` (
 CREATE TABLE `nota` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
-  `ubicacion` VARCHAR(45) NOT NULL,
-  `imagen_nombre` VARCHAR(45) DEFAULT NULL,
+  `ubicacion_nombre` VARCHAR(45) ,
+  `ubicacion_place_id` VARCHAR(45),
+  `ubicacion_lat` VARCHAR(45) ,
+  `ubicacion_lng` VARCHAR(45) ,
+  `imagen_nombre` VARCHAR(100) ,
+  `enlace` VARCHAR(200) ,
   `gratis` TINYINT(4) DEFAULT NULL,
+  `aprobada` TINYINT(1) DEFAULT NULL,
   `cuerpo` TEXT NOT NULL,
   `seccion_id` INT(11) NOT NULL,
   `usuario_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`,`seccion_id`),
+  `copete` TEXT,
+   PRIMARY KEY (`id`,`seccion_id`),
   FOREIGN KEY (`seccion_id`) REFERENCES `seccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

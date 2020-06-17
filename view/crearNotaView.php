@@ -36,12 +36,19 @@
                 <div class="col-md-6 form-group">
                   <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="Ubicación de la nota"
                     required />
+                    <input type="hidden" name="place_id" id="place_id">
+                    <input type="hidden" name="lat" id="lat">
+                    <input type="hidden" name="lng" id="lng">
                 </div>
                 <div class="col-md-6 form-group ">
                   <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
                     aria-describedby="inputGroupFileAddon01">
-                  <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen para la nota</label>
+                  <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar imagen para la nota</label>
                 </div>
+                  <div class="form-group col-md-12">
+                  <textarea class="form-control" name="copete" rows="2" placeholder="Escriba el copete de la nota"
+                  ></textarea>
+                  </div>
                 <div class="form-group col-md-12">
                   <textarea class="form-control" name="cuerpo" rows="5" placeholder="Escriba el cuerpo de la nota"
                     ></textarea>
@@ -51,7 +58,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">https://</span>
                   </div>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" >
+                  <input type="text" class="form-control" id="basic-url" name="enlace" aria-describedby="basic-addon3" >
                 </div>
                 <div class="text-center col-md-12">
                   <button type="submit" class="btn-block">Crear nota</button>
@@ -63,5 +70,16 @@
       </section>
       <!-- ======= END Crear nota Section ======= -->
     </div>
+<script >
+    const $file_input = document.getElementById('uploadedImage')
+    const $file_label = document.getElementById('uploadedImage__label')
+    $file_input.addEventListener('change', (e) => {
+        console.log(e.target.files[0].name)
+        $file_label.innerHTML = e.target.files[0].name;
+    })
+</script>
+<script src="/view/js/ubicacion.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
+
 
 {{> footer}}

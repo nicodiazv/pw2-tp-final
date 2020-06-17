@@ -7,9 +7,7 @@
                 <div class="column container-fluid">
                     <div class="section-title">
                         <h2>Notas escritas</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
-                            Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
-                            alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <p>Aca se van a listar las notas que haya creado el contenidista</p>
                     </div>
 
                     {{#notas}}
@@ -21,7 +19,8 @@
 
                             <div class="col-12 col-sm-12 col-md-2">
                                 <h2 class="entry-title">{{titulo}}</h2>
-                                <p class=" entry-meta d-flex align-items-center"><i class="icofont-user"></i>Autor</p>
+                                <small>{{ubicacion_nombre}}</small>
+                                <p class=" entry-meta d-flex align-items-center"><i class="icofont-user"></i>{{autor}}</p>
                             </div>
 
                             <div class="col-12 entry-content col-md-8">
@@ -29,10 +28,8 @@
                                     {{cuerpo}}
                                 </p>
                                 <div class="read-more col-12 row justify-content-end ">
-                                    <a href="suscripcion-diario.html" class="font-weight-bold mt-2 mr-4">Suscripción
-                                        Mensual</a>
-                                    <a href="suscripcion-diario.html" class="font-weight-bold mt-2 mr-5">Comprar
-                                        Diario</a>
+                                    <a href="suscripcion-diario.html" class="font-weight-bold mt-2 mr-4">Leer</a>
+                                    <a href="#" class="font-weight-bold mt-2 mr-5">Proponer para publicación</a>
                                 </div>
                             </div>
                         </article>
