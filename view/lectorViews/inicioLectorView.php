@@ -14,7 +14,7 @@
             <div class="col-md-12 d-flex align-items-stretch" data-aos="fade-up">
                 <article class="entry d-flex flex-wrap">
 
-                    <img src="" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
+                    <img src="images/catalogos/{{imagen_nombre}}" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
 
                     <div class="col-12 col-sm-12 col-md-2">
                         <h2 class="entry-title">{{nombre}}</h2>

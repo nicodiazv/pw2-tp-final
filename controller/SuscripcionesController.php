@@ -28,30 +28,37 @@ class SuscripcionesController {
 
     public function suscripcionRevista(){
         $this->modelSideBar($data);
-        $idRevista = $_GET["idRevista"];
+        $idRevista = $_GET["id"];
         $data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
         echo $this->renderer->render( "view/suscripcionRevista.php",$data);
     }
 
+    public function desuscripcionRevista(){
+        $this->modelSideBar($data);
+        $idRevista = $_GET["id"];
+        $data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
+        echo $this->renderer->render( "view/desuscripcionRevista.php",$data);
+    }
+
     public function suscribir(){
         $this->modelSideBar($data);
-        $idRevista = $_POST["idRevista"];
+        $idRevista = $_POST["id"];
         $idUsuario = $data["usuario"]["id"];
         $idTransaccion = "1"; // Todavia no aplicada la transaccion
         $fechaInicio = '2020-03-03';
         $fechaFin = '2020-03-04';
         $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
-        header("Location: view/SuscripcionesView.php");
+        header("Location: /suscripciones");
         echo $this->renderer->render( "view/SuscripcionesView.php",$data);
     }
 
     public function desuscribir(){
         $this->modelSideBar($data);
-        $idRevista = $_POST["idRevista"];
+        $idRevista = $_POST["id"];
         $idUsuario = $data["usuario"]["id"];
         $data["revista"] = $this->suscripcionModel->desuscribir($idUsuario,$idRevista);
-        header("Location: view/SuscripcionesView.php");
-        echo $this->renderer->render( "view/SuscripcionesView.php",$data);
+        header("Location: /suscripciones");
+        echo $this->renderer->render( "/suscripciones",$data);
     }
 
 

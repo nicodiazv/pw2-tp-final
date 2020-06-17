@@ -17,15 +17,15 @@
             <!-- Tarjeta individual -->
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="box">
-                    <h3> {{nombre_revista}}</h3>
-                    <ul>
-                        <li>Fecha Inicio: {{fecha_inicio}}</li>
-                        <li>Fecha Fin: {{fecha_fin}}</li>
+                    <h3>{{nombre_revista}}</h3>
+                    <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-50">
+                    <ul class="mt-3">
+                        <li><strong>Fecha Inicio:</strong> {{fecha_inicio}}</li>
+                        <li><strong>Fecha Fin:</strong> {{fecha_fin}}</li>
                     </ul>
                     <form action="/suscripciones/desuscribir" method="post">
                     <div class="btn-wrap">
-                        <input type="hidden" name="idRevista" value="{{id}}">
-                        <input type="submit" class="btn btn-danger" value="Desuscribir"   tabindex="-1" aria-disabled="true">
+                            <a href="/suscripciones/desuscripcionRevista/{{id}}" class="btn btn-danger">Desuscribirse</a>
                     </div>
                     </form>
                 </div>
@@ -60,17 +60,21 @@
 
             {{#revistasNoSuscripto}}
             <div class="col-lg-3 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="box">
+                <div class="d-flex justify-content-around">
+                <div class="box ">
                     <span class="advanced">MENSUAL</span>
                     <h3>{{nombre}}</h3>
+    <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-50">
+
                     <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                     <ul>
                         <li>Agregamos un campo de descripción para las revistas?</li>
                     </ul>
                     <div class="btn-wrap">
-                        <a href="/suscripciones/suscripcionRevista/idRevista={{id}}" class="btn btn-success">Suscribirse</a>
+                        <a href="/suscripciones/suscripcionRevista/{{id}}" class="btn btn-success">Suscribirse</a>
                     </div>
                 </div>
+            </div>
             </div>
             {{/revistasNoSuscripto}}
 

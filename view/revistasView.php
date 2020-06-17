@@ -19,7 +19,8 @@
                     <div class="col-lg-3 col-md-3 d-flex align-items-stretch" data-aos="fade-up">
                         <article class="entry">
 
-                            <img src="img/ricardo-mujeres.jpg" alt="" class="img-fluid w-100">
+                            <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-100">
+
 
                             <h2 class="entry-title">
                                 <a>{{nombre}}</a>
@@ -33,7 +34,7 @@
                                 </p>
                                 <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                                 <div class="read-more font-weight-bold">
-                                    <a href="diario-concreto.html">Adquirir revista</a>
+                                    <a href="/suscripciones/suscripcionRevista/{{id}}">Adquirir revista</a>
                                 </div>
                             </div>
                         </article>
