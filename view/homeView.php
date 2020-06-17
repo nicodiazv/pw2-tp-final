@@ -77,6 +77,8 @@
                                         <div class="or-seperator"><i>or</i></div>
                                         <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
                                         <div class="hint-text small">No tienes cuenta? <a href="#login" class="text-success">Registrate ahora!</a></div>
+                                    <input type="hidden" name="latitud" id="lat" value="">
+                                    <input type="hidden" name="longitud" id="long" value="">
                                 </div>
                                 <div class="text-center"><button type="submit">Iniciar sesión</button></div>
                             </form>

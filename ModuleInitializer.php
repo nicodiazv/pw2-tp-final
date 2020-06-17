@@ -2,6 +2,7 @@
 require_once("helper/Renderer.php");
 include_once("helper/Database.php");
 include_once("helper/Config.php");
+include_once("helper/Clima.php");
 require_once('third-party/mustache/src/Mustache/Autoloader.php');
 
 
@@ -148,6 +149,14 @@ class ModuleInitializer
         $catalogoModel = new CatalogoModel($this->database);
         $revistaModel = new RevistaModel($this->database);
         return new SuscripcionesController($suscripcionModel,$catalogoModel,$revistaModel,$this->renderer);
+    }
+
+    public function createAprobacionesController()
+    {
+        include_once("model/NotaModel.php");
+        include_once("controller/AprobacionesController.php");
+        $Model = new NotaModel($this->database);
+        return new AprobacionesController($Model,$this->renderer);
     }
 
     public function createDefaultController()
