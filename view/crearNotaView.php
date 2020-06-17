@@ -43,7 +43,7 @@
                 <div class="col-md-6 form-group ">
                   <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
                     aria-describedby="inputGroupFileAddon01">
-                  <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen para la nota</label>
+                  <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar imagen para la nota</label>
                 </div>
                 <div class="form-group col-md-12">
                   <textarea class="form-control" name="cuerpo" rows="5" placeholder="Escriba el cuerpo de la nota"
@@ -66,7 +66,14 @@
       </section>
       <!-- ======= END Crear nota Section ======= -->
     </div>
-
+<script >
+    const $file_input = document.getElementById('uploadedImage')
+    const $file_label = document.getElementById('uploadedImage__label')
+    $file_input.addEventListener('change', (e) => {
+        console.log(e.target.files[0].name)
+        $file_label.innerHTML = e.target.files[0].name;
+    })
+</script>
 <script src="/view/js/ubicacion.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
 
