@@ -11,15 +11,11 @@ class AprobacionesController{
     }
 
     public function index(){
-
+        echo $this->renderer->render( "view/administradorViews/aprobacionesView.php");
     }
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
-    }
-
-    public function registrar(){
-        echo $this->renderer->render( "view/crearusuarioView.php");
     }
 
     public function notasPendientes(){
