@@ -22,7 +22,7 @@ CREATE TABLE `usuario` (
   `apellido` VARCHAR(45) DEFAULT NULL,
   `email` VARCHAR(45) DEFAULT NULL,
   `password` VARCHAR(100) DEFAULT NULL,
-  `direccion` VARCHAR(45) DEFAULT NULL,
+  `direccion` VARCHAR(100) DEFAULT NULL,
   `telefono` VARCHAR(45) DEFAULT NULL,
   `usuario_tipo_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),

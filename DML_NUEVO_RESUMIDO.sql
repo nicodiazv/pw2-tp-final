@@ -7,10 +7,8 @@ DELETE FROM pw2.transaccion; 						DELETE FROM pw2.tipo_pago;
 DELETE FROM pw2.usuario; 							DELETE FROM pw2.usuario_tipo;
 DELETE FROM pw2.catalogo;
 
-INSERT INTO `usuario_tipo` VALUES
-(1,'Administrador'),
-(2,'Contenidista'),
-(3,'Lector');
+INSERT INTO `usuario_tipo` VALUES (1,'Administrador'), (2,'Contenidista'), (3,'Lector');
+INSERT INTO `tipo_pago` (id,tipo) VALUES (1,'Débito'), (2,'Tarjeta de crédito'), (3,'Mercado Pago');
 
 INSERT INTO `usuario` (id,nombre,apellido,email,`password`,direccion,telefono,usuario_tipo_id) VALUES
 (1,'AdminJuan','Fort','admin@gmail.com','21232f297a57a5a743894a0e4a801fc3','Direccion 1',44443434,1),
@@ -23,7 +21,7 @@ INSERT INTO `usuario` (id,nombre,apellido,email,`password`,direccion,telefono,us
 INSERT INTO pw2.catalogo (id,nombre,imagen_nombre,descripcion) VALUES
 (1,'Deportes','catalogo_deportes.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  deportes Esta es la descripcion del catalogo'),
 (2,'Politica','catalogo_politica.png','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica Esta es la descripcion del catalogo'),
-(3,'Ciencia',null,'Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
+(3,'Ciencia','catalogo_ciencia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
 (4,'Espectaculos','catalogo_espectaculos.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
 (5,'Economia','catalogo_economia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 
@@ -50,19 +48,19 @@ INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicaci
 
 
 
-INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual,imagen_nombre) VALUES
-(1,'Clarín',1200,'revista_clarin.png'),
-(2,'Olé',1300,'revista_ole.png'),
-(3,'La Nación',1400,'revista_lanacion.jpg'),
-(4,'Pronto',1500,'revista_pronto.jpg'),
-(5,'Gente',1600,null),
-(6,'UNLAM',600,'revista_unlam.jpg'),
-(7,'El Clasico',1800,null),
-(8,'UBA',800,null),
-(9,'Telefe',2000,'revista_telefe.jpg'),
-(10,'Todo Politica',1400,null),
-(11,'Economia Argentina',1400,null),
-(12,'Economia Mundial',1500,null);
+INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual,imagen_nombre, descripcion) VALUES
+(1,'Clarín',1200,'revista_clarin.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(2,'Olé',1300,'revista_ole.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(3,'La Nación',1400,'revista_lanacion.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(4,'Pronto',1500,'revista_pronto.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(5,'Gente',1600,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(6,'UNLAM',600,'revista_unlam.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(7,'El Clasico',1800,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(8,'UBA',800,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(9,'Telefe',2000,'revista_telefe.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(10,'Todo Politica',1400,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(11,'Economia Argentina',1400,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(12,'Economia Mundial',1500,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista');
 
 INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (1,'Numero de revista 1 de la revista Clarín',100,'2020-01-01',1),
@@ -87,10 +85,7 @@ INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (20,'Numero de revista 3 de la revista UNLAM',150,'2020-01-15',6),
 (21,'Numero de revista 3 de la revista Paparazzi',160,'2020-01-15',7);
 
-INSERT INTO `tipo_pago` (id,tipo) VALUES
-(1,'Débito'),
-(2,'Tarjeta de crédito'),
-(3,'Mercado Pago');
+
 
 
 INSERT INTO `nro_revista_tiene_notas` (nro_revista_id, nota_id, nota_seccion_id) VALUES
