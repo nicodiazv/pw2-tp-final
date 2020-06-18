@@ -23,4 +23,10 @@ class RevistaModel {
                                         JOIN revista re ON (car.revista_id = re.id)");
     }
 
+    public function guardarRevista($nombre,$descripcion,$imagen,$precioMensual){
+        return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual) VALUES
+                                        ('$nombre', '$descripcion', '$imagen',,2000)  ");
+
+    }
+
 }
