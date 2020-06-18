@@ -25,7 +25,7 @@ class RevistaModel {
 
     public function guardarRevista($nombre,$descripcion,$imagen,$precioMensual){
         return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual) VALUES
-                                        ('$nombre', '$descripcion', '$imagen',,2000)  ");
+                                        ('$nombre', '$descripcion', '$imagen',$precioMensual)  ");
 
     }
 

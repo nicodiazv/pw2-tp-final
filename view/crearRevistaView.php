@@ -11,8 +11,10 @@
     <!-- ======= Crear nota Section ======= -->
     <section id="" class="contact col-md-9">
         <div class="container-fluid" data-aos="fade-up">
-            <div class="col-lg-12 data-aos=" fade-left
-            " data-aos-delay="100">
+            <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
+                {{#flagProcess}}
+                <div class="alert alert-{{classProcess}}" role="alert"><p>{{flagProcess}}</p></div>
+                {{/flagProcess}}
             <div class="section-title">
                 <h2>Agregar una revista</h2>
             </div>
@@ -20,8 +22,9 @@
             <form action="/revistas/guardarRevista" method="POST" role="form" class="php-email-form">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <input type="text" name="nombre" class="form-control" id="name" placeholder="Nombre de la revista"
-                               />
+                        <input type="text" name="nombre" class="form-control" id="name"
+                               placeholder="Nombre de la revista"
+                        />
                     </div>
                     <div class="col-md-6 form-group ">
                         <input type="file" class="custom-file-input" id="uploadedImage" name="imagen"

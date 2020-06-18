@@ -29,22 +29,29 @@ class RevistasController {
     public function crearRevista(){
         ValidateSession::validarSesionContenidista();
         $this->modelSideBar($data);
-
-            echo $this->renderer->render( "view/crearRevistaView.php", $data);
+        echo $this->renderer->render( "view/crearRevistaView.php", $data);
         }
 
 
         public function guardarRevista(){
             ValidateSession::validarSesionContenidista();
             $this->modelSideBar($data);
-            $nombre= $this->validateParam($_POST["nombre"]);
-            $imagen= $this->validateParam($_POST["imagen"]);
-            $descripcion = $this->validateParam($_POST["descripcion"]);
-            $precioMensual = $this->validateParam($_POST["precioMensual"]);
-            $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
-            header("Location: /");
-            echo $this->renderer->render( "view/crearRevistaView.php", $data);
+            try{
+//                $nombre= $this->validateParam($_POST["nombre"]);
+                $nombre = ValidateParameter::validateParam($_POST["nombre"]);
+                $imagen= ValidateParameter::validateParam($_POST["imagen"]);
+                $descripcion = ValidateParameter::validateParam($_POST["descripcion"]);
+                $precioMensual = ValidateParameter::validateParam($_POST["precioMensual"]);
+                $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
+                $data["flagProcess"] = "La revista se ha creado correctamente";
+                $data["classProcess"] = "success";
+                echo $this->renderer->render( "view/crearRevistaView.php", $data);
 
+            }catch (FortException $e){
+                $data["flagProcess"] = "Ocurrió un error en la creación de la revista";
+                $data["classProcess"] = "danger";
+                echo $this->renderer->render( "view/crearRevistaView.php", $data);
+            }
 
         }
     public function modelSideBar(&$data){
@@ -52,11 +59,4 @@ class RevistasController {
         $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();
     }
 
-    public function validateParam($parametro){
-        if(isset($parametro) && $parametro!=""){
-            return $parametro;
-        }else{
-            return new Exception();
-        }
-    }
 }

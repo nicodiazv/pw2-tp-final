@@ -5,7 +5,6 @@
 </div>
 {{/flashMessage}}
     <div class="row justify-content-around">
-
         {{> sideBarContenidista}}
 
       <!-- ======= Administracion Section ======= -->

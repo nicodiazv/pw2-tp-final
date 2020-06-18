@@ -6,6 +6,7 @@ include_once("helper/Clima.php");
 require_once('third-party/mustache/src/Mustache/Autoloader.php');
 
 
+
 class ModuleInitializer
 {
     private $renderer;
