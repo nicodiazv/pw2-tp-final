@@ -6,6 +6,7 @@ CREATE TABLE `catalogo` (
   `id` INT(30) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) DEFAULT NULL,
   `descripcion` VARCHAR(200) DEFAULT NULL,
+  `imagen_nombre` VARCHAR(100) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -37,6 +38,8 @@ CREATE TABLE `seccion` (
 CREATE TABLE `revista` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) DEFAULT NULL,
+  `descripcion` VARCHAR(200) DEFAULT NULL,
+  `imagen_nombre` VARCHAR(100) ,
   `precio_suscripcion_mensual` VARCHAR(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

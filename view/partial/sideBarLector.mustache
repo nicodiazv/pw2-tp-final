@@ -8,11 +8,11 @@
     <br />
     <a href="/">Inicio</a>
     <!-- Catálogos -->
-    <h3 class="h5 mt-5">Catálogos</h3>
+    <h3 class="h5 mt-5">Catálogos de revistas</h3>
     <div class="categories">
         <ul>
             {{#cantRevistasPorCatalogo}}
-                <li><a href="/catalogos/catalogo?id={{id}}">{{nombre}} <span>({{cantidad}})</span></a></li>
+                <li><a href="/catalogos/catalogo/{{id}}" >{{nombre}} <span>({{cantidad}})</span></a></li>
             {{/cantRevistasPorCatalogo}}
 
         </ul>

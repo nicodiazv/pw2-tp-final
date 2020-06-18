@@ -30,7 +30,7 @@
                             </p>
                             <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <div class="read-more font-weight-bold">
-                                <a href="/suscripciones/suscripcionRevista/idRevista={{id}}">Suscribirse</a>
+                                <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>
                             </div>
                         </div>
                     </article>

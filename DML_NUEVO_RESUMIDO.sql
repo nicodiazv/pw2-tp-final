@@ -1,3 +1,4 @@
+USE pw2;
 DELETE FROM pw2.catalogo_agrupa_revistas; 			DELETE FROM pw2.nro_revista_tiene_notas;
 DELETE FROM pw2.usuario_compra_nro_revista; 		DELETE FROM pw2.usuario_suscribe_revista;
 DELETE FROM pw2.nota;								DELETE FROM pw2.nro_revista;
@@ -19,12 +20,12 @@ INSERT INTO `usuario` (id,nombre,apellido,email,`password`,direccion,telefono,us
 (5,'contenidista','contenidista','contenidista','16c1429d2df4d965ecc3bc6169617fff','Direccion 5',44443434,2),
 (6,'lector','lector','lector','dd381a050f1987e7b5c7b73296fd49a5','Direccion 6',44443434,3);
 
-INSERT INTO pw2.catalogo (id,nombre,descripcion) VALUES
-(1,'Deportes','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  deportes Esta es la descripcion del catalogo'),
-(2,'Politica','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica Esta es la descripcion del catalogo'),
-(3,'Ciencia','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
-(4,'Espectaculos','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
-(5,'Economia','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
+INSERT INTO pw2.catalogo (id,nombre,imagen_nombre,descripcion) VALUES
+(1,'Deportes','catalogo_deportes.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  deportes Esta es la descripcion del catalogo'),
+(2,'Politica','catalogo_politica.png','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  politica Esta es la descripcion del catalogo'),
+(3,'Ciencia',null,'Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de  ciencia Esta es la descripcion del catalogo'),
+(4,'Espectaculos','catalogo_espectaculos.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
+(5,'Economia','catalogo_economia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 
 INSERT INTO `seccion` VALUES
 (1,' General'),
@@ -49,19 +50,19 @@ INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicaci
 
 
 
-INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual) VALUES
-(1,'Clarín',1200),
-(2,'Olé',1300),
-(3,'La Nación',1400),
-(4,'Pronto',1500),
-(5,'Gente',1600),
-(6,'UNLAM',600),
-(7,'El Clasico',1800),
-(8,'UBA',800),
-(9,'Telefe',2000),
-(10,'Todo Politica',1400),
-(11,'Economia Argentina',1400),
-(12,'Economia Mundial',1500);
+INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual,imagen_nombre) VALUES
+(1,'Clarín',1200,'revista_clarin.png'),
+(2,'Olé',1300,'revista_ole.png'),
+(3,'La Nación',1400,'revista_lanacion.jpg'),
+(4,'Pronto',1500,'revista_pronto.jpg'),
+(5,'Gente',1600,null),
+(6,'UNLAM',600,'revista_unlam.jpg'),
+(7,'El Clasico',1800,null),
+(8,'UBA',800,null),
+(9,'Telefe',2000,'revista_telefe.jpg'),
+(10,'Todo Politica',1400,null),
+(11,'Economia Argentina',1400,null),
+(12,'Economia Mundial',1500,null);
 
 INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (1,'Numero de revista 1 de la revista Clarín',100,'2020-01-01',1),
@@ -128,3 +129,4 @@ INSERT INTO `catalogo_agrupa_revistas` VALUES
 (2,10),
 (5,11),
 (5,12);
+

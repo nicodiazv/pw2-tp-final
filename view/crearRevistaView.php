@@ -12,9 +12,9 @@
     <section id="" class="contact col-md-9">
         <div class="container-fluid" data-aos="fade-up">
             <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
-                {{#flagProcess}}
-                <div class="alert alert-{{classProcess}}" role="alert"><p>{{flagProcess}}</p></div>
-                {{/flagProcess}}
+                {{#alert}}
+                <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+                {{/alert}}
             <div class="section-title">
                 <h2>Agregar una revista</h2>
             </div>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group col-md-12">
                         <textarea class="form-control" name="descripcion" rows="5"
-                                  placeholder="Escriba la descripción de la revista" required></textarea>
+                                  placeholder="Escriba la descripción de la revista" ></textarea>
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group mb-3">

@@ -18,20 +18,25 @@ class RegistroController{
     }
 
     public function registrar(){
-        $data["nombre"] = isset($_POST["nombre"]) ?  $_POST["nombre"] : false;
-        $data["apellido"] = isset($_POST["apellido"]) ?  $_POST["apellido"] : false;
-        $data["email"] = isset($_POST["email"]) ?  $_POST["email"] : false;
-        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false;
+        try {
+            $data["nombre"] = ValidateParameter::validateParam($_POST["telefono"]);
+            $data["apellido"] = ValidateParameter::validateParam($_POST["apellido"]);
+            $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
+            $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false;
+            $data["direccion"] = ValidateParameter::validateParam($_POST["direccion"]);
+            $data["telefono"] = ValidateParameter::validateNumberPhone($_POST["telefono"]);
 
-        // Validación del lado del servidor
-        if(!($data["nombre"]) or !($data["apellido"]) or !($data["email"]) or !($data["email"])){
-            $data["alertRegistroCorrecto"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos del formulario para registrarse");
+            $this->model->registrarUsuarioLector($data);
+
+            $data["alert"] = array("class" => "success", "message" => "Usuario registrado correctamente");
+            echo $this->renderer->render( "view/homeView.php",$data);
+
+        } catch (FortException $e) {
+            $data["alert"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos correctamente del formulario para registrarse");
             echo $this->renderer->render( "view/homeView.php",$data);
         }
 
-        $this->model->registrarUsuarioLector($data);
-        $data["alertRegistroCorrecto"] = array("class" => "success", "message" => "Usuario registrado correctamente");
-        echo $this->renderer->render( "view/homeView.php",$data);
+
     }
 
 }

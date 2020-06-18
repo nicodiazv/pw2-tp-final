@@ -18,6 +18,7 @@
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="box">
                     <h3>{{nombre_revista}}</h3>
+                    <span class="advanced bg-success">ADQUIRIDA</span>
                     <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-50">
                     <ul class="mt-3">
                         <li><strong>Fecha Inicio:</strong> {{fecha_inicio}}</li>

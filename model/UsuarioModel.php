@@ -13,7 +13,10 @@ class UsuarioModel{
         $password = $data['password'];
         $nombre = $data['nombre'];
         $apellido = $data['apellido'];
-        $this->connection->query("INSERT INTO usuario (nombre, apellido, email, password, usuario_tipo_id) VALUES ('$nombre', '$apellido', '$email', '$password', 3) ");
+        $direccion = $data["direccion"];
+        $telefono = $data["telefono"];
+        $this->connection->query("INSERT INTO usuario (nombre, apellido, email, password, direccion, telefono, usuario_tipo_id) VALUES 
+                                 ('$nombre', '$apellido', '$email', '$password','$direccion','$telefono', 3) ");
     }
 
     public function registrarUsuario($data){

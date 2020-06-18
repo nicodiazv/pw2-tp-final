@@ -20,10 +20,19 @@ class RevistasController {
 
     public function revistas(){
         ValidateSession::validarSesionLector();
+        $this->modelSideBar($data);
         $data['revistas'] = $this->revistaModel->obtenerRevistas();
         $data['catalogosDeLaRevista'] = $this->revistaModel->catalogosDeLaRevista();
-        $this->modelSideBar($data);
+        $data['adquirida'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
+
         echo $this->renderer->render( "view/RevistasView.php", $data);
+    }
+
+    public function misRevistas(){
+        ValidateSession::validarSesionLector();
+        $this->modelSideBar($data);
+        $data['misRevistas'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
+        echo $this->renderer->render( "view/misRevistasView.php", $data);
     }
 
     public function crearRevista(){
@@ -37,19 +46,19 @@ class RevistasController {
             ValidateSession::validarSesionContenidista();
             $this->modelSideBar($data);
             try{
-//                $nombre= $this->validateParam($_POST["nombre"]);
                 $nombre = ValidateParameter::validateParam($_POST["nombre"]);
                 $imagen= ValidateParameter::validateParam($_POST["imagen"]);
                 $descripcion = ValidateParameter::validateParam($_POST["descripcion"]);
                 $precioMensual = ValidateParameter::validateParam($_POST["precioMensual"]);
+
+                $this->revistaModel->validarNombreRevista($nombre);
+
                 $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
-                $data["flagProcess"] = "La revista se ha creado correctamente";
-                $data["classProcess"] = "success";
+                $data["alert"] = array("class" => "success", "message" => "La revista se ha creado correctamente");
                 echo $this->renderer->render( "view/crearRevistaView.php", $data);
 
             }catch (FortException $e){
-                $data["flagProcess"] = "Ocurrió un error en la creación de la revista";
-                $data["classProcess"] = "danger";
+                $data["alert"] = array("class" => "danger", "message" => "Ocurrió un error en la creación de la revista");
                 echo $this->renderer->render( "view/crearRevistaView.php", $data);
             }
 
