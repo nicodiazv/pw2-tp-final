@@ -14,7 +14,6 @@ class InicioContenidistaController{
 
     public function index(){
         if(!isset($_SESSION["usuario"])) $this->redirigeAlHome();
-
         $data["usuario"] = $_SESSION["usuario"];
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
         echo $this->renderer->render( "view/inicioContenidistaView.php", $data);
@@ -43,6 +42,8 @@ class InicioContenidistaController{
     }
 
 
+    public function modelSideBar(&$data){
 
+    }
 
 }

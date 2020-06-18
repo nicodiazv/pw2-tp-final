@@ -14,17 +14,17 @@
             <div class="col-md-12 d-flex align-items-stretch" data-aos="fade-up">
                 <article class="entry d-flex flex-wrap">
 
-                    <img src="" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
+                    <img src="images/catalogos/{{imagen_nombre}}" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
 
                     <div class="col-12 col-sm-12 col-md-2">
                         <h2 class="entry-title">{{nombre}}</h2>
-                        <p class=" entry-meta d-flex align-items-center">Catálogo</p>
+                        <a href="/catalogos/catalogo/{{id}}" class=" entry-meta d-flex align-items-center">Catálogo</a>
                     </div>
 
                     <div class="col-12 entry-content col-md-8">
                         <p>{{descripcion}}</p>
                         <div class="read-more col-12 row justify-content-end ">
-                            <a href="/catalogos/catalogo?id={{id}}" class="font-weight-bold mt-2 mr-5">Ver revistas del catálogo</a>
+                            <a href="/catalogos/catalogo/{{id}}" class="font-weight-bold mt-2 mr-5">Ver revistas del catálogo</a>
                         </div>
                     </div>
                 </article>

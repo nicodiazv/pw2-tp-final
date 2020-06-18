@@ -8,13 +8,13 @@
             <div class="container">
                 <div class="row">
                     <div class="section-title">
-                        <h2>Diarios y Revistas</h2>
+                        <h2>Mis Diarios y Revistas</h2>
                         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
                             Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
                             alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                     </div>
 
-                    {{#revistas}}
+                    {{#misRevistas}}
                     <!-- Diario individual -->
                     <div class="col-lg-3 col-md-3 d-flex align-items-stretch" data-aos="fade-up">
                         <article class="entry">
@@ -30,17 +30,17 @@
                             {{/catalogosDeLaRevista}}
                             <div class="entry-content">
                                 <p>
-                                    {{descripcion}}
+                                    Similique neque nam consequuntur ad non maxime aliquam quas
                                 </p>
                                 <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                                 <div class="read-more font-weight-bold">
-                                    <a href="/suscripciones/suscripcionRevista/{{id}}">Adquirir revista</a>
+                                    <a href="#">Leer revista</a>
                                 </div>
                             </div>
                         </article>
                     </div>
                     <!-- End Diario Individual -->
-                    {{/revistas}}
+                    {{/misRevistas}}
 
 
                 </div>

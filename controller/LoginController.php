@@ -46,7 +46,7 @@ class LoginController{
 
     public function cerrarSesion(){
         if(session_destroy()){
-            $data["alertSesionCerrada"] = array("class" => "success", "message" => "Sesión cerrada con éxito");
+            $data["alert"] = array("class" => "success", "message" => "Sesión cerrada con éxito");
             echo $this->renderer->render("view/homeView.php", $data);
         }
 

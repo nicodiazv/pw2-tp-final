@@ -1,9 +1,11 @@
 <!-- Sidebar -->
 <div class="col-md-2 mt-2 ml-3">
     {{#usuario}}
-        <h3>{{nombre}}</h3>
+        <h3>Bienvenido {{nombre}}</h3>
     {{/usuario}}
     <h5>Contenidista</h5>
+    <a href="/login/cerrarSesion" class="font-weight-bold">Cerrar sesión</a>
+    <br />
     <a href="/inicioContenidista">Ir al inicio</a>
     <!-- Categorias -->
     <h3 class="h5 mt-5">Mis notas</h3>
@@ -17,9 +19,14 @@
     </div>
     <!-- End Categorias-->
 
-    <!-- Clima de google -->
+    <!-- Clima de AccuWeather -->
     <div class="">
-        <h1 class="display-4 btn-primary p-4">Clima de Google</h1>
+        {{#climaActual}}
+            <h3>{{ubicacion}}</h3>
+            <h3>{{descripcion}}</h3>
+            <h3>{{temperatura}}</h3>
+            <img src="{{icono}}">
+        {{/climaActual}}
     </div>
     <!-- End Clima de google -->
 </div>

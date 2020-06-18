@@ -7,7 +7,6 @@ class RevistasController {
     private $catalogoModel;
 
     public function __construct($revistaModel,$catalogoModel,$renderer) {
-        ValidateSession::validarSesionLector();
         $this->renderer = $renderer;
         $this->revistaModel = $revistaModel;
         $this->catalogoModel = $catalogoModel;
@@ -20,12 +19,50 @@ class RevistasController {
 
 
     public function revistas(){
+        ValidateSession::validarSesionLector();
+        $this->modelSideBar($data);
         $data['revistas'] = $this->revistaModel->obtenerRevistas();
         $data['catalogosDeLaRevista'] = $this->revistaModel->catalogosDeLaRevista();
-        $this->modelSideBar($data);
+        $data['adquirida'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
+
         echo $this->renderer->render( "view/RevistasView.php", $data);
     }
 
+    public function misRevistas(){
+        ValidateSession::validarSesionLector();
+        $this->modelSideBar($data);
+        $data['misRevistas'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
+        echo $this->renderer->render( "view/misRevistasView.php", $data);
+    }
+
+    public function crearRevista(){
+        ValidateSession::validarSesionContenidista();
+        $this->modelSideBar($data);
+        echo $this->renderer->render( "view/crearRevistaView.php", $data);
+        }
+
+
+        public function guardarRevista(){
+            ValidateSession::validarSesionContenidista();
+            $this->modelSideBar($data);
+            try{
+                $nombre = ValidateParameter::validateParam($_POST["nombre"]);
+                $imagen= ValidateParameter::validateParam($_POST["imagen"]);
+                $descripcion = ValidateParameter::validateParam($_POST["descripcion"]);
+                $precioMensual = ValidateParameter::validateParam($_POST["precioMensual"]);
+
+                $this->revistaModel->validarNombreRevista($nombre);
+
+                $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
+                $data["alert"] = array("class" => "success", "message" => "La revista se ha creado correctamente");
+                echo $this->renderer->render( "view/crearRevistaView.php", $data);
+
+            }catch (FortException $e){
+                $data["alert"] = array("class" => "danger", "message" => "Ocurrió un error en la creación de la revista");
+                echo $this->renderer->render( "view/crearRevistaView.php", $data);
+            }
+
+        }
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
         $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();

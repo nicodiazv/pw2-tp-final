@@ -61,7 +61,7 @@
                   <input type="text" class="form-control" id="basic-url" name="enlace" aria-describedby="basic-addon3" >
                 </div>
                 <div class="text-center col-md-12">
-                  <button type="submit" class="btn-block">Crear nota</button>
+                  <button type="submit" class="btn-block btn btn-outline-primary">Crear nota</button>
                 </div>
             </form>
             <!-- END formulario para crear una nota -->

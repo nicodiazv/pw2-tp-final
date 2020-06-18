@@ -45,16 +45,12 @@
         <section id="login" class="contact mt-5">
 
             <div class="" data-aos="fade-up">
-                {{#alertSesionCerrada}}
+
+                {{#alert}}
                 <div class="alert alert-{{class}}" role="alert">
                     {{message}}
                 </div>
-                {{/alertSesionCerrada}}
-                {{#alertRegistroCorrecto}}
-                <div class="alert alert-{{class}}" role="alert">
-                    {{message}}
-                </div>
-                {{/alertRegistroCorrecto}}
+                {{/alert}}
 
                 <div class="section-title"><a class="h1" href="index.html#login">Inicia Sesión</a></div>
 
@@ -95,16 +91,20 @@
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="nombre" class="form-control"
-                                            placeholder="Ingrese su nombre" />
+                                            placeholder="Ingrese su nombre" required />
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <input type="text" class="form-control" name="apellido"
                                             placeholder="Ingrese su apellido" required/>
                                     </div>
-                                    <!-- <div class="col-md-12 form-group">
-                                        <input type="date" class="form-control" name="fecha_nac"
-                                            placeholder="Ingrese su fecha de nacimiento" required/>
-                                    </div> -->
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" name="direccion" id="ubicacion"
+                                               placeholder="Ingrese su dirección" required/>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="number" class="form-control" name="telefono" id="replyNumber"
+                                               placeholder="Ingrese su teléfono. ej: 46524343" min="0" data-bind="value:replyNumber" step="1" required  style="-moz-appearance: textfield;"/>
+                                    </div>
                                     <div class="col-md-12 form-group">
                                         <input type="text" class="form-control" name="email"
                                             placeholder="Ingrese su email"required />
@@ -126,13 +126,9 @@
             </div>
         </section>
         <!-- End Contact Section -->
-{{#alert}}
-<div class="alert alert-{{class}}" role="alert">
-    {{message}}
-</div>
-{{/alert}}
 
-
+<script src="/view/js/ubicacion.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
         <!-- ======= Clima de google ======= -->
         <section id="cta" class="cta">
             <div class="container">
