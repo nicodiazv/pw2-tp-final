@@ -26,15 +26,15 @@ INSERT INTO pw2.catalogo (id,nombre,imagen_nombre,descripcion) VALUES
 (5,'Economia','catalogo_economia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 
 INSERT INTO `seccion` VALUES
-(1,' General'),
-(2,' Deportes'),
-(3,' Política Nacional'),
-(4,' Política Internacional'),
-(5,' Economía'),
-(6,' Educación'),
-(7,' Espectaculos'),
-(8,' Ciencia'),
-(9,' Salud');
+(1,' General',0),
+(2,' Deportes',0),
+(3,' Política Nacional',0),
+(4,' Política Internacional',0),
+(5,' Economía',0),
+(6,' Educación',0),
+(7,' Espectaculos',0),
+(8,' Ciencia',0),
+(9,' Salud',0);
 
 INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng,imagen_nombre,enlace,gratis,aprobada,seccion_id,usuario_id,copete) VALUES
 (1,'Titulo de una nota de General','Cuerpo de una nota de General','Ubicación 1',0,0,0,'imagen_1','enlace_1',0,0,1,1,'copete copete copete copete copete copete'),

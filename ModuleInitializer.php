@@ -154,10 +154,22 @@ class ModuleInitializer
 
     public function createAprobacionesController()
     {
+        include_once("model/SeccionModel.php");
         include_once("model/NotaModel.php");
         include_once("controller/AprobacionesController.php");
+
         $Model = new NotaModel($this->database);
-        return new AprobacionesController($Model,$this->renderer);
+        $seccionModel = new SeccionModel($this->database);
+        return new AprobacionesController($Model, $seccionModel, $this->renderer);
+    }
+
+    public function createSeccionController()
+    {
+        include_once("model/SeccionModel.php");
+        include_once("controller/SeccionController.php");
+
+        $Model = new SeccionModel($this->database);
+        return new SeccionController($Model, $this->renderer);
     }
 
     public function createDefaultController()

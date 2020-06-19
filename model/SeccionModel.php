@@ -12,7 +12,35 @@ class SeccionModel{
         return $this->connexion->query("SELECT * FROM seccion");
     }
     public function obtenerSeccion($id){
-        return $this->connexion->query("SELECT * FROM seccion WHERE id = $id");
+        return $this->connexion->query("SELECT * FROM seccion WHERE id = '$id'");
+    }
+
+    public function obtenerSeccionPorNombre($nombre){
+        return $this->connexion->query("SELECT id FROM seccion WHERE nombre = '$nombre'");
+    }
+
+    public function guardarSeccion($nombre)
+    {
+        // Si la sección ya existe, no permite crearla
+        $seccion = $this->obtenerSeccionPorNombre($nombre);
+        if (empty($seccion))
+            // Si no existe, intenta insertarla en la BD
+            return $this->connexion->query("INSERT INTO seccion (nombre) VALUES ('$nombre')");
+        else
+            return 0;
+    }
+
+    public function seccionesPendientesAprobacion()
+    {
+        return $this->connexion->query("SELECT * FROM seccion where aprobada is null ");
+    }
+
+    public function aprobarSeccion($id){
+        return $this->connexion->query("UPDATE seccion set aprobada = 1 where id = $id");
+    }
+
+    public function rechazarSeccion($id){
+        return $this->connexion->query("UPDATE seccion set aprobada = 2 where id = $id");
     }
 
 }
