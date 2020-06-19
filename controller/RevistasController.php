@@ -25,14 +25,14 @@ class RevistasController {
         $data['catalogosDeLaRevista'] = $this->revistaModel->catalogosDeLaRevista();
         $data['adquirida'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
 
-        echo $this->renderer->render( "view/RevistasView.php", $data);
+        echo $this->renderer->render( "view/lectorViews/RevistasView.php", $data);
     }
 
     public function misRevistas(){
         ValidateSession::validarSesionLector();
         $this->modelSideBar($data);
         $data['misRevistas'] = $this->revistaModel->obtenerRevistasDelUsuario($data["usuario"]["id"]);
-        echo $this->renderer->render( "view/misRevistasView.php", $data);
+        echo $this->renderer->render( "view/lectorViews/misRevistasView.php", $data);
     }
 
     public function crearRevista(){
