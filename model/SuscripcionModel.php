@@ -9,10 +9,10 @@ class SuscripcionModel {
     }
 
     public function revistasALasQueEstaSuscrito($usuario_id){
-        return $this->connection->query("select *, re.nombre as nombre_revista 
+        return $this->connection->query("select re.id as revista_id, re.nombre as nombre_revista, fecha_inicio, fecha_fin, usr.usuario_id
                                         FROM usuario_suscribe_revista usr
                                         JOIN revista re ON (usr.revista_id = re.id)
-                                        WHERE usuario_id = $usuario_id");
+                                        WHERE usr.usuario_id = $usuario_id");
 
     }
 

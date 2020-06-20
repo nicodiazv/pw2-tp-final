@@ -44,4 +44,23 @@ class RevistaModel {
         }
     }
 
+    public function revistasPendientesAprobacion(){
+        return $this->connection->query("SELECT re.id as id_re,re.nombre as nombre_revista, re.precio_suscripcion_mensual as precio_mensual, us.nombre as nombre_usuario, us.apellido as apellido_usuario
+                                        FROM revista re JOIN usuario us ON (re.usuario_id = us.id) 
+                                        WHERE re.aprobada IS NULL;");
+    }
+
+    public function obtenerRevistaPendienteAprobacion($idRevista){
+        return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario
+                                        FROM revista re JOIN usuario us ON (re.usuario_id = us.id)
+                                        WHERE re.id = $idRevista");
+    }
+
+    public function aprobarRevista($idRevista){
+        return $this->connection->query("UPDATE revista SET aprobada = 1 where id = $idRevista");
+    }
+
+    public function rechazarRevista($idRevista){
+        return $this->connection->query("UPDATE revista SET aprobada = 2 where id = $idRevista");
+    }
 }

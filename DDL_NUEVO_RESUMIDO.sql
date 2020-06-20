@@ -32,6 +32,7 @@ CREATE TABLE `usuario` (
 CREATE TABLE `seccion` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) DEFAULT NULL,
+  `aprobada` TINYINT(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -41,6 +42,8 @@ CREATE TABLE `revista` (
   `descripcion` VARCHAR(200) DEFAULT NULL,
   `imagen_nombre` VARCHAR(100) ,
   `precio_suscripcion_mensual` VARCHAR(45) DEFAULT NULL,
+    `usuario_id` INT(11) NOT NULL,
+  `aprobada` TINYINT(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

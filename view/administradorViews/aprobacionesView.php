@@ -54,7 +54,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#secciones}}<a href="/aprobaciones/notasEnPublicacionesPendientes">Tiene secciones pendientes de aprobación ({{cantidad}}) </a>{{/secciones}}</small>
+                    <small class="text-muted">{{#secciones}}<a href="/aprobaciones/seccionespendientes">Tiene secciones pendientes de aprobación ({{cantidad}}) </a>{{/secciones}}</small>
                 </div>
             </div>
             <div class="card">
@@ -68,7 +68,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#revistasDiarios}}<a href="/aprobaciones/notasEnPublicacionesPendientes">Tiene revistas/diarios pendientes de aprobación ({{cantidad}}) </a>{{/revistasDiarios}}</small>
+                    <small class="text-muted">{{#revistasDiarios}}<a href="/aprobaciones/revistasPendientes">Tiene revistas/diarios pendientes de aprobación ({{cantidad}}) </a>{{/revistasDiarios}}</small>
                 </div>
             </div>
         </div>

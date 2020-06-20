@@ -16,7 +16,8 @@ class Clima
     public function __construct()
     {
         $this->config = new Config("config/config.ini");
-        $this->apikey = $this->config->get("clima", "apikey");
+        $rand_key = "apikey" . random_int(1,3);
+        $this->apikey = $this->config->get("clima", $rand_key);
 
         $salida = self::getLocationFromCoords();
         $this->location_key = $salida["key"];

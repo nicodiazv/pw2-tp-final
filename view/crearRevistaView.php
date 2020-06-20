@@ -23,18 +23,18 @@
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <input type="text" name="nombre" class="form-control" id="name"
-                               placeholder="Nombre de la revista"
+                               placeholder="Nombre de la revista" required
                         />
                     </div>
                     <div class="col-md-6 form-group ">
                         <input type="file" class="custom-file-input" id="uploadedImage" name="imagen"
-                               aria-describedby="inputGroupFileAddon01">
+                               aria-describedby="inputGroupFileAddon01" required>
                         <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar
                             imagen para la nota</label>
                     </div>
                     <div class="form-group col-md-12">
                         <textarea class="form-control" name="descripcion" rows="5"
-                                  placeholder="Escriba la descripción de la revista" ></textarea>
+                                  placeholder="Escriba la descripción de la revista" required></textarea>
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group mb-3">

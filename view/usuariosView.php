@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{nombre}}</td>
                     <td>{{apellido}}</td>
-                    <td> <a href="/usuarios/editar/idUsuario={{id}}">Editar</a> </td>
+                    <td> <a href="/usuarios/editar/{{id}}">Editar</a> </td>
                 </tr>
                 {{/usuarios}}
             </table>
