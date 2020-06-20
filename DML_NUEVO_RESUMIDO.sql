@@ -48,19 +48,19 @@ INSERT INTO `nota` (id,titulo,cuerpo,ubicacion_nombre,ubicacion_place_id,ubicaci
 
 
 
-INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual,imagen_nombre, descripcion) VALUES
-(1,'Clarín',1200,'revista_clarin.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(2,'Olé',1300,'revista_ole.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(3,'La Nación',1400,'revista_lanacion.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(4,'Pronto',1500,'revista_pronto.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(5,'Gente',1600,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(6,'UNLAM',600,'revista_unlam.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(7,'El Clasico',1800,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(8,'UBA',800,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(9,'Telefe',2000,'revista_telefe.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(10,'Todo Politica',1400,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(11,'Economia Argentina',1400,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(12,'Economia Mundial',1500,null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista');
+INSERT INTO `revista` (id,nombre,precio_suscripcion_mensual,imagen_nombre, usuario_id, descripcion) VALUES
+(1,'Clarín',1200,'revista_clarin.png',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(2,'Olé',1300,'revista_ole.png',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(3,'La Nación',1400,'revista_lanacion.jpg',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(4,'Pronto',1500,'revista_pronto.jpg',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(5,'Gente',1600,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(6,'UNLAM',600,'revista_unlam.jpg',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(7,'El Clasico',1800,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(8,'UBA',800,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(9,'Telefe',2000,'revista_telefe.jpg',3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(10,'Todo Politica',1400,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(11,'Economia Argentina',1400,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(12,'Economia Mundial',1500,null,3,'Esta es la descripcion de la revista.Esta es la descripcion de la revista');
 
 INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (1,'Numero de revista 1 de la revista Clarín',100,'2020-01-01',1),

@@ -42,6 +42,8 @@ CREATE TABLE `revista` (
   `descripcion` VARCHAR(200) DEFAULT NULL,
   `imagen_nombre` VARCHAR(100) ,
   `precio_suscripcion_mensual` VARCHAR(45) DEFAULT NULL,
+    `usuario_id` INT(11) NOT NULL,
+  `aprobada` TINYINT(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
