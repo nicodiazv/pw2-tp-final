@@ -15,18 +15,22 @@ class NotaController{
         $this->notaModel = $notaModel;
         $this->seccionModel = $seccionModel;
         $this->publicacionModel = $publicacionModel;
+        ValidateSession::validarSesionContenidista();
 
     }
 
     public function index(){
-        if(isset($_SESSION["usuario"])){
-            $data['usuario'] = $_SESSION["usuario"];
-            $data['notas'] = $this->notaModel->obtenerNotas();
-            $this->modelSideBar($data);
-            echo $this->renderer->render( "view/verNotasView.php", $data);
-        }
+        // if(isset($_SESSION["usuario"])){
+        //     $data['usuario'] = $_SESSION["usuario"];
+        //     $data['notas'] = $this->notaModel->obtenerNotas();
+        //     $this->modelSideBar($data);
+        //     echo $this->renderer->render( "view/contenidistaViews/verNotasView.php", $data);
+        // }
+        $this->modelSideBar($data);
+        $data['notas'] = $this->notaModel->obtenerNotas();
+        echo $this->renderer->render( "view/contenidistaViews/verNotasView.php", $data);
 
-        echo $this->renderer->render( "view/homeView.php");
+        // echo $this->renderer->render( "view/homeView.php");
     }
     public function crearNota(){
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2){
@@ -37,7 +41,7 @@ class NotaController{
                 $data["flashMessage"] = $this->error;
             }
 
-            echo $this->renderer->render( "view/crearNotaView.php", $data);
+            echo $this->renderer->render( "view/contenidistaViews/crearNotaView.php", $data);
             return;
         }
 
@@ -77,9 +81,9 @@ class NotaController{
 
         $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat,$lng,$seccion_id, $cuerpo, $imagenNombre, $enlace,$copete);
 
-//        $data["usuario"] = $_SESSION["usuario"];
+        //        $data["usuario"] = $_SESSION["usuario"];
         header("Location: /InicioContenidista");
-        echo $this->renderer->render( "view/inicioContenidistaView.php");
+        echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php");
 
         return;
     }
@@ -89,7 +93,7 @@ class NotaController{
         $this->modelSideBar($data);
         $data['nota'] = $this->notaModel->getNota($nota_id);
         $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
-        echo $this->renderer->render( "view/verNotaView.php", $data);
+        echo $this->renderer->render( "view/contenidistaViews/verNotaView.php", $data);
     }
 
     public function agregarNotaAPublicacion(){
@@ -97,7 +101,9 @@ class NotaController{
         $this->modelSideBar($data);
         $data['nota'] = $this->notaModel->getNota($nota_id);
         $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
-        echo $this->renderer->render( "view/agregarNotaAPublicacionView.php", $data);
+        $data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnPublicacionesPorNotaId($nota_id);
+
+        echo $this->renderer->render( "view/contenidistaViews/agregarNotaAPublicacionView.php", $data);
     }
 
     public function notasPorCategoria(){
@@ -105,7 +111,7 @@ class NotaController{
         $seccion_id = $_GET['seccion_id'];
         $data["notas"] = $this->notaModel->notasPorSeccionYUsuario($usuario_id, $seccion_id);
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-        echo $this->renderer->render( "view/notasPorCategoriaView.php", $data);
+        echo $this->renderer->render( "view/contenidistaViews/notasPorCategoriaView.php", $data);
     }
 
     public function enviarSolicitud(){

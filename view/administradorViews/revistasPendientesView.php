@@ -3,6 +3,13 @@
 <div class="row justify-content-around">
     {{> sideBarAdministrador}}
     <div class="col-md-8 my-4">
+        
+        {{#alert}}
+        <div class="alert alert-{{class}}" role="alert">
+            {{message}}
+        </div>
+        {{/alert}}
+        
         <h1 class="display-4">Revistas Pendientes</h1>
         <table class="table table-hover">
             <thead>

@@ -1,4 +1,4 @@
-{{> header}}
+{{> headerContenidista}}
 
 <div class="row justify-content-around">
     {{> sideBarContenidista}}

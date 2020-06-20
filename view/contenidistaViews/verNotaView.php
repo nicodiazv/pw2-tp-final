@@ -1,4 +1,5 @@
-{{> header}}
+{{> headerContenidista}}
+
 
 <div class="row justify-content-around">
     {{> sideBarContenidista}}
@@ -48,9 +49,11 @@
                         <form action="/nota/eliminar/{{id}}">
                             <button class="btn btn-danger mx-1">Eliminar</button>
                         </form>
+                        {{#aprobada}}
                         <form action="/nota/agregarNotaAPublicacion/{{id}}">
                             <button class="btn btn-success mx-1">Agregar a publicación</button>
                         </form>
+                        {{/aprobada}}
                     </div>
                     {{/ nota}}
 

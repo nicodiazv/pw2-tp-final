@@ -15,12 +15,17 @@ class AprobacionesController{
         $this->seccionModel = $seccionModel;
         $this->revistaModel = $revistaModel;
         $this->publicacionModel = $publicacionModel;
+        
 
     }
 
     public function index(){
+        $this->modelSideBar($data);
         $data['notas'] = $this->notaModel->cantidad_notasPendientesAprobacion();
         $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnPublicacionesPendientes();
+        $data['secciones'] = $this->seccionModel->cantidad_seccionesPendientesAprobacion();
+        $data['revistas'] = $this->revistaModel->cantidad_revistasPendientesAprobacion();
+
         echo $this->renderer->render( "view/administradorViews/aprobacionesView.php", $data);
     }
 
@@ -40,6 +45,7 @@ class AprobacionesController{
         $data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/notasPendientesView.php",$data);
     }
+    
 
     public function aprobarNota(){
         $this->modelSideBar($data);
@@ -98,7 +104,7 @@ class AprobacionesController{
         $this->seccionesPendientes();
     }
 
-    public function revistasPendientes(){
+    public function revistasPendientes(&$data=array()){
         $this->modelSideBar($data);
         $data['revistasPendientesAprobacion'] = $this->revistaModel->revistasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/revistasPendientesView.php",$data);
@@ -117,11 +123,13 @@ class AprobacionesController{
             $idRevista = ValidateParameter::validateParam($_POST['id']);
             $this->revistaModel->aprobarRevista($idRevista);
             $data["alert"] = array("class" => "success", "message" => "La revista ha sido aprobada correctamente");
-            echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
+            return $this->revistasPendientes($data);
+            // echo $this->renderer->render( "view/administradorViews/revistasPendientesView.php",$data);
 
         }catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Se ha producido un error en la aprobación de la revista");
-            echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
+            return $this->revistasPendientes($data);
+            // echo $this->renderer->render("view/administradorViews/revistasPendientesView.php", $data);
         }
     }
 
@@ -131,10 +139,12 @@ class AprobacionesController{
             $idRevista = ValidateParameter::validateParam($_POST['id']);
             $this->revistaModel->rechazarRevista($idRevista);
             $data["alert"] = array("class" => "success", "message" => "La revista ha sido rechazada correctamente");
+            return $this->revistasPendientes($data);
             echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
 
         }catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Se ha producido un error en el rechazo de la revista");
+            return $this->revistasPendientes($data);
             echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
         }
     }

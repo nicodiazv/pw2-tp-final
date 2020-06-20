@@ -16,7 +16,7 @@ class SeccionController{
         if(isset($_SESSION["usuario"]))
         {
             $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioContenidistaView.php", $usuario);
+            echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $usuario);
             exit;
         }
 
@@ -27,7 +27,7 @@ class SeccionController{
     {
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2)
         {
-            echo $this->renderer->render("view/crearSeccionView.php");
+            echo $this->renderer->render("view/contenidistaViews/crearSeccionView.php");
             return;
         }
         $data["flashMessage"] = array("class"=>"danger","message"=>"No posee permisos para crear secciones");
@@ -46,7 +46,7 @@ class SeccionController{
             else
                 $data["flashMessage"] = array("class"=>"danger","message"=>"No se pudo guardar la sección ($seccionName). Valide si ya existe y vuelva a intentarlo.");
 
-            echo $this->renderer->render( "view/inicioContenidistaView.php", $data);
+            echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $data);
             return;
         }
 

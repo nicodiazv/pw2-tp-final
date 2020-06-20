@@ -38,7 +38,7 @@ class RevistasController {
     public function crearRevista(){
         ValidateSession::validarSesionContenidista();
         $this->modelSideBar($data);
-        echo $this->renderer->render( "view/crearRevistaView.php", $data);
+        echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
         }
 
 
@@ -55,11 +55,11 @@ class RevistasController {
 
                 $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
                 $data["alert"] = array("class" => "success", "message" => "La revista se ha creado correctamente");
-                echo $this->renderer->render( "view/crearRevistaView.php", $data);
+                echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
 
             }catch (FortException $e){
                 $data["alert"] = array("class" => "danger", "message" => "Ocurrió un error en la creación de la revista");
-                echo $this->renderer->render( "view/crearRevistaView.php", $data);
+                echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
             }
 
         }

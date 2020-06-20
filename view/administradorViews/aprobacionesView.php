@@ -22,7 +22,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#notas}}<a href="/aprobaciones/notaspendientes"> Tiene notas pendientes de aprobacion ({{cantidad}}) </a>{{/notas}}</small>
+                    <small class="text-muted">{{#notas}}<a href="/aprobaciones/notaspendientes"> Pendientes de aprobacion ({{cantidad}}) </a>{{/notas}}</small>
                 </div>
             </div>
             <div class="card">
@@ -36,7 +36,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#notasPublicaciones}}<a href="/aprobaciones/notasEnPublicacionesPendientes">Tiene publicaciones pendientes de aprobación ({{cantidad}}) </a>{{/notasPublicaciones}}</small>
+                    <small class="text-muted">{{#notasPublicaciones}}<a href="/aprobaciones/notasEnPublicacionesPendientes">Pendientes de aprobación ({{cantidad}}) </a>{{/notasPublicaciones}}</small>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#secciones}}<a href="/aprobaciones/seccionespendientes">Tiene secciones pendientes de aprobación ({{cantidad}}) </a>{{/secciones}}</small>
+                    <small class="text-muted">{{#secciones}}<a href="/aprobaciones/seccionespendientes">Pendientes de aprobación ({{cantidad}}) </a>{{/secciones}}</small>
                 </div>
             </div>
             <div class="card">
@@ -68,7 +68,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{#revistasDiarios}}<a href="/aprobaciones/revistasPendientes">Tiene revistas/diarios pendientes de aprobación ({{cantidad}}) </a>{{/revistasDiarios}}</small>
+                    <small class="text-muted">{{#revistas}}<a href="/aprobaciones/revistasPendientes">Pendientes de aprobación ({{cantidad}}) </a>{{/revistas}}</small>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ class SeccionModel{
     public function obtenerSecciones(){
         return $this->connexion->query("SELECT * FROM seccion");
     }
+
     public function obtenerSeccion($id){
         return $this->connexion->query("SELECT * FROM seccion WHERE id = '$id'");
     }
@@ -33,6 +34,10 @@ class SeccionModel{
     public function seccionesPendientesAprobacion()
     {
         return $this->connexion->query("SELECT * FROM seccion where aprobada is null ");
+    }
+    public function cantidad_seccionesPendientesAprobacion()
+    {
+        return $this->connexion->query("SELECT count(*) as cantidad FROM seccion where aprobada is null ");
     }
 
     public function aprobarSeccion($id){
