@@ -16,7 +16,7 @@ class InicioContenidistaController{
         if(!isset($_SESSION["usuario"])) $this->redirigeAlHome();
         $data["usuario"] = $_SESSION["usuario"];
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-        echo $this->renderer->render( "view/inicioContenidistaView.php", $data);
+        echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $data);
     }
     public function crearNota(){
         if(!isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] != 2){
@@ -27,7 +27,7 @@ class InicioContenidistaController{
 
         $data['usuario'] = $_SESSION["usuario"];
         $data['secciones'] = $this->seccionModel->obtenerSecciones();
-        echo $this->renderer->render( "view/crearNotaView.php", $data);
+        echo $this->renderer->render( "view/contenidistaViews/crearNotaView.php", $data);
         return;
     }
 

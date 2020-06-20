@@ -1,4 +1,5 @@
-{{> header}}
+{{> headerContenidista}}
+
 {{#flashMessage}}
 <div class="alert alert-{{class}}" role="alert">
     {{message}}

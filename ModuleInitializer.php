@@ -81,12 +81,14 @@ class ModuleInitializer
     {
         include_once("model/NotaModel.php");
         include_once("model/SeccionModel.php");
+        include_once("model/PublicacionModel.php");
 
         include_once("controller/NotaController.php");
         $notaModel = new NotaModel($this->database);
         $seccionModel = new SeccionModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
 
-        return new notaController($notaModel,$seccionModel,$this->renderer);
+        return new notaController($notaModel,$seccionModel,$publicacionModel,$this->renderer);
     }
 
     public function createInicioContenidistaController()
@@ -157,12 +159,15 @@ class ModuleInitializer
         include_once("model/SeccionModel.php");
         include_once("model/NotaModel.php");
         include_once ("model/RevistaModel.php");
-        include_once("controller/AprobacionesController.php");
 
-        $Model = new NotaModel($this->database);
+
+        include_once("model/PublicacionModel.php");
+        include_once("controller/AprobacionesController.php");
+        $notaModel = new NotaModel($this->database);
         $seccionModel = new SeccionModel($this->database);
         $revistaModel = new RevistaModel($this->database);
-        return new AprobacionesController($Model, $seccionModel, $revistaModel, $this->renderer);
+        $publicacionModel = new PublicacionModel($this->database);
+        return new AprobacionesController($notaModel,$seccionModel, $revistaModel,$publicacionModel,$this->renderer);
     }
 
     public function createSeccionController()
@@ -172,6 +177,7 @@ class ModuleInitializer
 
         $Model = new SeccionModel($this->database);
         return new SeccionController($Model, $this->renderer);
+
     }
 
     public function createDefaultController()

@@ -50,6 +50,11 @@ class RevistaModel {
                                         WHERE re.aprobada IS NULL;");
     }
 
+    public function cantidad_revistasPendientesAprobacion(){
+        return $this->connection->query("SELECT count(*) as cantidad FROM revista re 
+                                                WHERE re.aprobada IS NULL;");
+    }
+
     public function obtenerRevistaPendienteAprobacion($idRevista){
         return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario
                                         FROM revista re JOIN usuario us ON (re.usuario_id = us.id)

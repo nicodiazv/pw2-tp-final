@@ -2,8 +2,12 @@
 
 <div class="row justify-content-around">
     {{> sideBarAdministrador}}
-    <div class="col-md-8 my-4">
-        <h1 class="display-4">Notas Pendientes</h1>
+    <div id="blog" class="blog col-md-9">
+
+        <div class="section-title">
+            <h2>Notas Pendientes</h2>
+            <p>Haga click en 'ver' para abrir la nota y aprobarla/rechazarla</p>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -24,7 +28,7 @@
             <td>{{ubicacion_nombre}}</td>
             <td>{{usuario_apellido}}, {{usuario_nombre}}</td>
 
-                <td><a href="./notaspendientes/{{id}}">Ver</a></td>
+                <td><a href="/aprobaciones/notaspendientes/{{id}}">Ver</a></td>
 
 
             </tr>

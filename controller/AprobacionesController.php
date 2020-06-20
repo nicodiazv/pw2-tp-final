@@ -2,21 +2,31 @@
 
 class AprobacionesController{
     private $renderer;
-    private $model;
+
+    private $notaModel;
+    private $publicacionModel;
     private $seccionModel;
     private $revistaModel;
 
-    public function __construct($model, $seccionModel, $revistaModel, $renderer){
+    public function __construct($notaModel,$seccionModel,$revistaModel,$publicacionModel, $renderer){
         ValidateSession::validarSesionAdministrador();
         $this->renderer = $renderer;
-        $this->model = $model;
+        $this->notaModel = $notaModel;
         $this->seccionModel = $seccionModel;
         $this->revistaModel = $revistaModel;
+        $this->publicacionModel = $publicacionModel;
+        
+
     }
 
     public function index(){
         $this->modelSideBar($data);
-        echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
+        $data['notas'] = $this->notaModel->cantidad_notasPendientesAprobacion();
+        $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnPublicacionesPendientes();
+        $data['secciones'] = $this->seccionModel->cantidad_seccionesPendientesAprobacion();
+        $data['revistas'] = $this->revistaModel->cantidad_revistasPendientesAprobacion();
+
+        echo $this->renderer->render( "view/administradorViews/aprobacionesView.php", $data);
     }
 
     public function modelSideBar(&$data){
@@ -27,24 +37,25 @@ class AprobacionesController{
         $this->modelSideBar($data);
         if(isset($_GET['id']))
         {
-            $data['nota'] = $this->model->getNota($_GET['id']);
+            $data['nota'] = $this->notaModel->getNota($_GET['id']);
 
             echo $this->renderer->render( "view/administradorViews/notaPendienteView.php",$data);
             return;
         }
-        $data['notasPendientesAprobacion'] = $this->model->notasPendientesAprobacion();
+        $data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/notasPendientesView.php",$data);
     }
+    
 
     public function aprobarNota(){
         $this->modelSideBar($data);
         if(isset($_GET['id']))
         {
-            $this->model->aprobarNota($_GET['id']);
+            $this->notaModel->aprobarNota($_GET['id']);
             header('Location: /aprobaciones/notasPendientes');
             exit();
         }
-        $data['notasPendientesAprobacion'] = $this->model->notasPendientesAprobacion();
+        $data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/notasPendientesView.php",$data);
     }
 
@@ -52,12 +63,24 @@ class AprobacionesController{
         $this->modelSideBar($data);
         if(isset($_GET['id']))
         {
-            $this->model->rechazarNota($_GET['id']);
+            $this->notaModel->rechazarNota($_GET['id']);
             header('Location: /aprobaciones/notasPendientes');
             exit();
         }
-        $data['notasPendientesAprobacion'] = $this->model->notasPendientesAprobacion();
+        $data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/notasPendientesView.php",$data);
+    }
+
+    public function notasEnPublicacionesPendientes(){
+        $data['notasEnPublicacionPendientesAprobacion'] = $this->publicacionModel->obtenerNotasEnPublicacionesPendientes();
+        echo $this->renderer->render( "view/administradorViews/notasEnPublicacionesPendientesView.php",$data);
+    }
+
+    public function aprobarNotaEnPublicacion(){
+        $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
+        $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
+        $this->publicacionModel->aprobarNotaEnPublicacion($nota_id, $publicacion_id);
+        $this->index();
     }
 
     public function seccionesPendientes()
@@ -81,7 +104,7 @@ class AprobacionesController{
         $this->seccionesPendientes();
     }
 
-    public function revistasPendientes(){
+    public function revistasPendientes(&$data=array()){
         $this->modelSideBar($data);
         $data['revistasPendientesAprobacion'] = $this->revistaModel->revistasPendientesAprobacion();
         echo $this->renderer->render( "view/administradorViews/revistasPendientesView.php",$data);
@@ -100,11 +123,13 @@ class AprobacionesController{
             $idRevista = ValidateParameter::validateParam($_POST['id']);
             $this->revistaModel->aprobarRevista($idRevista);
             $data["alert"] = array("class" => "success", "message" => "La revista ha sido aprobada correctamente");
-            echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
+            return $this->revistasPendientes($data);
+            // echo $this->renderer->render( "view/administradorViews/revistasPendientesView.php",$data);
 
         }catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Se ha producido un error en la aprobación de la revista");
-            echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
+            return $this->revistasPendientes($data);
+            // echo $this->renderer->render("view/administradorViews/revistasPendientesView.php", $data);
         }
     }
 
@@ -114,10 +139,12 @@ class AprobacionesController{
             $idRevista = ValidateParameter::validateParam($_POST['id']);
             $this->revistaModel->rechazarRevista($idRevista);
             $data["alert"] = array("class" => "success", "message" => "La revista ha sido rechazada correctamente");
+            return $this->revistasPendientes($data);
             echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
 
         }catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Se ha producido un error en el rechazo de la revista");
+            return $this->revistasPendientes($data);
             echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
         }
     }
