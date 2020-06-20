@@ -77,6 +77,7 @@ CREATE TABLE `nro_revista_tiene_notas` (
   `nro_revista_id` INT(11) NOT NULL,
   `nota_id` INT(11) NOT NULL,
   `nota_seccion_id` INT(11) NOT NULL,
+  `aprobada` TINYINT(4),
   PRIMARY KEY (`nro_revista_id`,`nota_id`),
   FOREIGN KEY (`nota_id`, `nota_seccion_id`) REFERENCES `nota` (`id`, `seccion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`nro_revista_id`) REFERENCES `nro_revista` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
