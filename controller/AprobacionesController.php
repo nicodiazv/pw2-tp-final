@@ -15,7 +15,8 @@ class AprobacionesController{
     }
 
     public function index(){
-        echo $this->renderer->render( "view/administradorViews/aprobacionesView.php");
+        $this->modelSideBar($data);
+        echo $this->renderer->render( "view/administradorViews/aprobacionesView.php",$data);
     }
 
     public function modelSideBar(&$data){

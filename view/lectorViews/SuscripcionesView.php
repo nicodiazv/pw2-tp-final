@@ -24,18 +24,13 @@
                         <li><strong>Fecha Inicio:</strong> {{fecha_inicio}}</li>
                         <li><strong>Fecha Fin:</strong> {{fecha_fin}}</li>
                     </ul>
-                    <form action="/suscripciones/desuscribir" method="post">
                     <div class="btn-wrap">
-                            <a href="/suscripciones/desuscripcionRevista/{{id}}" class="btn btn-danger">Desuscribirse</a>
+                            <a href="/suscripciones/desuscripcionRevista/{{revista_id}}" class="btn btn-danger">Desuscribirse</a>
                     </div>
-                    </form>
                 </div>
             </div>
             <!-- Tarjeta individual End -->
             {{/misSuscripciones}}
-
-
-
         </div>
 
 

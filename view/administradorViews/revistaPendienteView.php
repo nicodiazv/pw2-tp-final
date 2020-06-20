@@ -30,8 +30,6 @@
 
                 </div>
             </div>
-
-
             <div class="row justify-content-end my-4 mr-4">
                 <form action="/aprobaciones/rechazarRevista" method="POST">
                     <input type="hidden" name="id" value="{{id_revista}}">
