@@ -15,6 +15,7 @@ class UsuariosController{
             $data["usuarios"] = $this->model->obtenerTodosLosUsuarios();
             $this->modelSideBar($data);
             echo $this->renderer->render( "view/usuariosView.php",$data);
+            return;
         }
         echo $this->renderer->render( "view/homeView.php");
     }
@@ -28,7 +29,7 @@ class UsuariosController{
     }
 
     public function editar(){
-        $idusuario = $_GET["idUsuario"];
+        $idusuario = $_GET["id"];
         $data["id"] = $idusuario;
         $data["usuario"] = $this->model->obtenerUsuarioPorId($data);
         $rol = $data["usuario"][0]["usuario_tipo_id"];

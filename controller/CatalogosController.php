@@ -28,7 +28,7 @@ class CatalogosController {
         $data["catalogo"] = $this->model->obtenerCatalogo($id);
         $this->modelSideBar($data);
         $data["revistasPorCatalogo"] = $this->model->revistasPorCatalogo($id);
-        echo $this->renderer->render( "view/catalogosView.php", $data );
+        echo $this->renderer->render( "view/lectorViews/catalogosView.php", $data );
     }
 
     public function modelSideBar(&$data){
