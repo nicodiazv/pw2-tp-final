@@ -5,19 +5,25 @@ class NotaController{
     private $renderer;
     private $notaModel;
     private $seccionModel;
+    private $publicacionModel;
+
     private $error = array();
 
 
-    public function __construct($notaModel,$seccionModel, $renderer){
+    public function __construct($notaModel,$seccionModel, $publicacionModel,$renderer){
         $this->renderer = $renderer;
         $this->notaModel = $notaModel;
         $this->seccionModel = $seccionModel;
+        $this->publicacionModel = $publicacionModel;
+
     }
 
     public function index(){
         if(isset($_SESSION["usuario"])){
-            $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
+            $data['usuario'] = $_SESSION["usuario"];
+            $data['notas'] = $this->notaModel->obtenerNotas();
+            $this->modelSideBar($data);
+            echo $this->renderer->render( "view/verNotasView.php", $data);
         }
 
         echo $this->renderer->render( "view/homeView.php");
@@ -78,12 +84,39 @@ class NotaController{
         return;
     }
 
+    public function verNota(){
+        $nota_id = ValidateParameter::validateParam($_GET['id']);
+        $this->modelSideBar($data);
+        $data['nota'] = $this->notaModel->getNota($nota_id);
+        $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
+        echo $this->renderer->render( "view/verNotaView.php", $data);
+    }
+
+    public function agregarNotaAPublicacion(){
+        $nota_id = ValidateParameter::validateParam($_GET['id']);
+        $this->modelSideBar($data);
+        $data['nota'] = $this->notaModel->getNota($nota_id);
+        $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
+        echo $this->renderer->render( "view/agregarNotaAPublicacionView.php", $data);
+    }
+
     public function notasPorCategoria(){
         $usuario_id = $_SESSION["usuario"]["id"];
         $seccion_id = $_GET['seccion_id'];
         $data["notas"] = $this->notaModel->notasPorSeccionYUsuario($usuario_id, $seccion_id);
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
         echo $this->renderer->render( "view/notasPorCategoriaView.php", $data);
+    }
+
+    public function enviarSolicitud(){
+        $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
+        $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
+        $resultado = $this->publicacionModel->enviarSolicitudNota($nota_id,$publicacion_id);
+        $this->index();
+    }
+    public function modelSideBar(&$data){
+        $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+
     }
 
     public function validarUsuarioContenidista(){
