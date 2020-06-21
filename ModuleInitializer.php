@@ -105,9 +105,13 @@ class ModuleInitializer
     public function createInicioLectorController()
     {
         include_once("model/CatalogoModel.php");
+        include_once("model/NotaModel.php");
+
         include_once("controller/InicioLectorController.php");
-        $model = new CatalogoModel($this->database);
-        return new InicioLectorController($model,$this->renderer);
+        $notaModel = new NotaModel($this->database);
+
+        $catalogoModel = new CatalogoModel($this->database);
+        return new InicioLectorController($catalogoModel,$notaModel,$this->renderer);
     }
 
     public function createInicioAdministradorController()

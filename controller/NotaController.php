@@ -9,7 +9,7 @@ class NotaController{
 
     private $error = array();
 
-
+// comentario de sebaaaaaaaaaaa
     public function __construct($notaModel,$seccionModel, $publicacionModel,$renderer){
         $this->renderer = $renderer;
         $this->notaModel = $notaModel;

@@ -1,23 +1,29 @@
 <?php
 class InicioLectorController {
     private $renderer;
-    private $model;
+    private $catalogoModel;
+    private $notaModel;
 
-    public function __construct($model, $renderer){
+    public function __construct($catalogoModel,$notaModel, $renderer){
         ValidateSession::validarSesionLector();
         $this->renderer = $renderer;
-        $this->model = $model;
+        $this->catalogoModel = $catalogoModel;
+        $this->notaModel = $notaModel;
+
     }
 
     public function index(){
-        $data["catalogos"] = $this->model->obtenerCatalogos();
+        $data["catalogos"] = $this->catalogoModel->obtenerCatalogos();
+        $data["notas"] = $this->notaModel->obtenerNotas();
         $this->modelSideBar($data);
-        echo $this->renderer->render( "view/lectorViews/inicioLectorView.php",$data);
+        echo $this->renderer->render( "view/lectorViews/inicioLectorMapaView.php",$data);
+        return;
+        // echo $this->renderer->render( "view/lectorViews/inicioLectorView.php",$data);
     }
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
-        $data["cantRevistasPorCatalogo"]  = $this->model->cantRevistasPorCatalogo();
+        $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();
 
         $clima = new Clima();
         $climaActual = $clima->getClimaActualResumido();
