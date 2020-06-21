@@ -12,7 +12,7 @@
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     <div class="w3-row w3-padding-32">
         <div class="w3-third">
-            <p>Name</p>
+            <p>Names</p>
             <img src="images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
         </div>
         <div class="w3-third">
