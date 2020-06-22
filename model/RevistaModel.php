@@ -9,11 +9,14 @@ class RevistaModel {
     }
 
         public function obtenerRevistas(){
-        return $this->connection->query("SELECT * FROM revista");
+        return $this->connection->query("SELECT * 
+                                        FROM revista");
     }
 
     public function obtenerRevistaPorId($id){
-        return $this->connection->query("SELECT * FROM revista WHERE id = $id");
+        return $this->connection->query("SELECT * 
+                                        FROM revista 
+                                        WHERE id = $id");
     }
 
     public function obtenerRevistasDelUsuario($idUsuario){
@@ -31,14 +34,16 @@ class RevistaModel {
     }
 
     public function guardarRevista($nombre, $descripcion, $imagen, $precioMensual, $idUsuario){
-        return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual, usuario_id)VALUES
+        return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual, usuario_id) VALUES
                                         ('$nombre', '$descripcion', '$imagen', $precioMensual, $idUsuario) ");
     }
 
-    public function validarNombreRevista($nombreRevista) {
-        $yaExiste = $this->connection->query("SELECT nombre FROM revista WHERE nombre = '$nombreRevista'");
+    public function validarRevistaYaExiste($nombreRevista) {
+        $yaExiste = $this->connection->query("SELECT nombre 
+                                              FROM revista
+                                              WHERE nombre = '$nombreRevista'");
         if($yaExiste){
-            throw new FortException();
+            throw new FortException("Ya existe la revista \"$nombreRevista\"");
         }else{
             return true;
         }
@@ -51,8 +56,9 @@ class RevistaModel {
     }
 
     public function cantidad_revistasPendientesAprobacion(){
-        return $this->connection->query("SELECT count(*) as cantidad FROM revista re 
-                                                WHERE re.aprobada IS NULL;");
+        return $this->connection->query("SELECT count(*) as cantidad 
+                                        FROM revista re 
+                                        WHERE re.aprobada IS NULL;");
     }
 
     public function obtenerRevistaPendienteAprobacion($idRevista){
@@ -62,10 +68,18 @@ class RevistaModel {
     }
 
     public function aprobarRevista($idRevista){
-        return $this->connection->query("UPDATE revista SET aprobada = 1 where id = $idRevista");
+        return $this->connection->query("UPDATE revista SET aprobada = 1 
+                                        WHERE id = $idRevista");
     }
 
     public function rechazarRevista($idRevista){
-        return $this->connection->query("UPDATE revista SET aprobada = 2 where id = $idRevista");
+        return $this->connection->query("UPDATE revista SET aprobada = 2 
+                                        WHERE id = $idRevista");
+    }
+
+    public function RevistasDelContenidista($idContenidista){
+        return $this->connection->query("select * 
+                                        FROM revista
+                                        WHERE usuario_id = $idContenidista;");
     }
 }
