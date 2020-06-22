@@ -25,7 +25,6 @@ class SeccionController{
 
     public function crearSeccion()
     {
-        $this->modelSideBar($data);
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2)
         {
             echo $this->renderer->render("view/contenidistaViews/crearSeccionView.php");
