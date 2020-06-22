@@ -4,6 +4,13 @@ include_once("helper/Database.php");
 include_once("helper/Config.php");
 include_once("helper/Clima.php");
 require_once('third-party/mustache/src/Mustache/Autoloader.php');
+// Custom
+include_once ('helper/UploadImage.php');
+require_once("helper/ValidateSession.php");
+require_once("helper/ValidateParameter.php");
+require_once("helper/FortException.php");
+require_once("helper/ImagesDirectory.php");
+
 
 
 

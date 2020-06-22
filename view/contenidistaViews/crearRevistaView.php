@@ -20,7 +20,7 @@
                 <h2>Agregar una revista</h2>
             </div>
             <!-- formulario para crear una nota -->
-            <form action="/revistas/guardarRevista" method="POST" role="form" class="php-email-form">
+            <form action="/revistas/guardarRevista" method="POST" role="form" class="php-email-form" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <input type="text" name="nombre" class="form-control" id="name"
@@ -28,8 +28,8 @@
                         />
                     </div>
                     <div class="col-md-6 form-group ">
-                        <input type="file" class="custom-file-input" id="uploadedImage" name="imagen"
-                               aria-describedby="inputGroupFileAddon01" required>
+                        <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
+                               aria-describedby="inputGroupFileAddon01"required>
                         <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar
                             imagen para la nota</label>
                     </div>

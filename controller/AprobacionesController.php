@@ -2,7 +2,6 @@
 
 class AprobacionesController{
     private $renderer;
-
     private $notaModel;
     private $publicacionModel;
     private $seccionModel;
@@ -15,8 +14,6 @@ class AprobacionesController{
         $this->seccionModel = $seccionModel;
         $this->revistaModel = $revistaModel;
         $this->publicacionModel = $publicacionModel;
-        
-
     }
 
     public function index(){
@@ -29,12 +26,9 @@ class AprobacionesController{
         echo $this->renderer->render( "view/administradorViews/aprobacionesView.php", $data);
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
-    }
+
 
     public function notasPendientes(){
-        $this->modelSideBar($data);
         if(isset($_GET['id']))
         {
             $data['nota'] = $this->notaModel->getNota($_GET['id']);
@@ -147,5 +141,9 @@ class AprobacionesController{
             return $this->revistasPendientes($data);
             echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
         }
+    }
+
+    public function modelSideBar(&$data){
+        $data["usuario"] = $_SESSION["usuario"];
     }
 }

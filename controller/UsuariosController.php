@@ -14,21 +14,18 @@ class UsuariosController{
         if(isset($_SESSION["usuario"])){
             $data["usuarios"] = $this->model->obtenerTodosLosUsuarios();
             $this->modelSideBar($data);
-            echo $this->renderer->render( "view/usuariosView.php",$data);
+            echo $this->renderer->render( "view/administradorViews/usuariosView.php",$data);
             return;
         }
         echo $this->renderer->render( "view/homeView.php");
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
-    }
-
     public function registrar(){
-        echo $this->renderer->render( "view/crearusuarioView.php");
+        echo $this->renderer->render( "view/administradorViews/crearusuarioView.php");
     }
 
     public function editar(){
+        $this->modelSideBar($data);
         $idusuario = $_GET["id"];
         $data["id"] = $idusuario;
         $data["usuario"] = $this->model->obtenerUsuarioPorId($data);
@@ -43,7 +40,7 @@ class UsuariosController{
             $data["lector"] = "Selected";
         }
 
-        echo $this->renderer->render( "view/editarusuarioView.php",$data);
+        echo $this->renderer->render( "view/administradorViews/editarusuarioView.php",$data);
     }
 
     public function crearUsuario(){
@@ -58,15 +55,16 @@ class UsuariosController{
         // Validación del lado del servidor
         if(!($data["nombre"]) or !($data["rol"]) or !($data["telefono"]) or  !($data["apellido"]) or !($data["email"]) or !($data["direccion"])){
             $data["alert"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos del formulario.");
-            echo $this->renderer->render("view/editarusuarioView.php",$data);
+            echo $this->renderer->render("view/administradorViews/editarusuarioView.php",$data);
         }
 
         $this->model->registrarUsuario($data);
         $data["alert"] = array("class" => "success", "message" => "Usuario creado con éxito !!");
-        echo $this->renderer->render("view/crearusuarioView.php",$data);
+        echo $this->renderer->render("view/administradorViews/crearusuarioView.php",$data);
     }
 
     public function editarUsuario(){
+        $this->modelSideBar($data);
         $data["id"] = isset($_POST["id"]) ?  $_POST["id"] : "";
         $data["nombre"] = isset($_POST["nombre"]) ?  $_POST["nombre"] : "";
         $data["apellido"] = isset($_POST["apellido"]) ?  $_POST["apellido"] : "";
@@ -89,14 +87,14 @@ class UsuariosController{
         // Validación del lado del servidor
         if(!($data["id"]) or !($data["nombre"]) or !($data["rol"]) or !($data["telefono"]) or  !($data["apellido"]) or !($data["email"]) or !($data["direccion"])){
             $data["alert"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos del formulario.");
-            echo $this->editar();
         }
-
-
 
         $this->model->editarUsuario($data);
         $data["alert"] = array("class" => "success", "message" => "Usuario editado con éxito !!");
-        echo $this->renderer->render("view/crearusuarioView.php",$data);
+        echo $this->renderer->render("view/administradorViews/crearusuarioView.php",$data);
     }
 
+    public function modelSideBar(&$data){
+        $data["usuario"] = $_SESSION["usuario"];
+    }
 }

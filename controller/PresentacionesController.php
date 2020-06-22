@@ -1,6 +1,6 @@
 <?php
 
-class PresentacionesController{
+class resentacionesController{
     private $renderer;
     private $model;
 

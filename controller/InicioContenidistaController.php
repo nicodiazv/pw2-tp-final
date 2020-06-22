@@ -13,36 +13,31 @@ class InicioContenidistaController{
     }
 
     public function index(){
-        if(!isset($_SESSION["usuario"])) $this->redirigeAlHome();
-        $data["usuario"] = $_SESSION["usuario"];
+        ValidateSession::validarSesionContenidista();
+        $this->modelSideBar($data);
         $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
         echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $data);
     }
     public function crearNota(){
+        $this->modelSideBar($data);
         if(!isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] != 2){
             $data["flashMessage"] = array("class"=>"danger","message"=>"No posee permisos para crear notas");
             echo $this->renderer->render( "view/homeView.php",$data);
             $this->redirigeAlHome();
         }
 
-        $data['usuario'] = $_SESSION["usuario"];
         $data['secciones'] = $this->seccionModel->obtenerSecciones();
         echo $this->renderer->render( "view/contenidistaViews/crearNotaView.php", $data);
         return;
     }
-
-    public function validarUsuarioContenidista(){
-        if ($_SESSION["usuario"]["usuario_tipo_id"] == 2) return true;
-    }
-
 
     public function redirigeAlHome(){
         header("location: /home");
         exit();
     }
 
-
     public function modelSideBar(&$data){
+        $data["usuario"] = $_SESSION["usuario"];
 
     }
 

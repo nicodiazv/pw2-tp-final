@@ -3,7 +3,7 @@
     {{#usuario}}
         <h3>Bienvenido {{nombre}}</h3>
     {{/usuario}}
-    
+    <h5>Contenidista</h5>
     <a href="/login/cerrarSesion" class="badge badge-danger">Cerrar sesión</a>
     <br />
     <a href="/inicioContenidista" class="badge badge-info">Ir al inicio</a>
@@ -12,14 +12,14 @@
     <div class="categories">
         <ul>
             {{#notasPorCategoria}}
-                <li><a href="/nota/notasPorCategoria?seccion_id={{id}}">{{nombre}} <span>({{cantidad}})</span></a></li>
+                <li><a href="/nota/notasPorCategoria/{{id}}">{{nombre}} <span>({{cantidad}})</span></a></li>
             {{/notasPorCategoria}}
 
         </ul>
     </div>
     <!-- End Categorias-->
 
-    <!-- Clima de AccuWeather -->
+    <!-- Clima de google -->
     <div class="">
         {{#climaActual}}
             <h3>{{ubicacion}}</h3>

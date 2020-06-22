@@ -15,7 +15,7 @@ class Clima
 
     public function __construct()
     {
-        $this->config = new Config("config/config.ini");
+        $this->config = new Config("config/clima.ini");
         $rand_key = "apikey" . random_int(1,3);
         $this->apikey = $this->config->get("clima", $rand_key);
 

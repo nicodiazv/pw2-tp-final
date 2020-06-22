@@ -86,12 +86,29 @@
             opacity: 1;
         }
     }
+    .boton_personalizado{
+        text-decoration: none;
+        font-family: "Open Sans", "DejaVu Sans", sans-serif;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 20px;
+        color: #ffffff;
+        background-color: #ca3074;
+        border-radius: 10px;
+    }
+    .boton_personalizado:hover{
+        color: #1883ba;
+        background-color: #f1f1f1;
+    }
 
 </style>
-
+<a href="/home" class="boton_personalizado " >Volver al Home</a>
 <div class="base io">
     <h1 class="io">403</h1>
     <img src="view/img/ricardo_403.gif" alt="Gif Ricardo Fort" style="width: 250px">
+
     <h2>Acceso prohibido</h2>
+
+
 
 </div>

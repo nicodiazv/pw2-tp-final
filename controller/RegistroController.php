@@ -10,33 +10,28 @@ class RegistroController{
     }
 
     public function index(){
-        if(isset($_SESSION["usuario"])){
-            $usuario = $_SESSION["usuario"];
-            echo $this->renderer->render( "view/inicioLectorView.php", $usuario);
-        }
         echo $this->renderer->render( "view/homeView.php");
     }
 
     public function registrar(){
         try {
+            //Valida que los parámetros no sean nulos
             $data["nombre"] = ValidateParameter::validateParam($_POST["telefono"]);
             $data["apellido"] = ValidateParameter::validateParam($_POST["apellido"]);
             $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
-            $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false;
+            $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));
             $data["direccion"] = ValidateParameter::validateParam($_POST["direccion"]);
             $data["telefono"] = ValidateParameter::validateNumberPhone($_POST["telefono"]);
 
+            //Registra al usuario
             $this->model->registrarUsuarioLector($data);
-
+            
             $data["alert"] = array("class" => "success", "message" => "Usuario registrado correctamente");
-            echo $this->renderer->render( "view/homeView.php",$data);
 
         } catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos correctamente del formulario para registrarse");
-            echo $this->renderer->render( "view/homeView.php",$data);
         }
-
-
+        echo $this->renderer->render( "view/homeView.php",$data);
     }
 
 }

@@ -21,7 +21,7 @@
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título de la nota"
-                    required />
+                    required >
                 </div>
 
                 <div class="col-md-6 form-group">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="Ubicación de la nota"
-                    required />
+                    required >
                     <input type="hidden" name="place_id" id="place_id">
                     <input type="hidden" name="lat" id="lat">
                     <input type="hidden" name="lng" id="lng">
