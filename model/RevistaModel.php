@@ -30,9 +30,9 @@ class RevistaModel {
                                         JOIN revista re ON (car.revista_id = re.id)");
     }
 
-    public function guardarRevista($nombre,$descripcion,$imagen,$precioMensual){
-        return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual) VALUES
-                                        ('$nombre', '$descripcion', '$imagen',$precioMensual)  ");
+    public function guardarRevista($nombre, $descripcion, $imagen, $precioMensual, $idUsuario){
+        return $this->connection->query("INSERT INTO revista (nombre, descripcion, imagen_nombre, precio_suscripcion_mensual, usuario_id)VALUES
+                                        ('$nombre', '$descripcion', '$imagen', $precioMensual, $idUsuario) ");
     }
 
     public function validarNombreRevista($nombreRevista) {
@@ -56,7 +56,7 @@ class RevistaModel {
     }
 
     public function obtenerRevistaPendienteAprobacion($idRevista){
-        return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario
+        return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario, re.imagen_nombre as imagen_nombre
                                         FROM revista re JOIN usuario us ON (re.usuario_id = us.id)
                                         WHERE re.id = $idRevista");
     }

@@ -25,6 +25,7 @@ class SeccionController{
 
     public function crearSeccion()
     {
+        $this->modelSideBar($data);
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2)
         {
             echo $this->renderer->render("view/contenidistaViews/crearSeccionView.php");
@@ -42,9 +43,9 @@ class SeccionController{
             $id = $this->seccionModel->guardarSeccion($seccionName);
 
             if ($id !== 0)
-                $data["flashMessage"] = array("class"=>"success","message"=>"Sección creada correctamente ($seccionName)");
+                $data["alert"] = array("class"=>"success","message"=>"Sección creada correctamente ($seccionName)");
             else
-                $data["flashMessage"] = array("class"=>"danger","message"=>"No se pudo guardar la sección ($seccionName). Valide si ya existe y vuelva a intentarlo.");
+                $data["alert"] = array("class"=>"danger","message"=>"No se pudo guardar la sección ($seccionName). Valide si ya existe y vuelva a intentarlo.");
 
             echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $data);
             return;

@@ -47,18 +47,27 @@ class RevistasController {
             $this->modelSideBar($data);
             try{
                 $nombre = ValidateParameter::validateParam($_POST["nombre"]);
-                $imagen= ValidateParameter::validateParam($_POST["imagen"]);
+//                $imagen= ValidateParameter::validateParam($_POST["imagen"]);
                 $descripcion = ValidateParameter::validateParam($_POST["descripcion"]);
                 $precioMensual = ValidateParameter::validateParam($_POST["precioMensual"]);
 
                 $this->revistaModel->validarNombreRevista($nombre);
 
-                $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$imagen,$descripcion,$precioMensual);
+                //Subir imagen de la nota
+                $imagen = $_FILES['uploadedImage'];
+                $imagenNombre = UploadImage::subirFoto($imagen,ImagesDirectory::REVISTAS);
+
+                // Guardar revista
+                $idUsuario = $data['usuario']['id'];
+                $data["revistaCreada"] = $this->revistaModel->guardarRevista($nombre,$descripcion,$imagenNombre,$precioMensual,$idUsuario);
                 $data["alert"] = array("class" => "success", "message" => "La revista se ha creado correctamente");
                 echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
 
             }catch (FortException $e){
                 $data["alert"] = array("class" => "danger", "message" => "Ocurrió un error en la creación de la revista");
+                echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
+            } catch (Exception $e) {
+                $data["alert"] = array("class" => "danger", "message" => "Ocurrió un error en la subida de la imágen");
                 echo $this->renderer->render( "view/contenidistaViews/crearRevistaView.php", $data);
             }
 

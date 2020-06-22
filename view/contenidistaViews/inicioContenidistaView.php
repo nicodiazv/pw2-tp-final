@@ -1,18 +1,17 @@
 {{> headerContenidista}}
-{{#flashMessage}}
-<div class="alert alert-{{class}}" role="alert">
-    {{message}}
-</div>
-{{/flashMessage}}
     <div class="row justify-content-around">
         {{> sideBarContenidista}}
 
       <!-- ======= Administracion Section ======= -->
       <section id="services" class="services col-md-9">
         <div class="container" data-aos="fade-up">
-
+            <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
+                {{#alert}}
+                <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+                {{/alert}}
+                <div class="section-title">
           <div class="section-title">
-            <h2>Administración de contenidos</h2>
+            <h2>Generación de contenido</h2>
             <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
               consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
               sit in iste officiis commodi quidem hic quas.</p>

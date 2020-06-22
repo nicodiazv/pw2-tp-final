@@ -25,16 +25,16 @@ INSERT INTO pw2.catalogo (id,nombre,imagen_nombre,descripcion) VALUES
 (4,'Espectaculos','catalogo_espectaculos.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de espectaculos Esta es la descripcion del catalogo'),
 (5,'Economia','catalogo_economia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 
-INSERT INTO `seccion` VALUES
-(1,' General',0),
-(2,' Deportes',0),
-(3,' Política Nacional',0),
-(4,' Política Internacional',0),
-(5,' Economía',0),
-(6,' Educación',0),
-(7,' Espectaculos',0),
-(8,' Ciencia',0),
-(9,' Salud',0);
+INSERT INTO `seccion` (id,nombre,aprobada) VALUES
+(1,' General',null),
+(2,' Deportes',null),
+(3,' Política Nacional',null),
+(4,' Política Internacional',null),
+(5,' Economía',null),
+(6,' Educación',null),
+(7,' Espectaculos',null),
+(8,' Ciencia',null),
+(9,' Salud',null);
 
 INSERT INTO `nota` (id, gratis, aprobada, seccion_id, usuario_id,titulo, ubicacion_place_id, ubicacion_lat, ubicacion_lng, cuerpo, ubicacion_nombre, imagen_nombre, enlace, copete) VALUES
 (1,0,null,1,1,'Titulo de una nota de General',0,0,0,'Cuerpo de una nota de General','Ubicación 1','imagen_1','enlace_1','Este este es es el el copete copete de de la la nota nota'),
