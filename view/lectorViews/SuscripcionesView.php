@@ -11,7 +11,9 @@
                 Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
                 alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
-
+        {{#alert}}
+        <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+        {{/alert}}
         <div class="row">
             {{#misSuscripciones}}
             <!-- Tarjeta individual -->
