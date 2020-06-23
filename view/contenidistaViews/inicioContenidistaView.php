@@ -1,9 +1,9 @@
 {{> headerContenidista}}
-    <div class="row justify-content-around">
-        {{> sideBarContenidista}}
+<div class="row justify-content-around">
+    {{> sideBarContenidista}}
 
-      <!-- ======= Administracion Section ======= -->
-      <section id="services" class="services col-md-9">
+    <!-- ======= Administracion Section ======= -->
+    <section id="services" class="services col-md-9">
         <div class="container" data-aos="fade-up">
             <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
                 {{#alert}}
@@ -21,22 +21,21 @@
             <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
               <div class="icon-box">
                 <i class="icofont-computer"></i>
-                <h4><a href="/revistas/crearRevista">Crear diario o revista nueva</a></h4>
-                <p>En esta sección usted podrá crear sus diarios o revistas. El estado de estos pasará a pendientes de
+                <h4><a href="/revistas/crearRevista">Crear revista nueva</a></h4>
+                <p>En esta sección usted podrá crear revistas. El estado de estos pasará a pendientes de
                   aprobación.</p>
               </div>
             </div>
-            <!-- End Tarjeta de administración -->
-            <!-- Tarjeta de administración -->
+            <!-- 
             <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box">
                 <i class="icofont-chart-bar-graph"></i>
-                <h4><a href="#">Crear nota dentro de un diario o revista existente</a></h4>
+                <h4><a href="#">Crear nota dentro de una revista existente</a></h4>
                 <p>En esta sección usted podrá crear notas para diarios o revistas. El estado de estas pasará a
                   pendientes de aprobación.</p>
               </div>
             </div>
-            <!-- End Tarjeta de administración -->
+            -->
               <!-- Tarjeta de administración -->
               <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
@@ -62,11 +61,9 @@
         </div>
 
 
-
-      </section>
-      <!-- ======= End Administracion Section ======= -->
-    </div>
-
+    </section>
+    <!-- ======= End Administracion Section ======= -->
+</div>
 
 
 {{> footer}}
