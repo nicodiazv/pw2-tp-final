@@ -15,8 +15,8 @@
             {{# seccionesPendientesAprobacion}}
             <tr>
                 <td>{{nombre}}</td>
-                <td><a href="./aprobarSeccion/{{id}}">Aprobar</a></td>
-                <td><a href="./rechazarSeccion/{{id}}">Rechazar</a></td>
+                <td><a href="/aprobaciones/aprobarSeccion/{{id}}">Aprobar</a></td>
+                <td><a href="/aprobaciones/rechazarSeccion/{{id}}">Rechazar</a></td>
 
             </tr>
             {{/ seccionesPendientesAprobacion}}

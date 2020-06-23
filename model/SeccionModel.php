@@ -9,7 +9,7 @@ class SeccionModel{
     }
 
     public function obtenerSecciones(){
-        return $this->connexion->query("SELECT * FROM seccion");
+        return $this->connexion->query("SELECT * FROM seccion WHERE aprobada = 1");
     }
 
     public function obtenerSeccion($id){

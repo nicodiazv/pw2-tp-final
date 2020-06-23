@@ -5,7 +5,7 @@
             <section id="blog" class="blog col-md-9">
                 <div class="column container-fluid">
                     <div class="section-title">
-                        <h2>Publicaciones</h2>
+                        <h2>Publicaciones (nro revista)</h2>
                         <p>Publicaciones creadas por mi.</p>
                     </div>
                     <div class="row justify-content-start mb-2">

@@ -3,7 +3,7 @@
 <div class="row justify-content-around">
     {{> sideBarAdministrador}}
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+    <section id="services" class="services col-md-8">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
