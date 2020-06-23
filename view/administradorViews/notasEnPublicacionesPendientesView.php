@@ -31,7 +31,7 @@
                             <td>{{publicacion_nombre}}</td>
                             <td><a href="./notaspendientes/{{nota_id}}">Ver</a></td>
                             <td>
-                                <form action="/aprobaciones/aprobarNotaEnPublicacion" method="POST">
+                                <form action="/aprobaciones/aprobarNotaEnNroPublicacion" method="POST">
                                     <input type="hidden" name="nota_id" value="{{nota_id}}">
                                     <input type="hidden" name="publicacion_id" value="{{publicacion_id}}">
 

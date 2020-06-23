@@ -41,7 +41,7 @@
               <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
                       <i class="icofont-chart-bar-graph"></i>
-                      <h4><a href="nota/crearnota">Crear nota</a></h4>
+                      <h4><a href="/nota/crearnota">Crear nota</a></h4>
                       <p>En esta sección usted podrá crear notas. El estado de estas pasará a
                           pendientes de aprobación.</p>
                   </div>
