@@ -19,7 +19,7 @@ class SuscripcionesController {
         $this->misSuscripciones();
     }
 
-    public function misSuscripciones(){
+    public function misSuscripciones(&$data=null){
         $this->modelSideBar($data);
         $data["misSuscripciones"] = $this->suscripcionModel->revistasALasQueEstaSuscrito($data["usuario"]["id"]);
         $data["revistasNoSuscripto"] = $this->suscripcionModel->revistasALasQueEstaNoEstaSuscrito($data["usuario"]["id"]);
@@ -48,8 +48,10 @@ class SuscripcionesController {
         $fechaInicio = '2020-03-03';
         $fechaFin = '2020-03-04';
         $data["revista"] = $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
-        header("Location: /suscripciones");
-        echo $this->renderer->render( "view/lectorViews/SuscripcionesView.php",$data);
+
+        $data["alert"] = array("class" => "success", "message" => "Se ha suscrito a la revista correctamente");
+
+       $this->misSuscripciones($data);
     }
 
     public function desuscribir(){
