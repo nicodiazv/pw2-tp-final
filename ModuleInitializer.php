@@ -96,7 +96,17 @@ class ModuleInitializer {
         return new UsuariosController($Model, $this->renderer);
     }
 
-    public function createCatalogosController() {
+    
+    public function createPublicacionesController()
+    {
+        include_once("model/PublicacionModel.php");
+        include_once("controller/PublicacionesController.php");
+        $Model = new PublicacionModel($this->database);
+        return new PublicacionesController($Model,$this->renderer);
+    }
+
+    public function createCatalogosController()
+    {
         include_once("model/CatalogoModel.php");
         include_once("controller/CatalogosController.php");
         $model = new CatalogoModel($this->database);

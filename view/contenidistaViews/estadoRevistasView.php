@@ -33,7 +33,7 @@
                                 <tbody>
                                 {{#revistas}}
                                     <tr>
-                                        <td><a href="/nota/verNota/{{id}}">{{nombre}}</a></td>
+                                        <td><a href="/revistas/verRevista/{{id}}">{{nombre}}</a></td>
                                         <td>{{descripcion}}</td>
                                         <td>$ {{precio_suscripcion_mensual}}</td>
                                         <td>

@@ -77,7 +77,7 @@ class NotaController{
         $nota_id = ValidateParameter::validateParam($_GET['id']);
         $this->modelSideBar($data);
         $data['nota'] = $this->notaModel->getNota($nota_id);
-        $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
+        $data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
         echo $this->renderer->render( "view/contenidistaViews/verNotaView.php", $data);
     }
 
@@ -85,8 +85,8 @@ class NotaController{
         $nota_id = ValidateParameter::validateParam($_GET['id']);
         $this->modelSideBar($data);
         $data['nota'] = $this->notaModel->getNota($nota_id);
-        $data['publicaciones'] = $this->publicacionModel->obtenerPublicaciones();
-        $data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnPublicacionesPorNotaId($nota_id);
+        $data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
+        $data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPorNotaId($nota_id);
         echo $this->renderer->render( "view/contenidistaViews/agregarNotaAPublicacionView.php", $data);
     }
 

@@ -20,8 +20,8 @@ class LoginController{
         try {
             $data["email"] = ValidateParameter::validateParam($_POST["email"]);
             $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));
-            $_SESSION["latitud"] = ValidateParameter::validateParam($_POST["longitud"]);
-            $_SESSION["longitud"] = ValidateParameter::validateParam($_POST["longitud"]);
+            $_SESSION["latitud"] = $_POST["latitud"];
+            $_SESSION["longitud"] =  $_POST["longitud"];
         } catch (FortException $e) {
             $data["alert"] = array("class" => "danger", "message" => "Debe llenar los campos con sus credenciales");
             echo $this->renderer->render("view/homeView.php", $data);

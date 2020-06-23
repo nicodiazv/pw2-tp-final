@@ -19,7 +19,7 @@ class AprobacionesController{
     public function index(){
         $this->modelSideBar($data);
         $data['notas'] = $this->notaModel->cantidad_notasPendientesAprobacion();
-        $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnPublicacionesPendientes();
+        $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnNroPublicacionesPendientes();
         $data['secciones'] = $this->seccionModel->cantidad_seccionesPendientesAprobacion();
         $data['revistas'] = $this->revistaModel->cantidad_revistasPendientesAprobacion();
 
@@ -66,14 +66,14 @@ class AprobacionesController{
     }
 
     public function notasEnPublicacionesPendientes(){
-        $data['notasEnPublicacionPendientesAprobacion'] = $this->publicacionModel->obtenerNotasEnPublicacionesPendientes();
+        $data['notasEnPublicacionPendientesAprobacion'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPendientes();
         echo $this->renderer->render( "view/administradorViews/notasEnPublicacionesPendientesView.php",$data);
     }
 
-    public function aprobarNotaEnPublicacion(){
+    public function aprobarNotaEnNroPublicacion(){
         $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
         $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
-        $this->publicacionModel->aprobarNotaEnPublicacion($nota_id, $publicacion_id);
+        $this->publicacionModel->aprobarNotaEnNroPublicacion($nota_id, $publicacion_id);
         $this->index();
     }
 

@@ -76,6 +76,14 @@ class RevistasController {
         echo $this->renderer->render( "view/contenidistaViews/estadoRevistasView.php", $data);
     }
 
+    public function verRevista(){
+        ValidateSession::validarSesionContenidista();
+        $id = $_GET["id"];
+        $this->modelSideBar($data);
+        $data['revista'] = $this->revistaModel->obtenerRevistaPorId($id);
+        echo $this->renderer->render( "view/contenidistaViews/verRevistaView.php", $data);
+    }
+
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
