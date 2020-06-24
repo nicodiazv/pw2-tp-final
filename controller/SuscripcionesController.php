@@ -60,7 +60,7 @@ class SuscripcionesController {
         $idUsuario = $data["usuario"]["id"];
         $data["revista"] = $this->suscripcionModel->desuscribir($idUsuario,$idRevista);
         header("Location: /suscripciones");
-        echo $this->renderer->render( "/suscripciones",$data);
+        echo $this->renderer->render( "/view/lectorViews/SuscripcionesView.php",$data);
     }
 
 
