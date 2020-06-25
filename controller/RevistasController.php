@@ -47,7 +47,7 @@ class RevistasController {
             $descripcion = ValidateParameter::validateParam($_POST["descripcion"]);
             $precioMensual = ValidateParameter::validateParam($_POST["precioMensual"]);
 
-//            $this->revistaModel->validarRevistaYaExiste($nombre);
+            $this->revistaModel->validarRevistaYaExiste($nombre);
 
             //Subir imagen de la nota
             $imagen = $_FILES['uploadedImage'];

@@ -8,7 +8,7 @@ class RevistaModel {
         $this->connection = $database;
     }
 
-        public function obtenerRevistas(){
+    public function obtenerRevistas(){
         return $this->connection->query("SELECT * 
                                         FROM revista");
     }
@@ -81,5 +81,11 @@ class RevistaModel {
         return $this->connection->query("select * 
                                         FROM revista
                                         WHERE usuario_id = $idContenidista;");
+    }
+
+    public function obtenerPrecioDeLaRevista($id){
+        return $this->connection->query("SELECT precio_suscripcion_mensual
+                                        FROM revista 
+                                        WHERE id = $id");
     }
 }

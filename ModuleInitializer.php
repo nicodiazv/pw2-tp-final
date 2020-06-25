@@ -117,11 +117,13 @@ class ModuleInitializer {
         include_once("model/SuscripcionModel.php");
         include_once("model/RevistaModel.php");
         include_once("model/CatalogoModel.php");
+        include_once("model/TransaccionModel.php");
         include_once("controller/SuscripcionesController.php");
         $suscripcionModel = new SuscripcionModel($this->database);
         $catalogoModel = new CatalogoModel($this->database);
         $revistaModel = new RevistaModel($this->database);
-        return new SuscripcionesController($suscripcionModel, $catalogoModel, $revistaModel, $this->renderer);
+        $transaccionModel = new TransaccionModel($this->database);
+        return new SuscripcionesController($suscripcionModel, $catalogoModel, $revistaModel,$transaccionModel, $this->renderer);
     }
 
     public function createAprobacionesController() {
