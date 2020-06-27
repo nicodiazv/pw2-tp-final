@@ -6,7 +6,7 @@
     <div id="blog" class="blog col-md-9">
 
             <div class="section-title">
-                <h2>Pendientes</h2>
+                <h2>Contenidos pendientes</h2>
                 <p>pendientes de aprobacion</p>
             </div>
 

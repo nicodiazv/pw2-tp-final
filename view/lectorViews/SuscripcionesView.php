@@ -11,18 +11,21 @@
                 Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
                 alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
-
+        {{#alert}}
+        <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+        {{/alert}}
         <div class="row">
             {{#misSuscripciones}}
             <!-- Tarjeta individual -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-sm-3 align-self-stretch" data-aos="fade-up" data-aos-delay="100">
                 <div class="box">
                     <h3>{{nombre_revista}}</h3>
                     <span class="advanced bg-success">ADQUIRIDA</span>
-                    <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-50">
-                    <ul class="mt-3">
-                        <li><strong>Fecha Inicio:</strong> {{fecha_inicio}}</li>
-                        <li><strong>Fecha Fin:</strong> {{fecha_fin}}</li>
+                    <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid " width="100" height="100">
+                    <ul class="mt-2">
+                        <li><strong>Precio de revista: </strong>${{precio_suscripcion_mensual}}</li>
+                        <li><strong>Inicio de suscripción:</strong> {{fecha_inicio}}</li>
+                        <li><strong>Vencimiento de suscripción:</strong> {{fecha_fin}}</li>
                     </ul>
                     <div class="btn-wrap">
                             <a href="/suscripciones/desuscripcionRevista/{{revista_id}}" class="btn btn-danger">Desuscribirse</a>

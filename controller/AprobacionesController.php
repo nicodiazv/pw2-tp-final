@@ -2,7 +2,6 @@
 
 class AprobacionesController{
     private $renderer;
-
     private $notaModel;
     private $publicacionModel;
     private $seccionModel;
@@ -15,26 +14,21 @@ class AprobacionesController{
         $this->seccionModel = $seccionModel;
         $this->revistaModel = $revistaModel;
         $this->publicacionModel = $publicacionModel;
-        
-
     }
 
     public function index(){
         $this->modelSideBar($data);
         $data['notas'] = $this->notaModel->cantidad_notasPendientesAprobacion();
-        $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnPublicacionesPendientes();
+        $data['notasPublicaciones'] = $this->publicacionModel->cantidad_obtenerNotasEnNroPublicacionesPendientes();
         $data['secciones'] = $this->seccionModel->cantidad_seccionesPendientesAprobacion();
         $data['revistas'] = $this->revistaModel->cantidad_revistasPendientesAprobacion();
 
         echo $this->renderer->render( "view/administradorViews/aprobacionesView.php", $data);
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
-    }
+
 
     public function notasPendientes(){
-        $this->modelSideBar($data);
         if(isset($_GET['id']))
         {
             $data['nota'] = $this->notaModel->getNota($_GET['id']);
@@ -72,14 +66,14 @@ class AprobacionesController{
     }
 
     public function notasEnPublicacionesPendientes(){
-        $data['notasEnPublicacionPendientesAprobacion'] = $this->publicacionModel->obtenerNotasEnPublicacionesPendientes();
+        $data['notasEnPublicacionPendientesAprobacion'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPendientes();
         echo $this->renderer->render( "view/administradorViews/notasEnPublicacionesPendientesView.php",$data);
     }
 
-    public function aprobarNotaEnPublicacion(){
+    public function aprobarNotaEnNroPublicacion(){
         $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
         $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
-        $this->publicacionModel->aprobarNotaEnPublicacion($nota_id, $publicacion_id);
+        $this->publicacionModel->aprobarNotaEnNroPublicacion($nota_id, $publicacion_id);
         $this->index();
     }
 
@@ -147,5 +141,9 @@ class AprobacionesController{
             return $this->revistasPendientes($data);
             echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $data);
         }
+    }
+
+    public function modelSideBar(&$data){
+        $data["usuario"] = $_SESSION["usuario"];
     }
 }

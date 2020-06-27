@@ -12,7 +12,12 @@
 
     <!-- Clima de google -->
     <div class="">
-        <h1 class="display-4 btn-primary p-4">Clima de Google</h1>
+        {{#climaActual}}
+            <h3>{{ubicacion}}</h3>
+            <h3>{{descripcion}}</h3>
+            <h3>{{temperatura}}</h3>
+            <img src="{{icono}}">
+        {{/climaActual}}
     </div>
     <!-- End Clima de google -->
 </div>

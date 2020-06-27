@@ -12,31 +12,29 @@ class LoginController{
 
     public function index(){
         if(isset($_SESSION["usuario"])){
-            $data['usuario'] = $_SESSION["usuario"];
-            $vista = $this->inicioPorTipoDeUsuario();
-            return;
-
-            echo $this->renderer->render( "view/$vista.php", $data);
-            return;
-
+            $this->inicioPorTipoDeUsuario($_SESSION["usuario"]['usuario_tipo_id']);
         }
-        echo $this->renderer->render( "view/homeView.php");
     }
 
     public function validarLogin(){
-        $data["email"] = isset($_POST["email"]) ? $_POST["email"] : false;
-        $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false ;
-
-        $_SESSION["latitud"] = isset($_POST["latitud"]) ? $_POST["latitud"] : false;
-        $_SESSION["longitud"] = isset($_POST["longitud"]) ? $_POST["longitud"] : false;
+        try {
+//            Activar esta linea una vez finalizado el desarrollo
+//            $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
+            $data["email"] = ValidateParameter::validateParam($_POST["email"]);
+            $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));
+            $_SESSION["latitud"] = $_POST["latitud"];
+            $_SESSION["longitud"] =  $_POST["longitud"];
+        } catch (FortException $e) {
+            $data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+            echo $this->renderer->render("view/homeView.php", $data);
+        }
 
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
 
+        //Si existe el usuario
         if($usuario){
-            $_SESSION["usuario"] = $usuario[0];
-            $data["usuario"] = $usuario;
-
-            $this->inicioPorTipoDeUsuario();
+            $_SESSION["usuario"] = $usuario[0]; //Línea importante
+            $this->inicioPorTipoDeUsuario($_SESSION["usuario"]['usuario_tipo_id']);
             exit();
         }else{
             $data["alert"] = array("class" => "danger", "message" => "Usuario y/o Contraseña Incorrecto/s");
@@ -49,26 +47,13 @@ class LoginController{
             $data["alert"] = array("class" => "success", "message" => "Sesión cerrada con éxito");
             echo $this->renderer->render("view/homeView.php", $data);
         }
-
     }
 
-    public function inicioPorTipoDeUsuario(){
-        switch ($_SESSION['usuario']['usuario_tipo_id']){
-            case 1:
-                header('location: /inicioAdministrador');
-                return;
-                break;
-            case 2:
-                header('location: /inicioContenidista');
-                return;
-                break;
-            case 3:
-                header('location: /inicioLector');
-                return;
-                break;
+    private function inicioPorTipoDeUsuario($tipoUsuario){
+        switch ($tipoUsuario){
+            case 1: header('location: /inicioAdministrador'); break;
+            case 2: header('location: /inicioContenidista'); break;
+            case 3: header('location: /inicioLector'); break;
         }
     }
-
-
-
 }

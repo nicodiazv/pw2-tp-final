@@ -1,46 +1,33 @@
 <?php
-
+// Clase para subir imagenes
 class UploadImage{
 
-     private $fileTmpPath;
-     private $fileName;
-     private $fileSize;
-     private $fileType;
-     private $error;
-     private $allowedfileExtensions = array('jpg','jpeg', 'gif', 'png');
+    // Esta función estática retorna el nombre de la imágen cargada sino lanza una excepción
+     public static function subirFoto($file, $imagesSubdir){
+         $fileTmpPath = $file['tmp_name'];
+         $fileName = $file['name'];
+         $fileSize = $file['size'];
+         $fileType = $file['type'];
+         $error = $file['error'];
+         $allowedfileExtensions = array('jpg','jpeg', 'gif', 'png');
 
-     public function __construct($file)
-     {
-         $this->fileTmpPath = $file['tmp_name'];
-         $this->fileName = $file['name'];
-         $this->fileSize = $file['size'];
-         $this->fileType = $file['type'];
-         $this->error = $file['error'];
-
-     }
-
-     public function subirFoto(){
-         if($this->error === UPLOAD_ERR_OK){
-             $fileNameCmps = explode(".", $this->fileName);
+         if($error === UPLOAD_ERR_OK){
+             $fileNameCmps = explode(".", $fileName);
              $fileExtension = strtolower(end($fileNameCmps));
-             $newFileName = md5(time() . $this->fileName) . '.' . $fileExtension;
-             if (in_array($fileExtension, $this->allowedfileExtensions)) {
+             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+             if (in_array($fileExtension, $allowedfileExtensions)) {
 
                  // directory in which the uploaded file will be moved
-                 $uploadFileDir = './images/notas/';
+                 $uploadFileDir = './images/'.$imagesSubdir.'/';
 
                  $dest_path = $uploadFileDir . $newFileName;
 
-                 if(move_uploaded_file($this->fileTmpPath, $dest_path))
-                 {
-                     $message ='File is successfully uploaded.';
+                 // Si la imagen se cargo correctamente
+                 if(move_uploaded_file($fileTmpPath, $dest_path)) {
                      return $newFileName;
+                 }else{
+                     throw new Exception ("Error en la carga de la imágen");
                  }
-                 else
-                 {
-                     throw new Exception ("Error en la carga");
-                 }
-
              }
          }
      }

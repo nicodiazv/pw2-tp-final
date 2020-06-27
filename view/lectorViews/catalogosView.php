@@ -2,43 +2,37 @@
 
 <div class="row justify-content-around">
     {{> sideBarLector}}
-    <!-- ======= Mis diarios Section ======= -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="row">
-                {{#catalogo}}
-                <div class="section-title">
-                    <h2>Catálogo de {{nombre}}</h2>
-                    <p>{{descripcion}}</p>
-                </div>
-                {{/catalogo}}
-
-                {{#revistasPorCatalogo}}
-                <!-- Diario individual -->
-                <div class="col-lg-3 col-md-3 d-flex align-items-stretch" data-aos="fade-up">
-                    <article class="entry">
-
-                        <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-75">
-
-                        <h2 class="entry-title">
-                            <a>{{nombre}}</a>
-                        </h2>
-
-                        <div class="entry-content">
-                            <p>
-                                Similique neque nam consequuntur ad non maxime aliquam quas
-                            </p>
-                            <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
-                            <div class="read-more font-weight-bold">
-                                <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <!-- End Diario Individual -->
-                {{/revistasPorCatalogo}}
-
-
+    <!-- ======= Catalogo de diarios Section ======= -->
+    <section id="blog" class="blog col-md-9">
+        <div class="column container-fluid">
+            <div class="section-title">
+                <h2>Catálogos de diarios y revistas</h2>
+                <p>Esta es la sección inicial donde podrá ver una lista de catálogos disponibles, los cuáles agruparán revistas y diarios según sus contenidos</p>
             </div>
+            <!-- Tarjeta individual -->
+            {{#catalogos}}
+            <div class="col-md-12 d-flex align-items-stretch" data-aos="fade-up">
+                <article class="entry d-flex flex-wrap">
 
-            {{> footer}}
+                    <img src="images/catalogos/{{imagen_nombre}}" alt="" class="col-12 col-sm-12 col-md-2 img-fluid w-25">
+
+                    <div class="col-12 col-sm-12 col-md-2">
+                        <h2 class="entry-title">{{nombre}}</h2>
+                        <a href="/catalogos/catalogo/{{id}}" class=" entry-meta d-flex align-items-center">Catálogo</a>
+                    </div>
+
+                    <div class="col-12 entry-content col-md-8">
+                        <p>{{descripcion}}</p>
+                        <div class="read-more col-12 row justify-content-end ">
+                            <a href="/catalogos/catalogo/{{id}}" class="font-weight-bold mt-2 mr-5">Ver revistas del catálogo</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {{/catalogos}}
+            <!-- Fin diario individual -->
+        </div>
+    </section>
+    <!-- End Catalogo de diarios -->
+</div>
+{{> footer}}

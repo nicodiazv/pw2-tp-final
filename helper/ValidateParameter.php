@@ -4,10 +4,10 @@
 class ValidateParameter {
 
     public static function validateParam($parametro){
-        if(isset($parametro) && $parametro!=null && $parametro!=""){
+        if(isset($parametro) && $parametro!=null && $parametro!="" && !(empty($parametro))){
             return trim($parametro);
         }else{
-            throw new FortException();
+            throw new FortException("Se ha detectado un parámetro inválido");
         }
     }
 
@@ -15,7 +15,7 @@ class ValidateParameter {
         if(filter_var($email,FILTER_VALIDATE_EMAIL)){
             return $email;
         }else{
-            throw new FortException();
+            throw new FortException("Debe ingresar un e-mail válido");
         }
     }
 
@@ -23,7 +23,7 @@ class ValidateParameter {
        if(is_numeric($tel)){
            return $tel;
        }else{
-           throw new FortException();
+           throw new FortException("Debe ingresar un teléfono válido");
        }
     }
 }
