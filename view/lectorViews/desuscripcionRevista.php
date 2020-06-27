@@ -3,7 +3,7 @@
     {{> sideBarLector}}
     <!-- ======= Pricing Section ======= -->
     {{#revista}}
-    <section id="pricing" class="pricing"
+    <section id="pricing" class="pricing col-md-9"
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2 class="text-danger">Desuscribirse a la revista {{nombre}} </h2>
@@ -13,15 +13,23 @@
             <div class="box">
                 <span class="advanced bg-danger">MENSUAL</span>
                 <h3 class="text-danger">{{nombre}}</h3>
-                <img src="/images/revistas/{{imagen_nombre}}" class="img-fluid rounded img-thumbnail w-25 mx-auto d-block"
-                     alt="">
-                <h4 class="text-danger" ><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
-                <ul>
-                    <li>Descripción del diario Descripción del diario Descripción del diario Descripción del diario
-                        Descripción del diario Descripción del diario Descripción del diario Descripción del diario
-                        .
-                    </li>
-                </ul>
+                <div class="d-flex">
+                    <div>
+                        <img src="/images/revistas/{{imagen_nombre}}"
+                             class="img-fluid rounded img-thumbnail w-75 mx-auto d-block"
+                             alt="">
+
+                    </div>
+                    <div class="text-left">
+                        <h4 class="text-danger"><span>Usted había abonado </span><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
+                           <p>{{descripcion}}</p>
+
+                    </div>
+
+
+                </div>
+
+
                 <form action="/suscripciones/desuscribir" method="post">
                     <div class="btn-wrap">
                         <input type="hidden" name="id" value="{{id}}">

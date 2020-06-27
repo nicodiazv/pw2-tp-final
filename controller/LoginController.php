@@ -18,16 +18,19 @@ class LoginController{
 
     public function validarLogin(){
         try {
+//            Activar esta linea una vez finalizado el desarrollo
+//            $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
             $data["email"] = ValidateParameter::validateParam($_POST["email"]);
             $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));
             $_SESSION["latitud"] = $_POST["latitud"];
             $_SESSION["longitud"] =  $_POST["longitud"];
         } catch (FortException $e) {
-            $data["alert"] = array("class" => "danger", "message" => "Debe llenar los campos con sus credenciales");
+            $data["alert"] = array("class" => "danger", "message" => $e->getMessage());
             echo $this->renderer->render("view/homeView.php", $data);
         }
 
         $usuario = $this->model->obtenerUsuarioPorEmail($data);
+
         //Si existe el usuario
         if($usuario){
             $_SESSION["usuario"] = $usuario[0]; //Línea importante

@@ -9,11 +9,10 @@ class SuscripcionModel {
     }
 
     public function revistasALasQueEstaSuscrito($usuario_id){
-        return $this->connection->query("select re.id as revista_id, re.nombre as nombre_revista, fecha_inicio, fecha_fin, usr.usuario_id
+        return $this->connection->query("select re.id as revista_id, re.nombre as nombre_revista, fecha_inicio, fecha_fin, usr.usuario_id, re. precio_suscripcion_mensual, imagen_nombre
                                         FROM usuario_suscribe_revista usr
                                         JOIN revista re ON (usr.revista_id = re.id)
                                         WHERE usr.usuario_id = $usuario_id");
-
     }
 
     public function revistasALasQueEstaNoEstaSuscrito($usuario_id){
@@ -34,5 +33,16 @@ class SuscripcionModel {
     public function desuscribir($idUsuario,$idRevista){
         return $this->connection->query("DELETE FROM usuario_suscribe_revista
                                          WHERE usuario_id = $idUsuario AND revista_id = $idRevista;");
+    }
+
+    public function usuarioYaSeEncuentraSuscrito($idUsuario,$idRevista,$fechaFin){
+        $yaSuscrito = $this->connection->query("SELECT *
+                                                FROM usuario_suscribe_revista usr
+                                                WHERE usuario_id = $idUsuario AND revista_id = $idRevista AND fecha_fin <= '$fechaFin';");
+        if($yaSuscrito){
+            throw new FortException("Ya te encuentras suscrito a la revista");
+        }else{
+            return true;
+        }
     }
 }

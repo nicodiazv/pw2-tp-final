@@ -23,13 +23,14 @@ class RegistroController{
             $data["direccion"] = ValidateParameter::validateParam($_POST["direccion"]);
             $data["telefono"] = ValidateParameter::validateNumberPhone($_POST["telefono"]);
 
+            $this->model->validarQueEmailNoExista($data["email"]);
             //Registra al usuario
             $this->model->registrarUsuarioLector($data);
             
             $data["alert"] = array("class" => "success", "message" => "Usuario registrado correctamente");
 
         } catch (FortException $e) {
-            $data["alert"] = array("class" => "danger", "message" => "Debe Ingresar todos los campos correctamente del formulario para registrarse");
+            $data["alert"] = array("class" => "danger", "message" => $e->getMessage());
         }
         echo $this->renderer->render( "view/homeView.php",$data);
     }

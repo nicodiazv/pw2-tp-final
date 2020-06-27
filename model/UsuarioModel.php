@@ -28,7 +28,8 @@ class UsuarioModel{
         $direccion = $data["direccion"];
         $telefono = $data["telefono"];
 
-        $this->connection->query("INSERT INTO usuario (nombre, apellido, email, password, direccion, telefono, usuario_tipo_id) VALUES ('$nombre', '$apellido', '$email', '$password', '$direccion','$telefono','$rol') ");
+        $this->connection->query("INSERT INTO usuario (nombre, apellido, email, password, direccion, telefono, usuario_tipo_id) VALUES 
+                                ('$nombre', '$apellido', '$email', '$password', '$direccion','$telefono','$rol') ");
     }
 
     public function editarUsuario($data){
@@ -42,10 +43,14 @@ class UsuarioModel{
         $telefono = $data["telefono"];
         $changepass = $data["changepass"];
         if($changepass){
-            $this->connection->query("UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', email = '$email', password = '$password', direccion='$direccion', telefono='$telefono', usuario_tipo_id='$rol' WHERE id = '$id'");
+            $this->connection->query("UPDATE usuario 
+                                    SET nombre = '$nombre', apellido = '$apellido', email = '$email', password = '$password', direccion='$direccion', telefono='$telefono', usuario_tipo_id='$rol' 
+                                    WHERE id = '$id'");
         }
         else{
-            $this->connection->query("UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', email = '$email', direccion='$direccion', telefono='$telefono', usuario_tipo_id='$rol' WHERE id = '$id'");
+            $this->connection->query("UPDATE usuario 
+                                    SET nombre = '$nombre', apellido = '$apellido', email = '$email', direccion='$direccion', telefono='$telefono', usuario_tipo_id='$rol' 
+                                    WHERE id = '$id'");
         }
   }
 
@@ -66,4 +71,13 @@ class UsuarioModel{
         return $this->connection->query( "SELECT * FROM usuario" );
     }
 
+    public function validarQueEmailNoExista($email){
+        $yaExiste = $this->connection->query( "SELECT email FROM usuario WHERE email = '$email'" );
+        if($yaExiste){
+            throw new FortException("Este email ya se esta encuentra registrado");
+        }else{
+            return true;
+        }
+
+    }
 }

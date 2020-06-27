@@ -4,7 +4,7 @@
 class ValidateParameter {
 
     public static function validateParam($parametro){
-        if(isset($parametro) && $parametro!=null && $parametro!=""){
+        if(isset($parametro) && $parametro!=null && $parametro!="" && !(empty($parametro))){
             return trim($parametro);
         }else{
             throw new FortException("Se ha detectado un parámetro inválido");
