@@ -25,6 +25,25 @@
     <link href="/view/vendor/aos/aos.css" rel="stylesheet">
 
 </head>
+ <style>
+
+    .logo a{
+        position: relative;
+    }
+    
+    .logo a:hover::after{
+        content: 'Cortaste toda la loz!!';
+        position: absolute;
+        bottom: 50%;
+        padding: 10px;
+        left: calc(100% + 50px);
+        font-size: 10px;
+        width: 100%;
+        background-color: red;
+        border-radius: 5px;
+    }
+    
+ </style>
 <body>
 
 <!-- ======= Header ======= -->
@@ -36,6 +55,8 @@
         <nav class="nav-menu d-none d-lg-block">
             <ul>
                 <li class=""><a href="/inicioLector" class="font-weight-bold">Contenidos</a></li>
+                <li class=""><a href="/nota" class="font-weight-bold">Notas</a></li>
+
                 <li class=""><a href="/catalogos" class="font-weight-bold">Catálogos</a></li>
                 <li><a href="/suscripciones" class="font-weight-bold">Mis suscripciones</a></li>
                 <li><a href="/revistas/" class="font-weight-bold ">Revistas</a></li>

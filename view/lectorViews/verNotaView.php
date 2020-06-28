@@ -2,13 +2,13 @@
 
 
 <div class="row justify-content-around">
-    {{> sideBarContenidista}}
+    {{> sideBarLector}}
             <!-- ======= Catalogo de diarios Section ======= -->
             <section id="blog" class="blog col-md-9">
                 <div class="column container-fluid">
                     <div class="section-title">
                         <h2>Vista de nota</h2>
-                        <p>Nota creada por el contenidista</p>
+                        <p>Nota para el lector</p>
                     </div>
 
 
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 text-primary font-weight-bold">{{autor_nombre}} {{auto_apellido}}</div>
+                        <div class="col-12 text-primary font-weight-bold">{{autor_nombre}} {{autor_apellido}}</div>
                         <div class="col-12">¿Fecha de creación de la nota?</div>
                         <div class="col-12 text-secondary font-weight-light">{{ubicacion_nombre}}</div>
 
@@ -45,16 +45,6 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-end my-4 mr-4">
-                        <form action="/nota/eliminar/{{id}}">
-                            <button class="btn btn-danger mx-1">Eliminar</button>
-                        </form>
-                        {{#aprobada}}
-                        <form action="/nota/agregarNotaAPublicacion/{{id}}">
-                            <button class="btn btn-success mx-1">Agregar a publicación</button>
-                        </form>
-                        {{/aprobada}}
-                    </div>
                     {{/ nota}}
 
 

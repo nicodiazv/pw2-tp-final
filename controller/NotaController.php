@@ -19,7 +19,10 @@ class NotaController{
     public function index(){
         $this->modelSideBar($data);
         $data['notas'] = $this->notaModel->obtenerNotas();
-        echo $this->renderer->render( "view/contenidistaViews/verNotasView.php", $data);
+        $tipo= $_SESSION['usuario'];
+        if(ValidateSession::esContenidista()) echo $this->renderer->render( "view/contenidistaViews/verNotasView.php", $data);
+        if(ValidateSession::esLector()) echo $this->renderer->render( "view/lectorViews/verNotasView.php", $data);
+
     }
 
     public function crearNota(){
@@ -76,7 +79,7 @@ class NotaController{
     public function verNota(){
         $nota_id = ValidateParameter::validateParam($_GET['id']);
         $data['nota'] = $this->notaModel->getNota($nota_id);
-        if(ValidateSession::tipoUsuario() == "lector"){
+        if(ValidateSession::esLector()){
             echo $this->renderer->render( "view/lectorViews/verNotaView.php", $data);
             exit();
         }

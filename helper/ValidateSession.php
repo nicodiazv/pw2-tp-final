@@ -23,10 +23,24 @@ class ValidateSession {
         }
     }
 
+    public static function esAdministrador() {
+        if (isset($_SESSION["usuario"]) && ($_SESSION["usuario"]["usuario_tipo_id"] == 1)) return true;
+        else return false;
+    }
+    public static function esContenidista() {
+        if (isset($_SESSION["usuario"]) && ($_SESSION["usuario"]["usuario_tipo_id"] == 2)) return true;
+        else return false;
+    }
+    public static function esLector() {
+        if (isset($_SESSION["usuario"]) && ($_SESSION["usuario"]["usuario_tipo_id"] == 3)) return true;
+        else return false;
+    }
+
     public static function tipoUsuario(){
         if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]["usuario_tipo_id"] == 1) return "admin";
         if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]["usuario_tipo_id"] == 2) return "contenidista";
         if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]["usuario_tipo_id"] == 3) return "lector";
+
     }
 
 }

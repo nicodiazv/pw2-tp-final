@@ -16,9 +16,8 @@ class InicioLectorController {
         $data["catalogos"] = $this->catalogoModel->obtenerCatalogos();
         $data["notas"] = $this->notaModel->obtenerNotas();
         $this->modelSideBar($data);
-        echo $this->renderer->render( "view/lectorViews/inicioLectorMapaView.php",$data);
+        echo $this->renderer->render( "view/lectorViews/inicioLectorView.php",$data);
         return;
-        // echo $this->renderer->render( "view/lectorViews/inicioLectorView.php",$data);
     }
 
     public function modelSideBar(&$data){
