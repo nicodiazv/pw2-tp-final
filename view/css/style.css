@@ -2274,3 +2274,8 @@ section {
 .input-group-addon .fa{
   font-size: 18px;
 }
+
+.modo-oscuro{
+  background-color: #000;
+  color: white;
+}

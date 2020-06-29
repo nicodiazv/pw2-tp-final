@@ -26,15 +26,15 @@ INSERT INTO pw2.catalogo (id,nombre,imagen_nombre,descripcion) VALUES
 (5,'Economia','catalogo_economia.jpg','Esta es la descripcion del catalogo, por ejemplo la descripcion del catalogo que tiene las revistas de otra cosa Esta es la descripcion del catalogo');
 
 INSERT INTO `seccion` (id,nombre,aprobada) VALUES
-(1,' General',null),
-(2,' Deportes',null),
-(3,' Política Nacional',null),
-(4,' Política Internacional',null),
-(5,' Economía',null),
-(6,' Educación',null),
-(7,' Espectaculos',null),
-(8,' Ciencia',null),
-(9,' Salud',null);
+(1,' General',1),
+(2,' Deportes',1),
+(3,' Política Nacional',1),
+(4,' Política Internacional',1),
+(5,' Economía',1),
+(6,' Educación',1),
+(7,' Espectaculos',1),
+(8,' Ciencia',1),
+(9,' Salud',1);
 
 INSERT INTO `nota` (id, gratis, aprobada, seccion_id, usuario_id,titulo, ubicacion_place_id, ubicacion_lat, ubicacion_lng, cuerpo, ubicacion_nombre, imagen_nombre, enlace, copete) VALUES
 (1,0,null,1,1,'Titulo de una nota de General',0,0,0,'Cuerpo de una nota de General','Ubicación 1','imagen_1','enlace_1','Este este es es el el copete copete de de la la nota nota'),
@@ -87,10 +87,10 @@ INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 
 
 
-INSERT INTO `nro_revista_tiene_notas` (nro_revista_id, nota_id, nota_seccion_id) VALUES
-(1,1,1),
-(2,2,2),
-(3,3,3);
+INSERT INTO `nro_revista_tiene_notas` (nro_revista_id, nota_id) VALUES
+(1,1),
+(2,2),
+(3,3);
 
 INSERT INTO `transaccion` (id, importe_total, fecha, tipo_pago_id) VALUES
 (1,200,'2020-01-01',1),

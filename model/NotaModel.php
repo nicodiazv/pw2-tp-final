@@ -33,9 +33,28 @@ class NotaModel{
     public function getNota($id){
         return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id where n.id = $id");
     }
-
+    
+    // todas las notas
     public function obtenerNotas(){
         return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id");
+    }
+
+    // notas creadas por el contenidista
+    public function obtenerNotasCreadas($id){
+        return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido 
+        from nota n join seccion s on s.id = n.seccion_id 
+        join usuario u on u.id = n.usuario_id
+        WHERE n.usuario_id = $id
+        ");
+    }
+
+    // notas aprobadas
+    public function obtenerNotasAprobadas(){
+        return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido 
+        from nota n join seccion s on s.id = n.seccion_id 
+        join usuario u on u.id = n.usuario_id
+        WHERE n.aprobada = 1
+        ");
     }
 
     public function aprobarNota($id){

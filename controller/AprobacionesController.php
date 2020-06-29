@@ -77,6 +77,13 @@ class AprobacionesController{
         $this->index();
     }
 
+    public function rechazarNotaEnNroPublicacion(){
+        $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
+        $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
+        $this->publicacionModel->rechazarNotaEnNroPublicacion($nota_id, $publicacion_id);
+        $this->index();
+    }
+
     public function seccionesPendientes()
     {
         $this->modelSideBar($data);

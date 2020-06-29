@@ -13,39 +13,42 @@
 
 
                     {{# nota}}
-                    <div class="row">
-                        <h1 class="display-4">{{titulo}}</h1>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <img src="/images/notas/{{imagen_nombre}}" class="rounded mx-auto d-block" style="height: 200px"  alt="">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 text-primary font-weight-bold">{{autor_nombre}} {{autor_apellido}}</div>
-                        <div class="col-12">¿Fecha de creación de la nota?</div>
-                        <div class="col-12 text-secondary font-weight-light">{{ubicacion_nombre}}</div>
-
-                    </div>
-
-                    <div class="row my-2">
-                        <div class="col">
-                            <small>
-                                {{copete}}
-                            </small>
+                        <div class="row">
+                            <h1 class="display-4">{{titulo}}</h1>
                         </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            {{cuerpo}}
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="/images/notas/{{imagen_nombre}}" class="rounded mx-auto d-block" style="height: 200px"  alt="">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 text-primary font-weight-bold">{{autor_nombre}} {{autor_apellido}}</div>
+                            <div class="col-12">¿Fecha de creación de la nota?</div>
+                            <div class="col-12 text-secondary font-weight-light">{{ubicacion_nombre}}</div>
 
                         </div>
-                    </div>
+
+                        <div class="row my-2">
+                            <div class="col">
+                                <small>
+                                    {{copete}}
+                                </small>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{cuerpo}}
+
+                            </div>
+                        </div>
 
                     {{/ nota}}
+                    {{^nota}}
+                        <h1>La nota solicitada no existe!</h1>
+                    {{/nota}}
 
 
                 </div>

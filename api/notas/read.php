@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 $database = new Database("localhost", "root", "", "pw2");
 $notaModel = new NotaModel($database);
 
-$result = $notaModel->obtenerNotas(); 
+$result = $notaModel->obtenerNotasAprobadas(); 
 
   $notas_arr = array();
     foreach ($result as $row ) {

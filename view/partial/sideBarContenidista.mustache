@@ -7,12 +7,17 @@
     <a href="/login/cerrarSesion" class="badge badge-danger">Cerrar sesión</a>
     <br />
     <a href="/inicioContenidista" class="badge badge-info">Ir al inicio</a>
+    <br>
+    <button id="modo-oscuro" class="btn btn-dark">Modo Oscuro</button>
     <!-- Categorias -->
     <h3 class="h5 mt-5">Mis notas</h3>
     <div class="categories">
         <ul>
             {{#notasPorCategoria}}
                 <li><a href="/nota/notasPorCategoria/{{id}}">{{nombre}} <span>({{cantidad}})</span></a></li>
+            {{/notasPorCategoria}}
+            {{^notasPorCategoria}}
+               <li> No tiene ninguna nota, haga click <a href="/nota/crearnota">aquí</a> para crear una.</li>
             {{/notasPorCategoria}}
 
         </ul>

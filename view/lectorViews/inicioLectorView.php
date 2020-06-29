@@ -83,6 +83,7 @@
 <!-- End Catalogo de diarios -->
 </div>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc" defer></script>
 <script>
   // navigator.geolocation.getCurrentPosition(posicionUsuario => {
@@ -94,8 +95,10 @@
   //   
   // })
   document.addEventListener("DOMContentLoaded", () => {
-
-    fetch("http://localhost/pw2-final/api/notas/read.php")
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
+    const url = `${protocol}//${host}/api/notas/read.php`
+    fetch(url)
       .then(res => res.json())
       .then(lugares => {
 
@@ -134,14 +137,21 @@
       let infoWindow = new google.maps.InfoWindow({
         content: `<h1>${lugar.titulo}</h1>
           <p>${lugar.copete}</p>
-          <a href='http://pw2-final.test/nota/vernota?id=${lugar.id}'>Ver más!</a>`
+          <a href='http:/infornete.test/nota/vernota?id=${lugar.id}'>Ver más!</a>`
       })
 
       marcador.addListener('click', () => {
         infoWindow.open(map, marcador)
       })
+      return marcador
 
     })
+
+    var markerCluster = new MarkerClusterer(map, marcadores,
+            {
+              imagePath: '/images/map/',
+              maxZoom: 12});
+      
 
   }
 

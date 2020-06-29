@@ -18,7 +18,7 @@
           </div>
           <div class="row">
             <!-- Tarjeta de administración -->
-            <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="tarjeta col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
               <div class="icon-box">
                 <i class="icofont-computer"></i>
                 <h4><a href="/revistas/crearRevista">Crear revista nueva</a></h4>
@@ -37,7 +37,7 @@
             </div>
             -->
               <!-- Tarjeta de administración -->
-              <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
                       <i class="icofont-chart-bar-graph"></i>
                       <h4><a href="/nota/crearnota">Crear nota</a></h4>
@@ -47,7 +47,7 @@
               </div>
               <!-- End Tarjeta de administración -->
               <!-- Tarjeta de administración -->
-              <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
                       <i class="icofont-newspaper"></i>
                       <h4><a href="/seccion/crearSeccion">Crear sección</a></h4>
