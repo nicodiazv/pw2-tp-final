@@ -23,7 +23,7 @@ class HomeController{
     public function inicioPorTipoDeUsuario(){
         switch ($_SESSION['usuario']['usuario_tipo_id']){
             case 1:
-                return 'administradorViews/inicioAdminView';
+                return 'administradorViews/inicioAdministradorView';
                 break;
             case 2:
                 return 'contenidistaViews/inicioContenidistaView';

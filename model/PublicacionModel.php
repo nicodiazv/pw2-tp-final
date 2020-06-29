@@ -28,7 +28,7 @@ class PublicacionModel {
         JOIN usuario u on u.id = n.usuario_id
         JOIN seccion s on s.id = n.seccion_id
         JOIN nro_revista r on r.id = rtn.nro_revista_id
-        where rtn.aprobada is null");
+        where rtn.aprobada = 0");
     }
     public function obtenerNotasEnNroPublicacionesPorNotaId($id){
         return $this->connection->query("SELECT rtn.nro_revista_id as publicacion_id, rtn.nota_id ,n.titulo, r.nombre as publicacion_nombre, rtn.aprobada as aprobada FROM nro_revista_tiene_notas rtn
@@ -43,6 +43,9 @@ class PublicacionModel {
 
     public function aprobarNotaEnNroPublicacion($nota_id, $publicacion_id){
         return $this->connection->query("UPDATE nro_revista_tiene_notas SET aprobada = 1 WHERE nota_id = $nota_id  and nro_revista_id = $publicacion_id");
+    }
+    public function rechazarNotaEnNroPublicacion($nota_id, $publicacion_id){
+        return $this->connection->query("UPDATE nro_revista_tiene_notas SET aprobada = 2 WHERE nota_id = $nota_id  and nro_revista_id = $publicacion_id");
     }
 
     /* ------------------PUBLICACIONES (REVISTA)-----------------*/

@@ -70,9 +70,13 @@ class ModuleInitializer {
 
     public function createInicioLectorController() {
         include_once("model/CatalogoModel.php");
+        include_once("model/NotaModel.php");
+
         include_once("controller/InicioLectorController.php");
-        $model = new CatalogoModel($this->database);
-        return new InicioLectorController($model, $this->renderer);
+        $notaModel = new NotaModel($this->database);
+
+        $catalogoModel = new CatalogoModel($this->database);
+        return new InicioLectorController($catalogoModel,$notaModel,$this->renderer);
     }
 
     public function createInicioAdministradorController() {
@@ -142,10 +146,13 @@ class ModuleInitializer {
 
     public function createSeccionController() {
         include_once("model/SeccionModel.php");
+        include_once("model/NotaModel.php");
+        
         include_once("controller/SeccionController.php");
-
-        $Model = new SeccionModel($this->database);
-        return new SeccionController($Model, $this->renderer);
+        
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        return new SeccionController($seccionModel,$notaModel, $this->renderer);
     }
 
     public function createDefaultController() {

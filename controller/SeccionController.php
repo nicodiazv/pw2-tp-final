@@ -4,15 +4,19 @@ class SeccionController{
 
     private $renderer;
     private $seccionModel;
+    private $notaModel;
 
-    public function  __construct($model, $renderer)
+    public function  __construct($seccionModel,$notaModel, $renderer)
     {
         $this->renderer = $renderer;
-        $this->seccionModel = $model;
+        $this->seccionModel = $seccionModel;
+        $this->notaModel = $notaModel;
+
     }
 
     public function index()
     {
+        $this->modelSideBar($data);
         if(isset($_SESSION["usuario"]))
         {
             $usuario = $_SESSION["usuario"];
@@ -36,6 +40,7 @@ class SeccionController{
 
     public function guardarSeccion()
     {
+        $this->modelSideBar($data);
         if(isset($_POST["nombre"]))
         {
             $seccionName = $_POST["nombre"];
@@ -50,6 +55,17 @@ class SeccionController{
             return;
         }
 
+    }
+
+    public function modelSideBar(&$data)
+    {
+        if (ValidateSession::esLector()) {
+
+        }
+        if (ValidateSession::esContenidista()) {
+            $data["usuario"] = $_SESSION["usuario"];
+            $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+        }
     }
 
 }

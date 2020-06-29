@@ -16,7 +16,7 @@ class RegistroController{
     public function registrar(){
         try {
             //Valida que los parámetros no sean nulos
-            $data["nombre"] = ValidateParameter::validateParam($_POST["telefono"]);
+            $data["nombre"] = ValidateParameter::validateParam($_POST["nombre"]);
             $data["apellido"] = ValidateParameter::validateParam($_POST["apellido"]);
             $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
             $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));

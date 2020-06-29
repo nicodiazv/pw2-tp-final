@@ -1,5 +1,6 @@
 <?php
-class NotaController{
+class NotaController
+{
 
     private $renderer;
     private $notaModel;
@@ -8,107 +9,133 @@ class NotaController{
 
     private $error = array();
 
-    public function __construct($notaModel,$seccionModel, $publicacionModel,$renderer){
-        ValidateSession::validarSesionContenidista();
+    public function __construct($notaModel, $seccionModel, $publicacionModel, $renderer)
+    {
+        // ValidateSession::validarSesionContenidista();
         $this->renderer = $renderer;
         $this->notaModel = $notaModel;
         $this->seccionModel = $seccionModel;
         $this->publicacionModel = $publicacionModel;
     }
 
-    public function index(){
+    public function index()
+    {
         $this->modelSideBar($data);
-        $data['notas'] = $this->notaModel->obtenerNotas();
-        echo $this->renderer->render( "view/contenidistaViews/verNotasView.php", $data);
-    }
-
-    public function crearNota(){
-        $this->modelSideBar($data);
-        if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2){
-            $data['secciones'] = $this->seccionModel->obtenerSecciones();
-            $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-            if($this->error){
-                $data["flashMessage"] = $this->error;
-            }
-
-            echo $this->renderer->render( "view/contenidistaViews/crearNotaView.php", $data);
-            return;
+        
+        $usuario = $_SESSION['usuario'];
+        if (ValidateSession::esContenidista()){
+            $data['notas'] = $this->notaModel->obtenerNotasCreadas($usuario['id']);
+            echo $this->renderer->render("view/contenidistaViews/verNotasView.php", $data);  
+        } 
+        if (ValidateSession::esLector()) {
+            $data['notas'] = $this->notaModel->obtenerNotasAprobadas();
+            echo $this->renderer->render("view/lectorViews/verNotasView.php", $data);
         }
+    }
+    public function crearNota()
+    {
+        ValidateSession::validarSesionContenidista();
+        $this->modelSideBar($data);
+        $data['secciones'] = $this->seccionModel->obtenerSecciones();
+        $data['flashMessage'] = $this->error;
 
-        $data["flashMessage"] = array("class"=>"danger","message"=>"No posee permisos para crear notas");
-        echo $this->renderer->render( "view/homeView.php",$data);
+        echo $this->renderer->render("view/contenidistaViews/crearNotaView.php", $data);
+        return;
     }
 
-    public function guardarNota(){
+    public function guardarNota()
+    {
+        ValidateSession::validarSesionContenidista();
+        $this->modelSideBar($data);
         $usuario_id = $_SESSION["usuario"]["id"];
-        $titulo = isset($_POST["titulo"]) ?  $_POST["titulo"] : false;
-        $ubicacion = isset($_POST["ubicacion"]) ?  $_POST["ubicacion"] : false;
-        $place_id = isset($_POST["place_id"]) ?  $_POST["place_id"] : false;
-        $lat = isset($_POST["lat"]) ?  $_POST["lat"] : false;
-        $lng = isset($_POST["lng"]) ?  $_POST["lng"] : false;
-        $enlace = isset($_POST["enlace"]) ?  $_POST["enlace"] : false;
+        try {
 
+            $titulo = ValidateParameter::validateParam($_POST["titulo"]);
+            $ubicacion = ValidateParameter::validateParam($_POST["ubicacion"]);
+            $place_id = ValidateParameter::validateParam($_POST["place_id"]);
+            $lat = ValidateParameter::validateParam($_POST["lat"]);
+            $lng = ValidateParameter::validateParam($_POST["lng"]);
+            $enlace = ValidateParameter::validateParam($_POST["enlace"]);
+            $seccion_id = ValidateParameter::validateParam($_POST["seccion"]);
+            $cuerpo = ValidateParameter::validateParam($_POST["cuerpo"]);
+            $copete = ValidateParameter::validateParam($_POST["copete"]);
 
-        $seccion_id = isset($_POST["seccion"]) ?  $_POST["seccion"] : false;
-        $cuerpo = isset($_POST["cuerpo"]) ?  $_POST["cuerpo"] : false;
-        $copete = isset($_POST["copete"]) ?  $_POST["copete"] : false;
-
-        //Subir imagen de la nota
-        try{
+            //Subir imagen de la nota
             $imagen = $_FILES['uploadedImage'];
-            $imagenNombre = UploadImage::subirFoto($imagen,ImagesDirectory::NOTAS);
-        }catch(Exception $e){
+            $imagenNombre = UploadImage::subirFoto($imagen, ImagesDirectory::NOTAS);
+        } catch (Exception $e) {
             $this->error["class"] = "danger";
-            $this->error["message"] = "No se pudo subir la foto";
+            $this->error["message"] = "Error en la carga";
             $this->crearNota();
             return;
         }
 
-        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat,$lng,$seccion_id, $cuerpo, $imagenNombre, $enlace,$copete);
+        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete);
+        if($nota_guardada) $data["alert"] = array("class" => "success", "message" => "La nota ha sido creada correctamente");
+        else $data["alert"] = array("class" => "danger", "message" => "La nota no ha sido creada por algun error imprevisto");
+        echo $this->renderer->render("view/contenidistaViews/inicioContenidistaView.php", $data);
 
-//        header("Location: /InicioContenidista");
-        $data["alert"] = array("class" => "success", "message" => "La nota ha sido creada correctamente");
-        echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php",$data);
-
-//        return;
     }
 
-    public function verNota(){
-        $nota_id = ValidateParameter::validateParam($_GET['id']);
-        $this->modelSideBar($data);
+    public function verNota()
+    {
+        try{
+            $nota_id = ValidateParameter::validateParam($_GET['id']);
+        }catch(FortException $e){
+            return $this->index();
+        }
+
         $data['nota'] = $this->notaModel->getNota($nota_id);
+        // if(!$data['nota']) return $this->index();
+        if (ValidateSession::esLector()) {
+            echo $this->renderer->render("view/lectorViews/verNotaView.php", $data);
+            exit();
+        }
+
+        $this->modelSideBar($data);
         $data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
-        echo $this->renderer->render( "view/contenidistaViews/verNotaView.php", $data);
+        echo $this->renderer->render("view/contenidistaViews/verNotaView.php", $data);
     }
 
-    public function agregarNotaAPublicacion(){
+    public function agregarNotaAPublicacion()
+    {
+        ValidateSession::validarSesionContenidista();
         $nota_id = ValidateParameter::validateParam($_GET['id']);
         $this->modelSideBar($data);
         $data['nota'] = $this->notaModel->getNota($nota_id);
         $data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
         $data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPorNotaId($nota_id);
-        echo $this->renderer->render( "view/contenidistaViews/agregarNotaAPublicacionView.php", $data);
+        echo $this->renderer->render("view/contenidistaViews/agregarNotaAPublicacionView.php", $data);
     }
 
-    public function notasPorCategoria(){
+    public function notasPorCategoria()
+    {
+        ValidateSession::validarSesionContenidista();
         $this->modelSideBar($data);
         $usuario_id = $_SESSION["usuario"]["id"];
         $seccion_id = $_GET['id'];
         $data["notas"] = $this->notaModel->notasPorSeccionYUsuario($usuario_id, $seccion_id);
-        $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-        echo $this->renderer->render( "view/contenidistaViews/notasPorCategoriaView.php", $data);
+        // echo $this->renderer->render("view/contenidistaViews/notasPorCategoriaView.php", $data);
+        echo $this->renderer->render("view/contenidistaViews/verNotasView.php", $data);
     }
 
-    public function enviarSolicitud(){
+    public function enviarSolicitud()
+    {
+        ValidateSession::validarSesionContenidista();
         $nota_id = ValidateParameter::validateParam($_POST['nota_id']);
         $publicacion_id = ValidateParameter::validateParam($_POST['publicacion_id']);
-        $resultado = $this->publicacionModel->enviarSolicitudNota($nota_id,$publicacion_id);
+        $resultado = $this->publicacionModel->enviarSolicitudNota($nota_id, $publicacion_id);
         $this->index();
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
-        $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-    }
+    public function modelSideBar(&$data)
+    {
+        if (ValidateSession::esLector()) {
 
+        }
+        if (ValidateSession::esContenidista()) {
+            $data["usuario"] = $_SESSION["usuario"];
+            $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+        }
+    }
 }
