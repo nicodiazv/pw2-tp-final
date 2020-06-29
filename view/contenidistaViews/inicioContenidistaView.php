@@ -17,11 +17,22 @@
               sit in iste officiis commodi quidem hic quas.</p>
           </div>
           <div class="row">
+              <!-- Tarjeta de administración -->
+              <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box">
+                      <i class="icofont-newspaper"></i>
+                      <h4><a href="/seccion/crearSeccion">Crear sección</a></h4>
+                      <p>En este apartado usted podrá crear secciones, las cuales le permitirán agrupar notas dentro
+                          de las publicaciones. Una vez creadas las secciones, el estado de estas pasará a
+                          pendientes de aprobación.</p>
+                  </div>
+              </div>
+              <!-- End Tarjeta de administración -->
             <!-- Tarjeta de administración -->
             <div class="tarjeta col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
               <div class="icon-box">
                 <i class="icofont-computer"></i>
-                <h4><a href="/revistas/crearRevista">Crear revista nueva</a></h4>
+                <h4><a href="/revistas/crearRevista">Crear revista</a></h4>
                 <p>En esta sección usted podrá crear revistas. El estado de estos pasará a pendientes de
                   aprobación.</p>
               </div>
@@ -46,17 +57,7 @@
                   </div>
               </div>
               <!-- End Tarjeta de administración -->
-              <!-- Tarjeta de administración -->
-              <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon-box">
-                      <i class="icofont-newspaper"></i>
-                      <h4><a href="/seccion/crearSeccion">Crear sección</a></h4>
-                      <p>En este apartado usted podrá crear secciones, las cuales le permitirán agrupar notas dentro
-                          de las publicaciones. Una vez creadas las secciones, el estado de estas pasará a
-                          pendientes de aprobación.</p>
-                  </div>
-              </div>
-              <!-- End Tarjeta de administración -->
+
           </div>
         </div>
 

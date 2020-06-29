@@ -51,7 +51,6 @@ class SuscripcionesController {
             $idUsuario = $data["usuario"]["id"];
             $fechaInicio = date('Y-m-d');
             $fechaFin = date('Y-m-d', strtotime("+1 months", strtotime($fechaInicio)));
-
             $this->suscripcionModel->usuarioYaSeEncuentraSuscrito($idUsuario,$idRevista,$fechaFin);
             $revista = $this->revistaModel->obtenerRevistaPorId($idRevista);
             $idTransaccion = $this->transaccionModel->registrarTransaccion($revista[0]['precio_suscripcion_mensual'],$fechaInicio,2);

@@ -9,9 +9,7 @@ class NotaController
 
     private $error = array();
 
-    public function __construct($notaModel, $seccionModel, $publicacionModel, $renderer)
-    {
-        // ValidateSession::validarSesionContenidista();
+    public function __construct($notaModel, $seccionModel, $publicacionModel, $renderer) {
         $this->renderer = $renderer;
         $this->notaModel = $notaModel;
         $this->seccionModel = $seccionModel;
@@ -52,9 +50,9 @@ class NotaController
 
             $titulo = ValidateParameter::validateParam($_POST["titulo"]);
             $ubicacion = ValidateParameter::validateParam($_POST["ubicacion"]);
-            $place_id = ValidateParameter::validateParam($_POST["place_id"]);
-            $lat = ValidateParameter::validateParam($_POST["lat"]);
-            $lng = ValidateParameter::validateParam($_POST["lng"]);
+            $place_id = $_POST["place_id"];
+            $lat = $_POST["lat"];
+            $lng = $_POST["lng"];
             $enlace = ValidateParameter::validateParam($_POST["enlace"]);
             $seccion_id = ValidateParameter::validateParam($_POST["seccion"]);
             $cuerpo = ValidateParameter::validateParam($_POST["cuerpo"]);
@@ -65,28 +63,30 @@ class NotaController
             $imagenNombre = UploadImage::subirFoto($imagen, ImagesDirectory::NOTAS);
         } catch (Exception $e) {
             $this->error["class"] = "danger";
-            $this->error["message"] = "Error en la carga";
+            $this->error["message"] = "Error en la carga de la nota";
             $this->crearNota();
             return;
         }
 
         $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete);
-        if($nota_guardada) $data["alert"] = array("class" => "success", "message" => "La nota ha sido creada correctamente");
+
+        if($nota_guardada) $data["alert"] = array("class" => "success", "message" => "La nota \"$titulo\" ha sido creada correctamente");
         else $data["alert"] = array("class" => "danger", "message" => "La nota no ha sido creada por algun error imprevisto");
         echo $this->renderer->render("view/contenidistaViews/inicioContenidistaView.php", $data);
 
     }
 
-    public function verNota()
-    {
+    public function verNota() {
+
         try{
             $nota_id = ValidateParameter::validateParam($_GET['id']);
+
         }catch(FortException $e){
-            return $this->index();
+            $this->index();
         }
 
         $data['nota'] = $this->notaModel->getNota($nota_id);
-        // if(!$data['nota']) return $this->index();
+
         if (ValidateSession::esLector()) {
             echo $this->renderer->render("view/lectorViews/verNotaView.php", $data);
             exit();
@@ -130,11 +130,11 @@ class NotaController
 
     public function modelSideBar(&$data)
     {
+        $data["usuario"] = $_SESSION["usuario"];
         if (ValidateSession::esLector()) {
 
         }
         if (ValidateSession::esContenidista()) {
-            $data["usuario"] = $_SESSION["usuario"];
             $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
         }
     }

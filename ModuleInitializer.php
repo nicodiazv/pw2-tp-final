@@ -76,7 +76,7 @@ class ModuleInitializer {
         $notaModel = new NotaModel($this->database);
 
         $catalogoModel = new CatalogoModel($this->database);
-        return new InicioLectorController($catalogoModel,$notaModel,$this->renderer);
+        return new InicioLectorController($catalogoModel, $notaModel, $this->renderer);
     }
 
     public function createInicioAdministradorController() {
@@ -87,10 +87,12 @@ class ModuleInitializer {
     public function createRevistasController() {
         include_once("model/RevistaModel.php");
         include_once("model/CatalogoModel.php");
+        include_once("model/NotaModel.php");
         include_once("controller/RevistasController.php");
         $revistaModel = new RevistaModel($this->database);
         $catalogoModel = new CatalogoModel($this->database);
-        return new RevistasController($revistaModel, $catalogoModel, $this->renderer);
+        $notaModel = new NotaModel($this->database);
+        return new RevistasController($revistaModel, $catalogoModel, $notaModel, $this->renderer);
     }
 
     public function createUsuariosController() {
@@ -100,17 +102,18 @@ class ModuleInitializer {
         return new UsuariosController($Model, $this->renderer);
     }
 
-    
-    public function createPublicacionesController()
-    {
+
+    public function createPublicacionesController() {
         include_once("model/PublicacionModel.php");
+        include_once("model/NotaModel.php");
+
         include_once("controller/PublicacionesController.php");
-        $Model = new PublicacionModel($this->database);
-        return new PublicacionesController($Model,$this->renderer);
+        $publicacionModel = new PublicacionModel($this->database);
+        $notaModel = new NotaModel($this->database);
+        return new PublicacionesController($publicacionModel, $notaModel, $this->renderer);
     }
 
-    public function createCatalogosController()
-    {
+    public function createCatalogosController() {
         include_once("model/CatalogoModel.php");
         include_once("controller/CatalogosController.php");
         $model = new CatalogoModel($this->database);
@@ -127,7 +130,7 @@ class ModuleInitializer {
         $catalogoModel = new CatalogoModel($this->database);
         $revistaModel = new RevistaModel($this->database);
         $transaccionModel = new TransaccionModel($this->database);
-        return new SuscripcionesController($suscripcionModel, $catalogoModel, $revistaModel,$transaccionModel, $this->renderer);
+        return new SuscripcionesController($suscripcionModel, $catalogoModel, $revistaModel, $transaccionModel, $this->renderer);
     }
 
     public function createAprobacionesController() {
@@ -147,12 +150,12 @@ class ModuleInitializer {
     public function createSeccionController() {
         include_once("model/SeccionModel.php");
         include_once("model/NotaModel.php");
-        
+
         include_once("controller/SeccionController.php");
-        
+
         $notaModel = new NotaModel($this->database);
         $seccionModel = new SeccionModel($this->database);
-        return new SeccionController($seccionModel,$notaModel, $this->renderer);
+        return new SeccionController($seccionModel, $notaModel, $this->renderer);
     }
 
     public function createDefaultController() {

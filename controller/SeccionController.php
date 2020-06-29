@@ -6,16 +6,13 @@ class SeccionController{
     private $seccionModel;
     private $notaModel;
 
-    public function  __construct($seccionModel,$notaModel, $renderer)
-    {
+    public function  __construct($seccionModel,$notaModel, $renderer) {
         $this->renderer = $renderer;
         $this->seccionModel = $seccionModel;
         $this->notaModel = $notaModel;
-
     }
 
-    public function index()
-    {
+    public function index() {
         $this->modelSideBar($data);
         if(isset($_SESSION["usuario"]))
         {
@@ -27,8 +24,8 @@ class SeccionController{
         echo $this->renderer->render( "view/homeView.php");
     }
 
-    public function crearSeccion()
-    {
+    public function crearSeccion() {
+        $this->modelSideBar($data);
         if(isset($_SESSION["usuario"]) && $_SESSION['usuario']['usuario_tipo_id'] == 2)
         {
             echo $this->renderer->render("view/contenidistaViews/crearSeccionView.php");
@@ -38,8 +35,7 @@ class SeccionController{
         echo $this->renderer->render( "view/homeView.php",$data);
     }
 
-    public function guardarSeccion()
-    {
+    public function guardarSeccion() {
         $this->modelSideBar($data);
         if(isset($_POST["nombre"]))
         {
@@ -47,9 +43,9 @@ class SeccionController{
             $id = $this->seccionModel->guardarSeccion($seccionName);
 
             if ($id !== 0)
-                $data["alert"] = array("class"=>"success","message"=>"Sección creada correctamente ($seccionName)");
+                $data["alert"] = array("class"=>"success","message"=>"Sección \"$seccionName \" creada correctamente");
             else
-                $data["alert"] = array("class"=>"danger","message"=>"No se pudo guardar la sección ($seccionName). Valide si ya existe y vuelva a intentarlo.");
+                $data["alert"] = array("class"=>"danger","message"=>"No se pudo crear la sección \"$seccionName \". Valide si ya existe y vuelva a intentarlo.");
 
             echo $this->renderer->render( "view/contenidistaViews/inicioContenidistaView.php", $data);
             return;
@@ -57,8 +53,7 @@ class SeccionController{
 
     }
 
-    public function modelSideBar(&$data)
-    {
+    public function modelSideBar(&$data) {
         if (ValidateSession::esLector()) {
 
         }

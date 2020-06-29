@@ -32,6 +32,6 @@ class CatalogosController {
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
-        $data["cantRevistasPorCatalogo"]  = $this->model->cantRevistasPorCatalogo();
+        $data["cantRevistasPorCatalogo"]  = $_SESSION["cantRevistasPorCatalogo"];
     }
 }

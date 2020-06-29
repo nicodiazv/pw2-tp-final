@@ -1,4 +1,4 @@
-{{> headerContenidista}}
+{{> headerLector}}
 
 
 <div class="row justify-content-around">

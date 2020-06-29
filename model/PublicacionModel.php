@@ -14,7 +14,7 @@ class PublicacionModel {
         return $this->connection->query("SELECT * FROM nro_revista");
     }
 
-    public function obtenerNroPublicacionPorId($id){
+    public function obtenerPublicacionPorId($id){
         return $this->connection->query("SELECT * FROM nro_revista WHERE id = $id");
     }
 
@@ -54,4 +54,19 @@ class PublicacionModel {
         return $this->connection->query("SELECT * FROM revista");
     }
 
+    public function obtenerPublicacionesDisponiblesParaUsuario($usuarioId){
+        return $this->connection->query("SELECT nr.id as id_publicacion, re.nombre as revista_nombre, 
+                                                nr.nombre as publicacion_nombre, nr.fecha_publicacion as fecha_publicacion  
+                                        FROM usuario_suscribe_revista usr
+                                        JOIN revista re ON (usr.revista_id = re.id)
+                                        JOIN nro_revista nr ON (re.id = nr.revista_id)
+                                        WHERE usr.usuario_id = $usuarioId");
+    }
+
+    public function obtenerNotasDisponiblesDePublicacion($idPublicacion){
+        return $this->connection->query("SELECT titulo, ubicacion_nombre, n.imagen_nombre, copete, n.aprobada aprobada, seccion_id
+                                        FROM nro_revista_tiene_notas nrtn
+                                        JOIN nota n ON (nrtn.nota_id = n.id)
+                                        WHERE nro_revista_id = $idPublicacion AND nrtn.aprobada = 1");
+    }
 }

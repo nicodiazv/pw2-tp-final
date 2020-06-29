@@ -88,4 +88,5 @@ class RevistaModel {
                                         FROM revista 
                                         WHERE id = $id");
     }
+
 }

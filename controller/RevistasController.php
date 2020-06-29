@@ -5,11 +5,13 @@ class RevistasController {
     private $renderer;
     private $revistaModel;
     private $catalogoModel;
+    private $notaModel;
 
-    public function __construct($revistaModel,$catalogoModel,$renderer) {
+    public function __construct($revistaModel,$catalogoModel,$notaModel,$renderer) {
         $this->renderer = $renderer;
         $this->revistaModel = $revistaModel;
         $this->catalogoModel = $catalogoModel;
+        $this->notaModel = $notaModel;
     }
 
     public function index(){
@@ -87,7 +89,12 @@ class RevistasController {
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
-        $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();
+        if (ValidateSession::esLector()) {
+            $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();
+        }
+        if (ValidateSession::esContenidista()) {
+            $data["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
+        }
     }
 
 }
