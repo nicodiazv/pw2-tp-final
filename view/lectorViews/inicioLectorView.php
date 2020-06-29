@@ -95,16 +95,16 @@
   //   
   // })
   document.addEventListener("DOMContentLoaded", () => {
-    const host = window.location.hostname;
-    const protocol = window.location.protocol;
-    const url = `${protocol}//${host}/api/notas/read.php`
+    // const host = window.location.hostname;
+    // const protocol = window.location.protocol;
+    const url = `/api/notas/read.php`
     fetch(url)
       .then(res => res.json())
       .then(lugares => {
 
         let ubicacion = {
-          lat: -34.637139,
-          lng: -54.496574
+          lat: -34.670319,
+          lng: -58.562796
         }
         // console.log(data)
         dibujarMapa(ubicacion, lugares)
@@ -137,7 +137,7 @@
       let infoWindow = new google.maps.InfoWindow({
         content: `<h1>${lugar.titulo}</h1>
           <p>${lugar.copete}</p>
-          <a href='http:/infornete.test/nota/vernota?id=${lugar.id}'>Ver más!</a>`
+          <a href='/nota/vernota?id=${lugar.id}'>Ver más!</a>`
       })
 
       marcador.addListener('click', () => {
