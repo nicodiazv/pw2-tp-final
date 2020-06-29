@@ -30,7 +30,7 @@ class HomeController{
     }
 
     public function modelSideBar(&$refArrayData) {
-        $this->data["usuario"] = $_SESSION["usuario"];
+        $this->data["usuario"] = isset($_SESSION["usuario"]) ? $_SESSION["usuario"] : false;
         if (ValidateSession::esLector()) {
             $this->data["cantRevistasPorCatalogo"]  = $_SESSION["cantRevistasPorCatalogo"];
         }

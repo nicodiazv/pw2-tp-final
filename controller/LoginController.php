@@ -23,8 +23,11 @@ class LoginController{
         try {
 //            Activar esta linea una vez finalizado el desarrollo
 //            $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
-            $data["email"] = ValidateParameter::validateCleanParameter($_POST["email"]);
-            $data["password"] = ValidateParameter::validateCleanParameter(md5($_POST["password"]));
+            $data["email"] = isset($_POST["email"]) ? $_POST["email"] : false ;
+            $data["password"] = isset($_POST["password"]) ? md5($_POST["password"]) : false ;
+
+            ValidateParameter::validateCleanParameter($data["email"]);
+            ValidateParameter::validateCleanParameter($data["password"]);
             $_SESSION["latitud"] = $_POST["latitud"];
             $_SESSION["longitud"] =  $_POST["longitud"];
         } catch (FortException $e) {

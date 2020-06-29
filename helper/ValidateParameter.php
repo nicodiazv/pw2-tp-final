@@ -17,7 +17,7 @@ class ValidateParameter {
         if(filter_var($email,FILTER_VALIDATE_EMAIL)){
             return $email;
         }else{
-            throw new FortException("Debe ingresar un e-mail válido");
+            throw new FortException("Se ha detectado un e-mail válido");
         }
     }
 
@@ -25,7 +25,7 @@ class ValidateParameter {
        if(is_numeric($tel)){
            return $tel;
        }else{
-           throw new FortException("Debe ingresar un teléfono válido");
+           throw new FortException("Se ha detectado un teléfono válido");
        }
     }
 }

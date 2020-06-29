@@ -30,7 +30,8 @@ class SuscripcionesController {
 //    Vista de suscripción a una revista
     public function suscripcionRevista(){
         try {
-            $idRevista = isset($_GET["id"]) ? ValidateParameter::validateCleanParameter($_GET["id"]) : false;
+            $idRevista = isset($_GET["id"]) ? $_GET["id"] : false;
+            ValidateParameter::validateCleanParameter($idRevista);
             $this->data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
         } catch (FortException $e) {
             $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
@@ -53,7 +54,9 @@ class SuscripcionesController {
 
     public function suscribir(){
         try {
-            $idRevista = isset($_POST["id"]) ? ValidateParameter::validateCleanParameter(isset($_POST["id"])) : false;
+            $idRevista = isset($_POST["id"]) ? $_POST["id"] : false;
+            ValidateParameter::validateCleanParameter($idRevista);
+
             $idUsuario = $this->data["usuario"]["id"];
             $fechaInicio = date('Y-m-d');
             $fechaFin = date('Y-m-d', strtotime("+1 months", strtotime($fechaInicio)));
@@ -72,7 +75,9 @@ class SuscripcionesController {
 
     public function desuscribir(){
         try {
-            $idRevista = ValidateParameter::validateCleanParameter($_POST["id"]);
+            $idRevista = isset($_POST["id"]) ? $_POST["id"] : false;
+            ValidateParameter::validateCleanParameter($idRevista);
+
             $idUsuario = $this->data["usuario"]["id"];
             $this->suscripcionModel->desuscribir($idUsuario,$idRevista);
             $revista = $this->revistaModel->obtenerRevistaPorId($idRevista);
