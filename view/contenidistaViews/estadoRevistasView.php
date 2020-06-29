@@ -1,13 +1,13 @@
 {{> headerContenidista}}
 
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
             <!-- ======= Catalogo de diarios Section ======= -->
             <section id="blog" class="blog col-md-9">
                 <div class="column container-fluid">
                     <div class="section-title">
-                        <h2>Mis Revistas</h2>
+                        <h2>Revistas generadas</h2>
                         <p>Revistas creadas por el contenidista</p>
                     </div>
 
@@ -19,7 +19,6 @@
                     <div class="row">
 
                         <div class="col-12">
-
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -38,7 +37,7 @@
                                         <td>$ {{precio_suscripcion_mensual}}</td>
                                         <td>
                                             {{#aprobada}}
-                                           <span class="bg-success text-white p-1 rounded">Aprobada</span> 
+                                           <span class="bg-success text-white p-1 rounded">Aprobada</span>
                                             {{/aprobada}}
                                             {{^aprobada}}
                                            <span class="bg-info text-white p-1 rounded">Pendiente</span>

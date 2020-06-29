@@ -5,7 +5,7 @@
     {{message}}
 </div>
 {{/flashMessage}}
-<div class="row justify-content-around">
+<div class="row justify-content-between">
 
     {{> sideBarContenidista}}
 

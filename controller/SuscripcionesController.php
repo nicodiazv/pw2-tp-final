@@ -4,86 +4,89 @@
 class SuscripcionesController {
     private $renderer;
     private $suscripcionModel;
-    private $catalogoModel;
     private $revistaModel;
     private $transaccionModel;
+    private $data;
 
-    public function __construct($suscripcionModel,$catalogoModel,$revistaModel,$transaccionModel, $renderer) {
+    public function __construct($suscripcionModel,$revistaModel,$transaccionModel, $renderer) {
         ValidateSession::validarSesionLector();
+        $this->modelSideBar($this->data);
         $this->renderer = $renderer;
         $this->suscripcionModel = $suscripcionModel;
-        $this->catalogoModel = $catalogoModel;
         $this->revistaModel = $revistaModel;
         $this->transaccionModel = $transaccionModel;
     }
 
     public function index(){
-        $this->misSuscripciones();
+        $this->misSuscripciones($this->data);
     }
 
-    public function misSuscripciones(&$data=null){
-        $this->modelSideBar($data);
-        $data["misSuscripciones"] = $this->suscripcionModel->revistasALasQueEstaSuscrito($data["usuario"]["id"]);
-        $data["revistasNoSuscripto"] = $this->suscripcionModel->revistasALasQueEstaNoEstaSuscrito($data["usuario"]["id"]);
-        echo $this->renderer->render( "view/lectorViews/SuscripcionesView.php",$data);
+    public function misSuscripciones(&$data){
+        $this->data["misSuscripciones"] = $this->suscripcionModel->revistasALasQueEstaSuscrito($this->data["usuario"]["id"]);
+        $this->data["revistasNoSuscripto"] = $this->suscripcionModel->revistasALasQueEstaNoEstaSuscrito($this->data["usuario"]["id"]);
+        echo $this->renderer->render( "view/lectorViews/SuscripcionesView.php",$this->data);
     }
 
 //    Vista de suscripción a una revista
     public function suscripcionRevista(){
-        $this->modelSideBar($data);
-        $idRevista = $_GET["id"];
-        $data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
-        echo $this->renderer->render( "view/lectorViews/suscripcionRevista.php",$data);
+        try {
+            $idRevista = isset($_GET["id"]) ? ValidateParameter::validateCleanParameter($_GET["id"]) : false;
+            $this->data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
+        } catch (FortException $e) {
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+        }
+
+        echo $this->renderer->render( "view/lectorViews/suscripcionRevista.php",$this->data);
     }
 
     //    Vista de desuscripción a una revista
     public function desuscripcionRevista(){
-        $this->modelSideBar($data);
-        $idRevista = $_GET["id"];
-        $data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
-        echo $this->renderer->render( "view/lectorViews/desuscripcionRevista.php",$data);
+        try {
+            $idRevista = isset($_GET["id"]) ? ValidateParameter::validateCleanParameter($_GET["id"]) : false;
+            $this->data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
+        } catch (FortException $e) {
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+        }
+
+        echo $this->renderer->render( "view/lectorViews/desuscripcionRevista.php",$this->data);
     }
 
     public function suscribir(){
-        $this->modelSideBar($data);
         try {
-            $idRevista = ValidateParameter::validateParam($_POST["id"]);
-            $idUsuario = $data["usuario"]["id"];
+            $idRevista = isset($_POST["id"]) ? ValidateParameter::validateCleanParameter(isset($_POST["id"])) : false;
+            $idUsuario = $this->data["usuario"]["id"];
             $fechaInicio = date('Y-m-d');
             $fechaFin = date('Y-m-d', strtotime("+1 months", strtotime($fechaInicio)));
-
             $this->suscripcionModel->usuarioYaSeEncuentraSuscrito($idUsuario,$idRevista,$fechaFin);
             $revista = $this->revistaModel->obtenerRevistaPorId($idRevista);
             $idTransaccion = $this->transaccionModel->registrarTransaccion($revista[0]['precio_suscripcion_mensual'],$fechaInicio,2);
             $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
 
-            $data["alert"] = array("class" => "success", "message" => "Se ha suscrito a la revista ". $revista[0]['nombre']." correctamente");
+            $this->data["alert"] = array("class" => "success", "message" => "Se ha suscrito a la revista ". $revista[0]['nombre']." correctamente");
         }catch (FortException $e){
-            $data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
         }
 
-       $this->misSuscripciones($data);
+       $this->misSuscripciones($this->data);
     }
 
     public function desuscribir(){
-        $this->modelSideBar($data);
         try {
-            $idRevista = ValidateParameter::validateParam($_POST["id"]);
-            $idUsuario = $data["usuario"]["id"];
+            $idRevista = ValidateParameter::validateCleanParameter($_POST["id"]);
+            $idUsuario = $this->data["usuario"]["id"];
             $this->suscripcionModel->desuscribir($idUsuario,$idRevista);
             $revista = $this->revistaModel->obtenerRevistaPorId($idRevista);
 
-            $data["alert"] = array("class" => "success", "message" => "Te has desuscrito a la revista ". $revista[0]['nombre']." correctamente");
+            $this->data["alert"] = array("class" => "success", "message" => "Te has desuscrito a la revista ". $revista[0]['nombre']." correctamente");
         } catch (FortException $e) {
-            $data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
         }
 
-        $this->misSuscripciones($data);
+        $this->misSuscripciones($this->data);
     }
-
 
     public function modelSideBar(&$data){
         $data["usuario"] = $_SESSION["usuario"];
-        $data["cantRevistasPorCatalogo"]  = $this->catalogoModel->cantRevistasPorCatalogo();
+        $data["cantRevistasPorCatalogo"]  = $_SESSION["cantRevistasPorCatalogo"];
     }
 }

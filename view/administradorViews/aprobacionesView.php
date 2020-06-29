@@ -1,13 +1,13 @@
 {{> headeradministrador}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarAdministrador}}
 
     <div id="blog" class="blog col-md-9">
 
             <div class="section-title">
                 <h2>Contenidos pendientes</h2>
-                <p>pendientes de aprobacion</p>
+                <p>Aquí podrá aprobar secciones, revistas, publicaciones y notas pendientes de aprobacion</p>
             </div>
 
         <div class="card-deck my-4">

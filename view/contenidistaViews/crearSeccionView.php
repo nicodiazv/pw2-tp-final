@@ -1,11 +1,12 @@
 {{> headerContenidista}}
-{{#flashMessage}}
-<div class="alert alert-{{class}}" role="alert">
-    {{message}}
-</div>
-{{/flashMessage}}
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
+
+    {{#flashMessage}}
+    <div class="alert alert-{{class}}" role="alert">
+        {{message}}
+    </div>
+    {{/flashMessage}}
 
     <!-- ======= Crear seccion ======= -->
     <section id="services" class="services col-md-9">

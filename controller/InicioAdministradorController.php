@@ -1,19 +1,19 @@
 <?php
 class InicioAdministradorController {
     private $renderer;
-    private $model;
+    private $data;
 
     public function __construct($renderer){
         ValidateSession::validarSesionAdministrador();
         $this->renderer = $renderer;
+        $this->modelSideBar($this->data);
     }
 
     public function index(){
-        $this->modelSideBar($data);
-        echo $this->renderer->render( "view/administradorViews/inicioAdministradorView.php",$data);
+        echo $this->renderer->render( "view/administradorViews/inicioAdministradorView.php",$this->data);
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
+    public function modelSideBar(&$refArrayData){
+        $this->data["usuario"] = $_SESSION["usuario"];
     }
 }

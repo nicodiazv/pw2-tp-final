@@ -1,15 +1,13 @@
 {{> headerLector}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarLector}}
 <!-- ======= Pricing Section ======= -->
-<section id="pricing" class="pricing">
+<section id="pricing" class="pricing col-md-9">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2>Mis suscripciones</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
-                Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
-                alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Aquí podrás encontrar a que revistas te encuentras suscrito.</p>
         </div>
         {{#alert}}
         <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
@@ -49,10 +47,8 @@
 
     <div class="container mt-5" data-aos="fade-up">
         <div class="section-title">
-            <h2>Suscribirme a nuevos diarios o revistas</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
-                Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit
-                alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Suscripción a nuevas revistas</h2>
+            <p>Aquí podrás encontrar a que revistas puedes suscribirte.</p>
         </div>
 
         <div class="row">

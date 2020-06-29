@@ -36,7 +36,7 @@ class SuscripcionModel {
     }
 
     public function usuarioYaSeEncuentraSuscrito($idUsuario,$idRevista,$fechaFin){
-        $yaSuscrito = $this->connection->query("SELECT *
+        $yaSuscrito = $this->connection->query("SELECT 1
                                                 FROM usuario_suscribe_revista usr
                                                 WHERE usuario_id = $idUsuario AND revista_id = $idRevista AND fecha_fin <= '$fechaFin';");
         if($yaSuscrito){

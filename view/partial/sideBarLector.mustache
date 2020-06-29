@@ -4,9 +4,10 @@
         <h3>Bienvenide {{nombre}}</h3>
     {{/usuario}}
     <h5>Lector</h5>
-    <a href="/login/cerrarSesion" class="font-weight-bold">Cerrar sesión</a>
+    <a href="/login/cerrarSesion" class="badge badge-danger">Cerrar sesión</a>
     <br />
-    <a href="/inicioLector">Inicio</a>
+    <a href="/" class="badge badge-info">Ir al inicio</a>
+    <br>
     <!-- Catálogos -->
     <h3 class="h5 mt-5">Catálogos de revistas</h3>
     <div class="categories">
@@ -14,11 +15,11 @@
             {{#cantRevistasPorCatalogo}}
                 <li><a href="/catalogos/catalogo/{{id}}" >{{nombre}} <span>({{cantidad}})</span></a></li>
             {{/cantRevistasPorCatalogo}}
+            <a href="/revistas"> <em><strong>Todas las revistas</strong></em></a>
 
         </ul>
     </div>
     <!-- End Categorias-->
-
     <!-- Clima de AccuWeather -->
     <div class="">
         {{#climaActual}}
