@@ -2,36 +2,34 @@
 class CatalogosController {
     private $renderer;
     private $model;
+    private $data;
 
     public function __construct($model, $renderer) {
         ValidateSession::validarSesionLector();
+        $this->modelSideBar($this->data);
         $this->renderer = $renderer;
         $this->model = $model;
     }
 
     public function index(){
-        $this->modelSideBar($data);
         $this->catalogos();
     }
 
     public function catalogos(){
-        $this->modelSideBar($data);
-        $data['catalogos'] = $this->model->obtenerCatalogos();
-        echo $this->renderer->render( "view/lectorViews/catalogosView.php", $data);
+        $this->data['catalogos'] = $this->model->obtenerCatalogos();
+        echo $this->renderer->render( "view/lectorViews/catalogosView.php", $this->data);
     }
-
 
     public function catalogo(){
         $id = $_GET["id"];
-        $data["catalogos"] = $this->model->obtenerCatalogos();
-        $data["catalogo"] = $this->model->obtenerCatalogo($id);
-        $this->modelSideBar($data);
-        $data["revistasPorCatalogo"] = $this->model->revistasPorCatalogo($id);
-        echo $this->renderer->render( "view/lectorViews/catalogoView.php", $data );
+        $this->data["catalogos"] = $this->model->obtenerCatalogos();
+        $this->data["catalogo"] = $this->model->obtenerCatalogo($id);
+        $this->data["revistasPorCatalogo"] = $this->model->revistasPorCatalogo($id);
+        echo $this->renderer->render( "view/lectorViews/catalogoView.php", $this->data );
     }
 
-    public function modelSideBar(&$data){
-        $data["usuario"] = $_SESSION["usuario"];
-        $data["cantRevistasPorCatalogo"]  = $_SESSION["cantRevistasPorCatalogo"];
+    public function modelSideBar(&$refArrayData){
+        $this->data["usuario"] = $_SESSION["usuario"];
+        $this->data["cantRevistasPorCatalogo"]  = $_SESSION["cantRevistasPorCatalogo"];
     }
 }

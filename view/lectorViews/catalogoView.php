@@ -1,9 +1,9 @@
 {{> headerLector}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Mis diarios Section ======= -->
-    <section id="blog" class="blog">
+    <section id="blog" class="blog col-md-9">
         <div class="container">
             <div class="row">
                 {{#catalogo}}

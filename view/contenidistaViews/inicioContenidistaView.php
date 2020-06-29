@@ -1,5 +1,5 @@
 {{> headerContenidista}}
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
 
     <!-- ======= Administracion Section ======= -->

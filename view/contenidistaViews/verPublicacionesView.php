@@ -1,6 +1,6 @@
 {{> headerContenidista}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
             <section id="blog" class="blog col-md-9">
                 <div class="column container-fluid">

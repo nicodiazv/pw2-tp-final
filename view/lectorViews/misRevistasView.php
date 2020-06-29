@@ -1,10 +1,10 @@
 {{> headerLector}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
 {{> sideBarLector}}
 
         <!-- ======= Mis diarios Section ======= -->
-        <section id="blog" class="blog col-sm-9">
+        <section id="blog" class="blog col-md-9">
             <div class="container-fluid">
                 <div class="section-title">
                     <h2>Mis Revistas</h2>
@@ -25,11 +25,11 @@
                                 {{/catalogosDeLaRevista}}
                                 <div class="entry-content">
                                     <p>
-                                        Similique neque nam consequuntur ad non maxime aliquam quas
+                                        {{descripcion}}
                                     </p>
 <!--                                    <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>-->
                                     <div class="read-more font-weight-bold">
-                                        <a href="/publicaciones/publicacion/{{id}}">Ver publicaciones de la revista</a>
+                                        <a href="/publicaciones/publicacion/{{id}}">Ver publicaciones de esta revista</a>
                                     </div>
                                 </div>
                             </div>

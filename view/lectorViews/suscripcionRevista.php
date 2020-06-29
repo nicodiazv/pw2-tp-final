@@ -1,5 +1,8 @@
 {{> headerLector}}
-<div class="row justify-content-around">
+{{#alert}}
+<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+{{/alert}}
+<div class="row justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Pricing Section ======= -->
     {{#revista}}

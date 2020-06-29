@@ -1,6 +1,6 @@
 {{> headerContenidista}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
     <div class="col-md-8 my-4">
 

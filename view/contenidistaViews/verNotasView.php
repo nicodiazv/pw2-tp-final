@@ -1,7 +1,7 @@
 {{> headerContenidista}}
 
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarContenidista}}
     <!-- ======= Catalogo de diarios Section ======= -->
     <section id="blog" class="blog col-md-9">

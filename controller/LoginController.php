@@ -13,6 +13,9 @@ class LoginController{
     public function index(){
         if(isset($_SESSION["usuario"])){
             $this->inicioPorTipoDeUsuario($_SESSION["usuario"]['usuario_tipo_id']);
+        }else{
+            header('location: /');
+            exit();
         }
     }
 
@@ -20,8 +23,8 @@ class LoginController{
         try {
 //            Activar esta linea una vez finalizado el desarrollo
 //            $data["email"] = ValidateParameter::validateEmailSyntax($_POST["email"]);
-            $data["email"] = ValidateParameter::validateParam($_POST["email"]);
-            $data["password"] = ValidateParameter::validateParam(md5($_POST["password"]));
+            $data["email"] = ValidateParameter::validateCleanParameter($_POST["email"]);
+            $data["password"] = ValidateParameter::validateCleanParameter(md5($_POST["password"]));
             $_SESSION["latitud"] = $_POST["latitud"];
             $_SESSION["longitud"] =  $_POST["longitud"];
         } catch (FortException $e) {
@@ -33,7 +36,7 @@ class LoginController{
 
         //Si existe el usuario
         if($usuario){
-            $_SESSION["usuario"] = $usuario[0]; //Línea importante
+            $_SESSION["usuario"] = $usuario[0]; //Línea importante!!!
             $this->inicioPorTipoDeUsuario($_SESSION["usuario"]['usuario_tipo_id']);
             exit();
         }else{

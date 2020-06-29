@@ -9,14 +9,16 @@ class RevistaModel {
     }
 
     public function obtenerRevistas(){
-        return $this->connection->query("SELECT * 
-                                        FROM revista");
+        return $this->connection->query("SELECT * FROM revista");
     }
 
     public function obtenerRevistaPorId($id){
-        return $this->connection->query("SELECT * 
-                                        FROM revista 
-                                        WHERE id = $id");
+        $revista = $this->connection->query("SELECT * FROM revista WHERE id = $id");
+        if($revista){
+            return $revista;
+        }else{
+            throw new FortException("No existe la revista \"$id\"");
+        }
     }
 
     public function obtenerRevistasDelUsuario($idUsuario){
@@ -39,9 +41,7 @@ class RevistaModel {
     }
 
     public function validarRevistaYaExiste($nombreRevista) {
-        $yaExiste = $this->connection->query("SELECT nombre 
-                                              FROM revista
-                                              WHERE nombre = '$nombreRevista'");
+        $yaExiste = $this->connection->query("SELECT nombre  FROM revista WHERE nombre = '$nombreRevista'");
         if($yaExiste){
             throw new FortException("Ya existe la revista \"$nombreRevista\"");
         }else{
@@ -50,7 +50,8 @@ class RevistaModel {
     }
 
     public function revistasPendientesAprobacion(){
-        return $this->connection->query("SELECT re.id as id_re,re.nombre as nombre_revista, re.precio_suscripcion_mensual as precio_mensual, us.nombre as nombre_usuario, us.apellido as apellido_usuario
+        return $this->connection->query("SELECT re.id as id_re,re.nombre as nombre_revista, re.precio_suscripcion_mensual as precio_mensual,
+                                                 us.nombre as nombre_usuario, us.apellido as apellido_usuario
                                         FROM revista re JOIN usuario us ON (re.usuario_id = us.id) 
                                         WHERE re.aprobada IS NULL;");
     }
@@ -63,7 +64,8 @@ class RevistaModel {
 
     public function obtenerRevistaPendienteAprobacion($idRevista){
         return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario, re.imagen_nombre as imagen_nombre
-                                        FROM revista re JOIN usuario us ON (re.usuario_id = us.id)
+                                        FROM revista re 
+                                        JOIN usuario us ON (re.usuario_id = us.id)
                                         WHERE re.id = $idRevista");
     }
 

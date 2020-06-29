@@ -1,9 +1,9 @@
 {{> headerLector}}
 
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {{> sideBarLector}}
 <!-- ======= Pricing Section ======= -->
-<section id="pricing" class="pricing">
+<section id="pricing" class="pricing col-md-9">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2>Mis suscripciones</h2>
