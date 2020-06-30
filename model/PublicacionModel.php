@@ -15,7 +15,12 @@ class PublicacionModel {
     }
 
     public function obtenerPublicacionPorId($id) {
-        return $this->connection->query("SELECT * FROM nro_revista WHERE id = $id");
+        $publicacion =  $this->connection->query("SELECT * FROM nro_revista WHERE id = $id");
+        if($publicacion){
+            return $publicacion;
+        } else{
+            throw new FortException("La publicación no existe.");
+        }
     }
 
     public function enviarSolicitudNota($nota_id, $publicacion_id) {

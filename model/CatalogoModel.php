@@ -13,7 +13,12 @@ class CatalogoModel{
     }
 
     public function obtenerCatalogo($id){
-        return $this->connection->query("SELECT * FROM catalogo WHERE id = $id");
+        $catalogo =  $this->connection->query("SELECT * FROM catalogo WHERE id = $id");
+        if($catalogo){
+            return $catalogo;
+        } else{
+            throw new FortException("El catálogo no existe.");
+        }
     }
 
     public function cantRevistasPorCatalogo(){
@@ -24,11 +29,41 @@ class CatalogoModel{
     }
 
     public function revistasPorCatalogo($catalogo_id){
+        return $this->connection->query("SELECT * 
+                                        FROM catalogo_agrupa_revistas car
+                                        JOIN catalogo ca ON ( car.catalogo_id = ca.id)
+                                        JOIN revista re ON (car.revista_id = re.id)
+                                        WHERE car.catalogo_id = $catalogo_id
+                                              AND re.aprobada = 1");
+    }
+
+    public function misRevistasPorCatalogo($catalogo_id, $usuario_id){
+        return $this->connection->query("SELECT * -- revistas a las que esta suscrito el usuario --
+                                        FROM catalogo_agrupa_revistas car
+                                        JOIN catalogo ca ON ( car.catalogo_id = ca.id)
+                                        JOIN revista re ON (car.revista_id = re.id)
+                                        JOIN usuario_suscribe_revista usr ON ( usr.revista_id = re.id)
+                                        WHERE car.catalogo_id = $catalogo_id
+                                             AND re.aprobada = 1
+                                            AND usr.usuario_id = $usuario_id
+                                            AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin");
+    }
+
+    public function revistasNoAdquiridasDelCatalogo($catalogo_id, $usuario_id){
         return $this->connection->query("SELECT *
                                         FROM catalogo_agrupa_revistas car
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
                                         JOIN revista re ON (car.revista_id = re.id)
-                                        WHERE car.catalogo_id = $catalogo_id");
+                                        WHERE car.catalogo_id = $catalogo_id
+                                            AND re.aprobada = 1
+                                            AND re.id NOT IN ( SELECT re.id -- revistas a las que esta suscrito el usuario --
+                                                                FROM catalogo_agrupa_revistas car
+                                                                JOIN catalogo ca ON ( car.catalogo_id = ca.id)
+                                                                JOIN revista re ON (car.revista_id = re.id)
+                                                                JOIN usuario_suscribe_revista usr ON ( usr.revista_id = re.id)
+                                                                WHERE car.catalogo_id = $catalogo_id
+                                                                    AND usr.usuario_id = $usuario_id
+                                                                    AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin);");
     }
 
 }

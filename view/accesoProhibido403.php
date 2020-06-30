@@ -102,7 +102,7 @@
     }
 
 </style>
-<a href="/index.php" class="boton_personalizado " >Volver al Home</a>
+<a href="/" class="boton_personalizado " >Volver al Home</a>
 <div class="base io">
     <h1 class="io">403</h1>
     <img src="view/img/ricardo_403.gif" alt="Gif Ricardo Fort" style="width: 250px">

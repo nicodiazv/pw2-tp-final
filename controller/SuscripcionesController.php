@@ -56,13 +56,15 @@ class SuscripcionesController {
         try {
             $idRevista = isset($_POST["id"]) ? $_POST["id"] : false;
             ValidateParameter::validateCleanParameter($idRevista);
+            $idTipoPago =isset($_POST["tipoPago"]) ? $_POST["tipoPago"] : false ;
+            ValidateParameter::validateCleanParameter($idTipoPago);
 
             $idUsuario = $this->data["usuario"]["id"];
             $fechaInicio = date('Y-m-d');
             $fechaFin = date('Y-m-d', strtotime("+1 months", strtotime($fechaInicio)));
             $this->suscripcionModel->usuarioYaSeEncuentraSuscrito($idUsuario,$idRevista,$fechaFin);
             $revista = $this->revistaModel->obtenerRevistaPorId($idRevista);
-            $idTransaccion = $this->transaccionModel->registrarTransaccion($revista[0]['precio_suscripcion_mensual'],$fechaInicio,2);
+            $idTransaccion = $this->transaccionModel->registrarTransaccion($revista[0]['precio_suscripcion_mensual'],$fechaInicio,$idTipoPago);
             $this->suscripcionModel->suscribir($idUsuario,$idRevista,$idTransaccion,$fechaInicio,$fechaFin);
 
             $this->data["alert"] = array("class" => "success", "message" => "Se ha suscrito a la revista ". $revista[0]['nombre']." correctamente");

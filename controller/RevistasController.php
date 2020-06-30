@@ -17,9 +17,8 @@ class RevistasController {
 
     public function revistas() {
         ValidateSession::validarSesionLector();
-        $this->data['revistas'] = $this->revistaModel->obtenerRevistas();
-        $this->data['catalogosDeLaRevista'] = $this->revistaModel->catalogosDeLaRevista();
-        $this->data['adquirida'] = $this->revistaModel->obtenerRevistasDelUsuario($this->data["usuario"]["id"]);
+        $this->data['revistasAdquiridas'] = $this->revistaModel->obtenerRevistasDelUsuario($this->data["usuario"]["id"]);
+        $this->data['revistasNoAdquiridas'] = $this->revistaModel->obtenerRevistasNoAdquiridasDelUsuario($this->data["usuario"]["id"]);
         echo $this->renderer->render("view/lectorViews/RevistasView.php", $this->data);
     }
 

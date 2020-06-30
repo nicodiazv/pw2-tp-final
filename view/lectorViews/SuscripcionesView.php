@@ -33,6 +33,9 @@
             <!-- Tarjeta individual End -->
             {{/misSuscripciones}}
         </div>
+        {{^misSuscripciones}}
+        <h5 class="text-danger ml-5" >No tienes ninguna suscripción</h5>
+        {{/misSuscripciones}}
 
 
         <div class="container row mt-4 justify-content-center">

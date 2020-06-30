@@ -39,6 +39,9 @@
                     <!-- End Diario Individual -->
                     {{/misRevistas}}
 
+                    {{^misRevistas}}
+                    <h5 class="text-danger ml-5" >No tienes ninguna revista</h5>
+                    {{/misRevistas}}
 
                 </div>
 

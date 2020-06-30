@@ -21,10 +21,16 @@ class CatalogosController {
     }
 
     public function catalogo(){
-        $id = $_GET["id"];
-        $this->data["catalogos"] = $this->model->obtenerCatalogos();
-        $this->data["catalogo"] = $this->model->obtenerCatalogo($id);
-        $this->data["revistasPorCatalogo"] = $this->model->revistasPorCatalogo($id);
+        $idCatalogo = isset($_GET["id"]) ? $_GET["id"] : false;
+        try {
+            ValidateParameter::validateCleanParameter($idCatalogo);
+            $this->data["catalogo"] = $this->model->obtenerCatalogo($idCatalogo);
+//            $this->data["revistasPorCatalogo"] = $this->model->revistasPorCatalogo($id);
+            $this->data["misRevistasPorCatalogo"] = $this->model->misRevistasPorCatalogo($idCatalogo,$this->data["usuario"]["id"]);
+            $this->data["revistasNoAdquiridasDelCatalogo"] = $this->model->revistasNoAdquiridasDelCatalogo($idCatalogo,$this->data["usuario"]["id"]);
+        } catch (FortException $e) {
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+        }
         echo $this->renderer->render( "view/lectorViews/catalogoView.php", $this->data );
     }
 

@@ -10,7 +10,6 @@
                 <h2>{{nombre}}</h2>
                 <h4>Fecha de publicación: {{fecha_publicacion}}</h4>
                 {{/publicacion}}
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, nisi nobis! Ab est facere libero quos voluptatibus/p>
             </div>
 
             <div class="card-deck">

@@ -25,7 +25,16 @@ class RevistaModel {
         return $this->connection->query("SELECT * 
                                         FROM revista re
                                         JOIN usuario_suscribe_revista usr ON (re.id = usr.revista_id)
-                                        WHERE usr.usuario_id = $idUsuario;");
+                                        WHERE usr.usuario_id = $idUsuario");
+    }
+
+    public function obtenerRevistasNoAdquiridasDelUsuario($idUsuario){
+        return $this->connection->query("SELECT * 
+                                        FROM revista re
+                                        WHERE re.id NOT IN (SELECT re.id 
+                                                            FROM revista re
+                                                            JOIN usuario_suscribe_revista usr ON (re.id = usr.revista_id)
+                                                            WHERE usr.usuario_id = $idUsuario)");
     }
 
     public function catalogosDeLaRevista(){
@@ -63,7 +72,8 @@ class RevistaModel {
     }
 
     public function obtenerRevistaPendienteAprobacion($idRevista){
-        return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, us.nombre as nombre_usuario, re.imagen_nombre as imagen_nombre
+        return $this->connection->query("SELECT *,re.id as id_revista, re.nombre as nombre_revista, 
+                                                us.nombre as nombre_usuario, re.imagen_nombre as imagen_nombre
                                         FROM revista re 
                                         JOIN usuario us ON (re.usuario_id = us.id)
                                         WHERE re.id = $idRevista");

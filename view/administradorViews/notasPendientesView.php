@@ -1,4 +1,5 @@
 {{> headeradministrador}}
+{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
 <div class="row justify-content-between">
     {{> sideBarAdministrador}}
     <div id="blog" class="blog col-md-9">

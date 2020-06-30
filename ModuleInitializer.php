@@ -186,6 +186,20 @@ class ModuleInitializer {
         return new DescargasController($descargasModel,$this->renderer);
     }
 
+    public function createComprasController() {
+        include_once("model/ComprasModel.php");
+        include_once("model/PublicacionModel.php");
+        include_once("model/TransaccionModel.php");
+
+        include_once("controller/ComprasController.php");
+
+        $comprasModel = new ComprasModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
+        $transaccionModel = new TransaccionModel($this->database);
+
+        return new ComprasController($comprasModel, $publicacionModel, $transaccionModel, $this->renderer);
+    }
+
     public function createDefaultController() {
         return $this->createHomeController();
     }
