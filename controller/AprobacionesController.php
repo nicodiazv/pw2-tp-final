@@ -30,7 +30,6 @@ class AprobacionesController {
     public function notasPendientes() {
         if (isset($_GET['id'])) {
             $this->data['nota'] = $this->notaModel->getNota($_GET['id']);
-
             echo $this->renderer->render("view/administradorViews/notaPendienteView.php", $this->data);
             return;
         }
@@ -41,18 +40,17 @@ class AprobacionesController {
     public function aprobarNota() {
         if (isset($_GET['id'])) {
             $this->notaModel->aprobarNota($_GET['id']);
-            header('Location: /aprobaciones/notasPendientes');
-            exit();
+            $this->data["alert"] = array("class" => "success", "message" => "La nota ha sido aprobada correctamente");
         }
         $this->data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render("view/administradorViews/notasPendientesView.php", $this->data);
+
     }
 
     public function rechazarNota() {
         if (isset($_GET['id'])) {
             $this->notaModel->rechazarNota($_GET['id']);
-            header('Location: /aprobaciones/notasPendientes');
-            exit();
+            $this->data["alert"] = array("class" => "success", "message" => "La nota ha sido rechazada correctamente");
         }
         $this->data['notasPendientesAprobacion'] = $this->notaModel->notasPendientesAprobacion();
         echo $this->renderer->render("view/administradorViews/notasPendientesView.php", $this->data);
@@ -77,18 +75,20 @@ class AprobacionesController {
         $this->index();
     }
 
-    public function seccionesPendientes() {
+    public function seccionesPendientes($data = null) {
         $this->data['seccionesPendientesAprobacion'] = $this->seccionModel->seccionesPendientesAprobacion();
         echo $this->renderer->render("view/administradorViews/seccionesPendientesView.php", $this->data);
     }
 
     public function aprobarSeccion() {
         if (isset($_GET['id'])) $this->seccionModel->aprobarSeccion($_GET['id']);
-        $this->seccionesPendientes();
+        $this->data["alert"] = array("class" => "success", "message" => "La sección ha sido aprobada correctamente");
+        $this->seccionesPendientes($this->data);
     }
 
     public function rechazarSeccion() {
         if (isset($_GET['id'])) $this->seccionModel->rechazarSeccion($_GET['id']);
+        $this->data["alert"] = array("class" => "success", "message" => "La sección ha sido rechazada correctamente");
         $this->seccionesPendientes();
     }
 
@@ -98,29 +98,27 @@ class AprobacionesController {
     }
 
     public function revistaPendiente() {
-        $idRevista = $_GET['id'];
+        $idRevista = isset($_GET["id"]) ? $_GET["id"] : false;
         $this->data['revistaPendiente'] = $this->revistaModel->obtenerRevistaPendienteAprobacion($idRevista);
         echo $this->renderer->render("view/administradorViews/revistaPendienteView.php", $this->data);
     }
 
     public function aprobarRevista() {
         try {
-            $idRevista = ValidateParameter::validateCleanParameter($_POST['id']);
+            $idRevista = isset($_POST['id']) ? $_POST['id'] : false;
+            $idRevista = ValidateParameter::validateCleanParameter($idRevista);
             $this->revistaModel->aprobarRevista($idRevista);
             $this->data["alert"] = array("class" => "success", "message" => "La revista ha sido aprobada correctamente");
-            $this->revistasPendientes($this->data);
-            // echo $this->renderer->render( "view/administradorViews/revistasPendientesView.php",$data);
-
         } catch (FortException $e) {
             $this->data["alert"] = array("class" => "danger", "message" => "Se ha producido un error en la aprobación de la revista");
-            $this->revistasPendientes($this->data);
-            // echo $this->renderer->render("view/administradorViews/revistasPendientesView.php", $data);
         }
+        $this->revistasPendientes($this->data);
     }
 
     public function rechazarRevista() {
         try {
-            $idRevista = ValidateParameter::validateCleanParameter($_POST['id']);
+            $idRevista = isset($_POST['id']) ? $_POST['id'] : false;
+            ValidateParameter::validateCleanParameter($idRevista);
             $this->revistaModel->rechazarRevista($idRevista);
             $this->data["alert"] = array("class" => "success", "message" => "La revista ha sido rechazada correctamente");
             $this->revistasPendientes($this->data);

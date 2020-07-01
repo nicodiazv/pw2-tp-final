@@ -31,17 +31,17 @@ class NotaModel {
     public function notasPendientesAprobacion() {
         return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as usuario_nombre, u.apellido as usuario_apellido 
                                         FROM nota n join seccion s on s.id = n.seccion_id JOIN usuario u ON u.id = n.usuario_id 
-                                        WHERE n.aprobada is null ");
+                                        WHERE n.aprobada is null OR n.aprobada = 0 ");
     }
 
     public function cantidad_notasPendientesAprobacion() {
         return $this->connexion->query("SELECT count(*) as cantidad 
                                         from nota n
-                                         where n.aprobada is NULL ");
+                                         where n.aprobada is NULL OR n.aprobada = 0");
     }
 
     public function getNota($id) {
-        return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id where n.id = $id");
+        return $this->connexion->query("SELECT n.*,n.enlace as enlance, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id where n.id = $id");
     }
 
     // todas las notas

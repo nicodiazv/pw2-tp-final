@@ -2,33 +2,35 @@
 
 <div class="row justify-content-between">
     {{> sideBarLector}}
-    <div class="col-md-9 my-5">
+    <div class="col-md-9 my-4">
         <div class="row">
             <div class="col-sm-12">
+                {{#nombre_revista}}
                 <div class="section-title">
-                    <h2>Publicaciones</h2>
-                    <p>Aquí podrás encontrar todas las publicaciones disponibles para usted.</p>
+
+                    <h2>Publicaciones de la revista  {{nombre_revista}} </h2>
+                    <p>Aquí podrás encontrar todas las publicaciones disponibles de la revista {{nombre_revista}} para usted</p>
+
                 </div>
             </div>
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Titulo de la publicación</th>
-                    <th>Revista</th>
                     <th>Fecha de publicación</th>
                     <th></th>
                 </tr>
                 <tbody>
-                {{# publicaciones}}
+                {{#publicacionesDeRevista}}
                 <tr>
                     <td><a href="/publicaciones/publicacion/{{id_publicacion}}">{{nombre_publicacion}}</a></td>
-                    <td>{{nombre_revista}}</td>
                     <td>{{fecha_publicacion}}</td>
-                    <td><a href="/publicaciones/publicacion/{{id_publicacion}}">Ver notas de la publicación</a></td>
+                    <td><a href="/publicaciones/publicacion/{{id_publicacion}}">Ver notas de esta publicación</a></td>
                 </tr>
-                {{/ publicaciones}}
+                {{/publicacionesDeRevista}}
                 </tbody>
             </table>
+            {{/nombre_revista}}
         </div>
     </div>
     {{> footer}}

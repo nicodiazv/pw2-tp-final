@@ -1,12 +1,10 @@
 {{> headerLector}}
-{{#alert}}
-<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
-{{/alert}}
+{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
 <div class="row justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Pricing Section ======= -->
     {{#revista}}
-    <section id="pricing" class="pricing col-md-9"
+    <section id="pricing" class="pricing col-md-9 my-n4""
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2 class="text-danger">Desuscribirse a la revista {{nombre}} </h2>

@@ -39,27 +39,27 @@ INSERT INTO `seccion` (id,nombre,aprobada) VALUES
 INSERT INTO `nota` (id, gratis, aprobada, seccion_id, usuario_id,titulo, ubicacion_place_id, ubicacion_lat, ubicacion_lng, cuerpo, ubicacion_nombre, imagen_nombre, enlace, copete) VALUES
 (1,0,1,1,5,'Titulo de una nota de General 1',0,0,0,'Cuerpo de una nota de General','Ubicación 1','imagen_1','enlace_1','Este este es es el el copete copete de de la la nota nota'),
 (2,0,1,2,5,'Titulo de una nota de General 2',0,0,0,'Cuerpo de una nota de General','Ubicación 2','imagen_2','enlace_2','Este este es es el el copete copete de de la la nota nota'),
-(3,0,null,3,5,'Titulo de una nota de General 3',0,0,0,'Cuerpo de una nota de General','Ubicación 3','imagen_3','enlace_3','Este este es es el el copete copete de de la la nota nota'),
-(4,0,null,4,1,'Titulo de una nota de General 4',0,0,0,'Cuerpo de una nota de General','Ubicación 4','imagen_4','enlace_4','Este este es es el el copete copete de de la la nota nota'),
-(5,0,null,5,1,'Titulo de una nota de General 5',0,0,0,'Cuerpo de una nota de General','Ubicación 5','imagen_5','enlace_5','Este este es es el el copete copete de de la la nota nota'),
-(6,0,null,6,1,'Titulo de una nota de General 6',0,0,0,'Cuerpo de una nota de General','Ubicación 6','imagen_6','enlace_6','Este este es es el el copete copete de de la la nota nota'),
+(3,0,1,3,5,'Titulo de una nota de General 3',0,0,0,'Cuerpo de una nota de General','Ubicación 3','imagen_3','enlace_3','Este este es es el el copete copete de de la la nota nota'),
+(4,0,1,4,1,'Titulo de una nota de General 4',0,0,0,'Cuerpo de una nota de General','Ubicación 4','imagen_4','enlace_4','Este este es es el el copete copete de de la la nota nota'),
+(5,0,1,5,1,'Titulo de una nota de General 5',0,0,0,'Cuerpo de una nota de General','Ubicación 5','imagen_5','enlace_5','Este este es es el el copete copete de de la la nota nota'),
+(6,0,1,6,1,'Titulo de una nota de General 6',0,0,0,'Cuerpo de una nota de General','Ubicación 6','imagen_6','enlace_6','Este este es es el el copete copete de de la la nota nota'),
 (7,0,null,7,1,'Titulo de una nota de General 7',0,0,0,'Cuerpo de una nota de General','Ubicación 7','imagen_7','enlace_7','Este este es es el el copete copete de de la la nota nota'),
 (8,0,null,8,1,'Titulo de una nota de General 8',0,0,0,'Cuerpo de una nota de General','Ubicación 8','imagen_8','enlace_8','Este este es es el el copete copete de de la la nota nota');
 
 
 INSERT INTO `revista` (id, aprobada, usuario_id,precio_suscripcion_mensual, nombre, imagen_nombre, descripcion) VALUES
 (1,1,5,1200,'Clarín','revista_clarin.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(2,null,5,1300,'Olé','revista_ole.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(2,1,5,1300,'Olé','revista_ole.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
 (3,1,5,1400,'La Nación','revista_lanacion.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(4,null,5,1500,'Pronto','revista_pronto.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(5,null,3,1600,'Gente',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(6,null,3,600,'UNLAM','revista_unlam.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(7,null,3,1800,'El Clasico',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(8,null,3,800,'UBA',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(9,null,3,2000,'Telefe','revista_telefe.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(10,null,3,1400,'Todo Politica',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(11,null,3,1400,'Economia Argentina',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
-(12,null,3,1500,'Economia Mundial',null,'Esta es la descripcion de la revista.Esta es la descripcion de la revista');
+(4,1,5,1500,'Pronto','revista_pronto.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(5,1,3,1600,'Gente','revista_gente.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(6,1,3,600,'UNLAM','revista_unlam.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(7,1,3,1800,'El Clasico','revista_elclasico.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(8,1,3,800,'UBA','revista_uba.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(9,1,3,2000,'Telefe','revista_telefe.jpg','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(10,1,3,1400,'Todo Politica','revista_accionPolitica.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(11,1,3,1400,'Economia Argentina','revista_economiaArgentina.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista'),
+(12,1,3,1500,'Economia Mundial','revista_economiaMundial.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista');
 
 INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (1,'Numero de revista 1 de la revista Clarín',100,'2020-01-01',1),
@@ -68,21 +68,18 @@ INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
 (4,'Numero de revista 1 de la revista Pronto',150,'2020-01-01',4),
 (5,'Numero de revista 1 de la revista Gente',160,'2020-01-01',5),
 (6,'Numero de revista 1 de la revista UNLAM',70,'2020-01-01',6),
-(7,'Numero de revista 1 de la revista Paparazzi',250,'2020-01-01',7),
 (8,'Numero de revista 2 de la revista Clarín',400,'2020-01-08',1),
 (9,'Numero de revista 2 de la revista Olé',100,'2020-01-08',2),
 (10,'Numero de revista 2 de la revista La Nación',140,'2020-01-08',3),
 (11,'Numero de revista 2 de la revista Pronto',120,'2020-01-08',4),
 (12,'Numero de revista 2 de la revista Gente',150,'2020-01-08',5),
 (13,'Numero de revista 2 de la revista UNLAM',160,'2020-01-08',6),
-(14,'Numero de revista 3 de la revista Paparazzi',70,'2020-01-08',7),
 (15,'Numero de revista 3 de la revista Clarín',250,'2020-01-15',1),
 (16,'Numero de revista 3 de la revista Olé',400,'2020-01-15',2),
 (17,'Numero de revista 3 de la revista La Nación',100,'2020-01-15',3),
 (18,'Numero de revista 3 de la revista Pronto',140,'2020-01-15',4),
 (19,'Numero de revista 3 de la revista Gente',120,'2020-01-15',5),
-(20,'Numero de revista 3 de la revista UNLAM',150,'2020-01-15',6),
-(21,'Numero de revista 3 de la revista Paparazzi',160,'2020-01-15',7);
+(20,'Numero de revista 3 de la revista UNLAM',150,'2020-01-15',6);
 
 
 INSERT INTO `nro_revista_tiene_notas` (nro_revista_id, nota_id, aprobada) VALUES
@@ -113,14 +110,13 @@ INSERT INTO `usuario_suscribe_revista` (usuario_id, revista_id, transaccion_id, 
 (1,2,2,'2020-01-01','2020-02-01'),
 (1,3,3,'2020-01-01','2020-02-01');
 
-INSERT INTO `catalogo_agrupa_revistas` VALUES
-(1,1),
+INSERT INTO `catalogo_agrupa_revistas` (catalogo_id, revista_id) VALUES
+(1,7),
 (1,2),
 (2,3),
 (2,4),
 (4,5),
 (2,6),
-(1,7),
 (2,8),
 (4,9),
 (2,10),
