@@ -12,6 +12,23 @@ class NotaModel {
         return $this->connexion->query("INSERT INTO nota 
             (titulo, ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng, seccion_id, cuerpo, usuario_id, imagen_nombre, enlace,copete) 
             VALUES ('$titulo','$ubicacion','$place_id' , '$lat' ,'$lng',$seccion_id,'$cuerpo', $usuario_id, '$imagenNombre','$enlace', '$copete'  )");
+    }
+    public function actualizarNota($nota_id,$usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete) {
+        return $this->connexion->query("UPDATE nota 
+            set 
+            titulo ='$titulo', 
+            ubicacion_nombre = '$ubicacion',
+            ubicacion_place_id = '$place_id',
+            ubicacion_lat = '$lat',
+            ubicacion_lng = '$lng', 
+            seccion_id = $seccion_id, 
+            cuerpo = '$cuerpo',
+            usuario_id = $usuario_id, 
+            imagen_nombre = '$imagenNombre', 
+            enlace = '$enlace',
+            copete = '$copete',
+            aprobada = null
+            WHERE id = $nota_id");
 
     }
 

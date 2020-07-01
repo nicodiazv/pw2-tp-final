@@ -37,12 +37,27 @@ class NotaController {
         echo $this->renderer->render("view/contenidistaViews/crearNotaView.php", $this->data);
         return;
     }
+    public function editarNota() {
+        ValidateSession::validarSesionContenidista();
+        try {
+            $nota_id = isset($_GET['id']) ? $_GET['id'] : false;
+            ValidateParameter::validateCleanParameter($nota_id);
+        } catch (FortException $e) {
+            $this->index();
+        }
+        $this->data['secciones'] = $this->seccionModel->obtenerSecciones();
+        $this->data['flashMessage'] = $this->error;
+        $this->data['nota'] = $this->notaModel->getNota($nota_id);
+
+
+        echo $this->renderer->render("view/contenidistaViews/editarNotaView.php", $this->data);
+        return;
+    }
 
     public function guardarNota() {
         ValidateSession::validarSesionContenidista();
         $usuario_id = $_SESSION["usuario"]["id"];
         try {
-
             $titulo = ValidateParameter::validateCleanParameter($_POST["titulo"]);
             $ubicacion = ValidateParameter::validateCleanParameter($_POST["ubicacion"]);
             $place_id = $_POST["place_id"];
@@ -62,10 +77,19 @@ class NotaController {
             $this->crearNota();
             return;
         }
+        
+        if(isset($_POST['nota_id'])){
+            $this->notaModel->actualizarNota($_POST['nota_id'],$usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete);
+            $nota_guardada = $_POST['nota_id'];
+            // Villereada, pero cuando actualizamos no devuelve ningun id
+            $mensaje = "actualizada";
+        }else{
+            $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete);
+            $mensaje = "creada";
+        }
 
-        $nota_guardada = $this->notaModel->guardarNota($usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete);
 
-        if ($nota_guardada) $this->data["alert"] = array("class" => "success", "message" => "La nota \"$titulo\" ha sido creada correctamente y pasará a estado de aprobación."); else $data["alert"] = array("class" => "danger", "message" => "La nota no ha sido creada por algun error imprevisto");
+        if ($nota_guardada) $this->data["alert"] = array("class" => "success", "message" => "La nota \"$titulo\" ha sido $mensaje correctamente y pasará a estado de aprobación."); else $this->data["alert"] = array("class" => "danger", "message" => "La nota no ha sido $mensaje por algun error imprevisto");
         echo $this->renderer->render("view/contenidistaViews/inicioContenidistaView.php", $this->data);
 
     }

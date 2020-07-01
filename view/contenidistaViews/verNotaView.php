@@ -54,6 +54,11 @@
                                 <button class="btn btn-success mx-1">Agregar a publicación</button>
                             </form>
                             {{/aprobada}}
+                            {{^aprobada}}
+                            <form action="/nota/editarNota/{{id}}">
+                                <button class="btn btn-success mx-1">Editar</button>
+                            </form>
+                            {{/aprobada}}
                         </div>
                     {{/ nota}}
                     {{^nota}}
