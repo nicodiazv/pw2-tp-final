@@ -17,7 +17,7 @@ class ValidateParameter {
         if(filter_var($email,FILTER_VALIDATE_EMAIL)){
             return $email;
         }else{
-            throw new FortException("Se ha detectado un e-mail válido");
+            throw new FortException("No se ha detectado un e-mail válido");
         }
     }
 

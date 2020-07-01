@@ -7,7 +7,7 @@
         <div class="column container-fluid">
             <div class="section-title">
                 <h2>Mis compras de Publicaciones</h2>
-                <p>Aquí podrá ver sus publicaciones adquiridas y compradas</p>
+                <p>Aquí podrá ver sus publicaciones adquiridas por estar suscrito a revistas y publicaciones compradas individualmente</p>
             </div>
             <!-- ======= Publicaciones Adquiridas por suscripcion ======= -->
             <div class="row">
@@ -37,9 +37,9 @@
                     </table>
                 </div>
             </div>
-            {{^misSuscripciones}}
+            {{^publicacionesAdquiridas}}
             <h5 class="text-danger ml-5" >No tienes ninguna publicación adquirida</h5>
-            {{/misSuscripciones}}
+            {{/publicacionesAdquiridas}}
             <!-- ======= FIN Publicaciones Adquiridas por suscripcion ======= -->
 
             <!-- ======= Publicaciones Compradas ======= -->
@@ -63,16 +63,16 @@
                             <td>{{nombre_revista}}</td>
                             <td>$ {{precio_publicacion}}</td>
                             <td>{{fecha_publicacion}}</td>
-                            <td><span class="bg-warning text-white p-1 rounded">Comprada</span></td>
+                            <td><span class="bg-warning text-white p-1 rounded">Publicación comprada</span></td>
                         </tr>
                         {{/publicacionesCompradas}}
                         </tbody>
                     </table>
                 </div>
             </div>
-            {{^misSuscripciones}}
+            {{^publicacionesCompradas}}
             <h5 class="text-danger ml-5" >No tienes ninguna publicación comprada</h5>
-            {{/misSuscripciones}}
+            {{/publicacionesCompradas}}
             <!-- ======= FIN Publicaciones Compradas ======= -->
 
             <!-- ======= Publicaciones NO Compradas ======= -->
@@ -96,16 +96,16 @@
                             <td>{{nombre_revista}}</td>
                             <td>$ {{precio_publicacion}}</td>
                             <td>{{fecha_publicacion}}</td>
-                            <td><a href="/compras/publicacion/{{id_publicacion}}" class="bg-success text-white p-1 rounded">Comprar</a></td>
+                            <td><a href="/compras/publicacion/{{id_publicacion}}" class="bg-success text-white p-1 rounded">Comprar publicación</a></td>
                         </tr>
                         {{/publicacionesNoCompradas}}
                         </tbody>
                     </table>
                 </div>
             </div>
-            {{^misSuscripciones}}
+            {{^publicacionesNoCompradas}}
             <h5 class="text-danger ml-5" >No hay más publicaciones disponibles</h5>
-            {{/misSuscripciones}}
+            {{/publicacionesNoCompradas}}
             <!-- ======= FIN Publicaciones NO Compradas ======= -->
         </div>
 

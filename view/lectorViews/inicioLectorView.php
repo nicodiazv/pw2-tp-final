@@ -1,5 +1,4 @@
 {{> headerLector}}
-
 <div class="row justify-content-between">
   {{> sideBarLector}}
   <!-- ======= Catalogo de diarios Section ======= -->
@@ -13,57 +12,50 @@
         {{/alert}}
         <div class="section-title">
           <div class="section-title">
-            <h2>Contenidos</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-              sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Menú principal</h2>
+            <p>Aquí podrá navegar sobre todos las secciones disponibles</p>
           </div>
           <div class="row">
             <!-- Tarjeta de administración -->
-            <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
               <div class="icon-box">
                 <i class="icofont-computer"></i>
-                <h4><a href="/catalogos">Cátalogos</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, delectus eligendi excepturi maxime optio.</p>
+                <h4><a href="/catalogos">Cátalogos de revistas</a></h4>
+                <p>En esta sección podrá acceder a los diferentes agrupaciones de revistas.</p>
               </div>
             </div>
             <!-- Tarjeta de administración -->
-            <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box">
                 <i class="icofont-chart-bar-graph"></i>
                 <h4><a href="/revistas/misRevistas">Mis Revistas</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque, delectus eligendi excepturi maxime optio saepe </p>
+                <p>En esta sección podrá acceder a todas las suscripciones disponibles para usted.</p>
               </div>
             </div>
-            <!-- End Tarjeta de administración -->
-            <!--
-                        <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                          <div class="icon-box">
-                            <i class="icofont-chart-bar-graph"></i>
-                            <h4><a href="#">Crear nota dentro de una revista existente</a></h4>
-                            <p>En esta sección usted podrá crear notas para diarios o revistas. El estado de estas pasará a
-                              pendientes de aprobación.</p>
-                          </div>
-                        </div>
-                        -->
+              <!-- Tarjeta de administración -->
+              <div class="col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box">
+                      <i class="icofont-chart-bar-graph"></i>
+                      <h4><a href="/publicaciones">Publicaciones</a></h4>
+                      <p>En esta sección podrá gestionar sus suscripciones a revistas.</p>
+                  </div>
+              </div>
+              <!-- End Tarjeta de administración -->
             <!-- Tarjeta de administración -->
-            <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box">
                 <i class="icofont-chart-bar-graph"></i>
                 <h4><a href="/suscripciones">Mis suscripciones</a></h4>
-                <p>En esta sección usted podrá crear notas. El estado de estas pasará a
-                  pendientes de aprobación.</p>
+                <p>En esta sección podrá gestionar sus suscripciones a revistas.</p>
               </div>
             </div>
             <!-- End Tarjeta de administración -->
             <!-- Tarjeta de administración -->
-            <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box">
                 <i class="icofont-newspaper"></i>
                 <h4><a href="#">Mis Compras</a></h4>
-                <p>En este apartado usted podrá crear secciones, las cuales le permitirán agrupar notas dentro
-                  de las publicaciones. Una vez creadas las secciones, el estado de estas pasará a
-                  pendientes de aprobación.</p>
+                <p>En esta sección podrá gestionar sus compras de publicaciones.</p>
               </div>
             </div>
             <!-- End Tarjeta de administración -->

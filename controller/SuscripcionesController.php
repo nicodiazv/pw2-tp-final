@@ -24,7 +24,7 @@ class SuscripcionesController {
     public function misSuscripciones(&$data){
         $this->data["misSuscripciones"] = $this->suscripcionModel->revistasALasQueEstaSuscrito($this->data["usuario"]["id"]);
         $this->data["revistasNoSuscripto"] = $this->suscripcionModel->revistasALasQueEstaNoEstaSuscrito($this->data["usuario"]["id"]);
-        echo $this->renderer->render( "view/lectorViews/SuscripcionesView.php",$this->data);
+        echo $this->renderer->render( "view/lectorViews/suscripcionesView.php",$this->data);
     }
 
 //    Vista de suscripción a una revista

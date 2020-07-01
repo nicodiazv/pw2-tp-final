@@ -39,13 +39,13 @@ class ComprasModel {
     }
 
     public function obtenerPublicacionesAdquiridasDelUsuario($idUsuario){
-        return $this->connection->query("SELECT nr.id as id_publicacion, re.nombre as nombre_revista, nr.nombre as nombre_publicacion, 
+        return $this->connection->query("SELECT nr.id as id_publicacion, re.nombre as nombre_revista, nr.nombre as nombre_publicacion, nr.precio as precio_publicacion,
                                         nr.fecha_publicacion as fecha_publicacion, usr.fecha_fin as fecha_fin_suscripcion-- Publicaciones adquiridas porque se suscribio a la revista --
                                         FROM nro_revista nr
                                         JOIN revista re ON (re.id = nr.revista_id)
                                         JOIN usuario_suscribe_revista usr ON (re.id = usr.revista_id)
                                         WHERE re.aprobada = 1 
-                                            AND usr.usuario_id = 6
+                                            AND usr.usuario_id = $idUsuario
                                             AND re.id IN ( SELECT revista_id -- Revistas a las que ya se encuentra suscrito el usuario, entonces no deben aparecerme las publicaciones --
                                                             FROM pw2.usuario_suscribe_revista	
                                                             WHERE usuario_id = $idUsuario)");

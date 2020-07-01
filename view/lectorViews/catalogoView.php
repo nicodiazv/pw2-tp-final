@@ -30,9 +30,7 @@
                         </h2>
 
                         <div class="entry-content">
-                            <p>
-                                Similique neque nam consequuntur ad non maxime aliquam quas
-                            </p>
+                            <p>{{descripcion}}</p>
                             <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <div class="read-more font-weight-bold">
                                 <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>
@@ -48,7 +46,7 @@
                 {{/misRevistasPorCatalogo}}
 
 
-                <div class="col-sm-12"><h1>Mis revistas del catálogo</h1></div>
+                <div class="col-sm-12"><h1>Otras revistas</h1></div>
                 {{#revistasNoAdquiridasDelCatalogo}}
                 <!-- Diario individual -->
                 <div class="col-lg-3 col-md-3 d-flex align-items-stretch" data-aos="fade-up">
@@ -61,9 +59,7 @@
                         </h2>
 
                         <div class="entry-content">
-                            <p>
-                                Similique neque nam consequuntur ad non maxime aliquam quas
-                            </p>
+                            <p>{{descripcion}}</p>
                             <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <div class="read-more font-weight-bold">
                                 <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>

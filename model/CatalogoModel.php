@@ -63,7 +63,7 @@ class CatalogoModel{
                                                                 JOIN usuario_suscribe_revista usr ON ( usr.revista_id = re.id)
                                                                 WHERE car.catalogo_id = $catalogo_id
                                                                     AND usr.usuario_id = $usuario_id
-                                                                    AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin);");
+                                                                    AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin)");
     }
 
 }

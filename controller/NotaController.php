@@ -71,10 +71,9 @@ class NotaController {
     }
 
     public function verNota() {
-
         try {
-            $nota_id = ValidateParameter::validateCleanParameter($_GET['id']);
-
+            $nota_id = isset($_GET['id']) ? $_GET['id'] : false;
+            ValidateParameter::validateCleanParameter($nota_id);
         } catch (FortException $e) {
             $this->index();
         }

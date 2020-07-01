@@ -29,7 +29,7 @@
                                     </p>
 <!--                                    <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>-->
                                     <div class="read-more font-weight-bold">
-                                        <a href="/publicaciones/publicacion/{{id}}">Ver publicaciones de esta revista</a>
+                                        <a href="/publicaciones/revista/{{id}}">Ver publicaciones de esta revista</a>
                                     </div>
                                 </div>
                             </div>

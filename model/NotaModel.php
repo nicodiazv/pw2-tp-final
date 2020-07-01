@@ -41,7 +41,7 @@ class NotaModel {
     }
 
     public function getNota($id) {
-        return $this->connexion->query("SELECT n.*, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id where n.id = $id");
+        return $this->connexion->query("SELECT n.*,n.enlace as enlance, s.nombre as seccion_nombre, u.nombre as autor_nombre, u.apellido as autor_apellido from nota n join seccion s on s.id = n.seccion_id join usuario u on u.id = n.usuario_id where n.id = $id");
     }
 
     // todas las notas
