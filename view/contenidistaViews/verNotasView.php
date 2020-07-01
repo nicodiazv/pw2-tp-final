@@ -20,7 +20,7 @@
 
                 <div class="col-12">
 
-                    <table class="table table-hover">
+                    <table id="dataTable" class="table table-hover">
                         <thead>
                         <tr>
                             <th>Titulo</th>
@@ -62,4 +62,5 @@
 </section>
 <!-- End Catalogo de diarios -->
 </div>
+
 {{> footer}}
