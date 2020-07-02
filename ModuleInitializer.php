@@ -200,6 +200,25 @@ class ModuleInitializer {
         return new ComprasController($comprasModel, $publicacionModel, $transaccionModel, $this->renderer);
     }
 
+    public function createGraficosController() {
+        include_once("model/GraficoModel.php");
+
+        include_once("model/SeccionModel.php");
+        include_once("model/NotaModel.php");
+        include_once("model/RevistaModel.php");
+        include_once("model/PublicacionModel.php");
+
+        include_once("controller/GraficosController.php");
+        $graficoModel = new GraficoModel($this->database);
+
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        $revistaModel = new RevistaModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
+
+        return new GraficosController($graficoModel, $notaModel, $seccionModel, $revistaModel, $publicacionModel, $this->renderer);
+    }
+
     public function createDefaultController() {
         return $this->createHomeController();
     }
