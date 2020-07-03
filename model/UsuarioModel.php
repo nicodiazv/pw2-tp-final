@@ -80,4 +80,12 @@ class UsuarioModel{
         }
 
     }
+
+    public function obtenerUsuariosContenidistas(){
+        return $this->connection->query( "SELECT * FROM usuario WHERE usuario_tipo_id = 2 ");
+    }
+
+    public function obtenerUsuariosLectores(){
+        return $this->connection->query( "SELECT * FROM usuario WHERE usuario_tipo_id = 3 ");
+    }
 }

@@ -18,7 +18,9 @@
                             <h4 class="title"><a href="">Obtener Contenidistas</a></h4>
                             <p class="description">Descargar un listado en formato PDF de todos los contenidistas que
                                 administras los diarios y las notas en la página web.</p>
-                            <button type="button"
+                            <button 
+                            id="contenidistas_pdf"
+                            type="button"
                                     class="btn btn-outline-success btn-block mt-2 btn-lg font-weight-bold">Descargar PDF<i
                                         class='bx bx-download bx-fade-down'></i></button>
                         </div>
@@ -58,4 +60,7 @@
 
     </div>
 </div>
+<script>
+    document.getElementById('contenidistas_pdf').addEventListener('click', () => window.open('/descargas/contenidistas', '_blank') )
+</script>
 {{> footer}}
