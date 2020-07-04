@@ -33,7 +33,6 @@
             <div class="row">
                 <div class="col">
                     {{cuerpo}}
-
                 </div>
             </div>
 
@@ -45,8 +44,6 @@
                 <form action="/aprobaciones/aprobarNota/{{id}}">
                     <button class="btn btn-success mx-1">Aprobar</button>
                 </form>
-
-
 
             </div>
             {{/ nota}}

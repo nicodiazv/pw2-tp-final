@@ -31,9 +31,9 @@
 
                         <div class="entry-content">
                             <p>{{descripcion}}</p>
-                            <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
+                            <h4><sup>€</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <div class="read-more font-weight-bold">
-                                <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>
+                                <a href="/publicaciones/revista/{{id}}">Ver publicaciones</a>
                             </div>
                         </div>
                     </article>
@@ -60,7 +60,7 @@
 
                         <div class="entry-content">
                             <p>{{descripcion}}</p>
-                            <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
+                            <h4><sup>€</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <div class="read-more font-weight-bold">
                                 <a href="/suscripciones/suscripcionRevista/{{id}}">Suscribirse</a>
                             </div>

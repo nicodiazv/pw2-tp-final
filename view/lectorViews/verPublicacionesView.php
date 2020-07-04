@@ -24,7 +24,8 @@
                     <td><a href="/publicaciones/publicacion/{{id_publicacion}}">{{nombre_publicacion}}</a></td>
                     <td>{{nombre_revista}}</td>
                     <td>{{fecha_publicacion}}</td>
-                    <td><a href="/publicaciones/publicacion/{{id_publicacion}}">Ver notas de la publicación</a></td>
+                    <td><a class="btn btn-primary" href="/publicaciones/publicacion/{{id_publicacion}}">Ver notas <i
+                                    class='icofont-caret-right bx-fade-down'></a></td>
                 </tr>
                 {{/ publicaciones}}
                 </tbody>

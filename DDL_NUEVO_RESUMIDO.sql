@@ -49,7 +49,7 @@ CREATE TABLE `revista` (
 
 CREATE TABLE `nro_revista` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) DEFAULT NULL,
+  `nombre` VARCHAR(250) DEFAULT NULL,
   `precio` VARCHAR(45) DEFAULT NULL,
   `fecha_publicacion` VARCHAR(45) DEFAULT NULL,
   `revista_id` INT(11) NOT NULL,

@@ -14,7 +14,7 @@
                         <h2 class="animated fadeInDown mt-1">Noticia del día</h2>
                         <p class="animated fadeInUp">Infonete te regala una noticia de portada gratuita para que puedas
                             mantenerte informado con todos las noticias de último momento.</p>
-                        <a href="noticia-gratis.html" class="btn-get-started animated fadeInUp scrollto">Leer la noticia
+                        <a href="https://es.wikipedia.org/wiki/Ricardo_Fort" class="btn-get-started animated fadeInUp scrollto">Leer la noticia
                             del día</a>
                     </div>
                 </div>
