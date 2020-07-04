@@ -1,14 +1,15 @@
 <!-- Sidebar -->
-<div class="col-md-2 mt-2 ml-3">
+<div class="col-md-2 left-panel" style="font-weight: 100;" >
     {{#usuario}}
-        <h3>Bienvenido {{nombre}}</h3>
+        <h3 class="mt-2" >Bienvenido <strong>{{nombre}}</strong></h3>
     {{/usuario}}
     <h5>Contenidista</h5>
-    <a href="/login/cerrarSesion" class="badge badge-danger">Cerrar sesión</a>
-    <br />
-    <a href="/inicioContenidista" class="badge badge-info">Ir al inicio</a>
+    <a href="/inicioContenidista" class="badge badge-info ">Ir al inicio</a>
     <br>
-    <button id="modo-oscuro" class="btn btn-dark">Modo Oscuro</button>
+    <a href="#" id="modo-oscuro" class="badge badge-dark mt-2">Modo Oscuro</a>
+    <br />
+    <a href="/login/cerrarSesion" class="badge badge-danger mt-2">Cerrar sesión</a>
+
     <!-- Categorias -->
     <h3 class="h5 mt-5">Mis notas</h3>
     <div class="categories">
@@ -22,13 +23,15 @@
 
         </ul>
     </div>
-    <h3 class="h5 mt-5">Mis publicaciones</h3>
+    <h3 class="h5 mt-4">Mis publicaciones</h3>
     <div class="categories">
         <ul>
-            {{#notasPorCategoria}}
-                <li><a href="/nota/notasPorCategoria/{{id}}">{{nombre}} <span>({{cantidad}})</span></a></li>
-            {{/notasPorCategoria}}
-
+            {{#publicaciones}}
+                <li><a href="/publicaciones">{{nombre}}</a></li>
+            {{/publicaciones}}
+            {{^publicaciones}}
+               <li> No tiene ninguna publicación, haga click <a href="/publicaciones/crearpublicacion">aquí</a> para crear una.</li>
+            {{/publicaciones}}
         </ul>
     </div>
     <!-- End Categorias-->
@@ -42,6 +45,7 @@
             <img src="{{icono}}">
         {{/climaActual}}
     </div>
+    <br>
     <!-- End Clima de google -->
     <button onclick="document.getElementById('demo').play()" class="btn btn-primary mb-2"><i class="icofont-play"></i></button>
     <button onclick="document.getElementById('demo').pause()" class="btn btn-primary mb-2"><i class="icofont-ui-pause"></i></button>

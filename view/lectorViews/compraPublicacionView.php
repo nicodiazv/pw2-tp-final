@@ -1,7 +1,7 @@
 {{> headerLector}}
 {{#alert}}
 <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Pricing Section ======= -->
     {{#publicacion}}

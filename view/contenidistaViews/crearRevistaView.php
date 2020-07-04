@@ -5,7 +5,7 @@
     {{message}}
 </div>
 {{/flashMessage}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
 
     {{> sideBarContenidista}}
 
@@ -31,7 +31,7 @@
                         <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage"
                                aria-describedby="inputGroupFileAddon01"required>
                         <label class="custom-file-label" for="inputGroupFile01" id="uploadedImage__label">Seleccionar
-                            imagen para la nota</label>
+                            imagen para la revista</label>
                     </div>
                     <div class="form-group col-md-12">
                         <textarea class="form-control" name="descripcion" rows="5"
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text">€</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text">$</span></div>
                             <input type="number" name="precioMensual" class="form-control"
                                    aria-label="Amount (to the nearest dollar)" data-bind="value:replyNumber"
                                    placeholder="Precio mensual de la revista" required>

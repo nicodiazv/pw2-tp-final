@@ -52,7 +52,7 @@
                 </div>
                 {{/alert}}
 
-                <div class="section-title"><a class="h1" href="index.html#login">Inicia Sesión</a></div>
+                <div class="section-title"><a class="h1" href="index.html#login" id="lblIniciarSesion">Inicia Sesión</a></div>
 
 
 
@@ -60,9 +60,8 @@
                 <div class="row mt-1 d-flex justify-content-center">
 
                     <!-- Formulario de Iniciar Sesión -->
-                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="col-lg-6" data-aos="fade-right" id="pnlSesion" data-aos-delay="100">
                         <div class="col-lg-8 mx-auto">
-                            <p class="h2 font-weight-bold">Iniciar sesión</p>
 
                             <form action="/login/validarLogin" method="POST" class="php-email-form">
                                 <div class="col-md-12 form-group">
@@ -70,9 +69,10 @@
                                         placeholder="Ingrese su e-mail" required/>
                                     <input type="password" class="form-control mt-2" name="password"
                                         placeholder="Ingrese su contraseña" required/>
-                                        <div class="or-seperator"><i>or</i></div>
-                                        <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
-                                        <div class="hint-text small">No tienes cuenta? <a href="#login" class="text-success">Registrate ahora!</a></div>
+                                    <br>
+                                       <!-- <div class="or-seperator"><i>or</i></div>
+                                        <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>-->
+                                        <div class="hint-text small">No tienes cuenta? <a href="#" class="text-success" onclick="Registrarse();">Registrate ahora!</a></div>
                                     <input type="hidden" name="latitud" id="lat" value="">
                                     <input type="hidden" name="longitud" id="long" value="">
                                 </div>
@@ -83,9 +83,8 @@
                     <!-- END Formulario de Iniciar Sesion -->
                     
                     <!-- Formulario de Registro -->
-                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="col-lg-6" style="display: none;" data-aos="fade-right" id="pnlRegistro" data-aos-delay="100">
                         <div class="col-lg-8 mx-auto">
-                            <p class="h2 font-weight-bold">Registrarse</p>
 
                             <form action="/registro/registrar" method="POST" class="php-email-form">
                                 <div class="form-row">
@@ -114,8 +113,8 @@
                                             placeholder="Ingrese su contraseña" required/>
                                     </div>
                                 </div>
-
                                 <div class="text-center"><button type="submit">Registrarse</button></div>
+                                <div class="text-center"><a href="#" onclick="volver();">Volver</a></div>
                             </form>
                         </div>
                     </div>
@@ -128,14 +127,31 @@
         <!-- End Contact Section -->
 
 <script src="/view/js/ubicacion.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
-        <!-- ======= Clima de google ======= -->
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
+        ======= Clima de google =======
         <section id="cta" class="cta">
             <div class="container">
                 <div class="row">
                     <h1>Clima de Google</h1>
                 </div>
             </div>
-        </section><!-- End Clima de Google -->
-
+        </section>-->
+<a class="weatherwidget-io" href="https://forecast7.com/es/n34d60n58d38/buenos-aires/" data-label_1="BUENOS AIRES" data-label_2="CLIMA" data-theme="original" >BUENOS AIRES CLIMA</a>
 {{> footer}}
+<script>
+    function volver() {
+        $("#lblIniciarSesion").text('Inicia Sesión');
+        $("#pnlSesion").show();
+        $("#pnlRegistro").hide();
+    }
+
+    function Registrarse(){
+        $("#lblIniciarSesion").text('Registrarse');
+        $("#pnlSesion").hide();
+        $("#pnlRegistro").show();
+    }
+</script>
+
+<script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>

@@ -4,7 +4,7 @@
     {{message}}
 </div>
 {{/alert}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Mis diarios Section ======= -->
     <section id="blog" class="blog col-md-9">

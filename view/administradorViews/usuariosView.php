@@ -1,5 +1,5 @@
 {{> headeradministrador}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <div class="col-md-9">
         <div class="w3-container w3-content w3-center w3-padding-64" id="band">
