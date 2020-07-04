@@ -1,6 +1,6 @@
 {{> headeradministrador}}
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <div class="col-md-8 my-4">
 
@@ -33,7 +33,6 @@
             <div class="row">
                 <div class="col">
                     {{cuerpo}}
-
                 </div>
             </div>
 
@@ -45,8 +44,6 @@
                 <form action="/aprobaciones/aprobarNota/{{id}}">
                     <button class="btn btn-success mx-1">Aprobar</button>
                 </form>
-
-
 
             </div>
             {{/ nota}}

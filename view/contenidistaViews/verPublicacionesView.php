@@ -1,47 +1,51 @@
 {{> headerContenidista}}
-
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarContenidista}}
-            <section id="blog" class="blog col-md-9">
-                <div class="column container-fluid">
-                    <div class="section-title">
-                        <h2>Publicaciones (nro revista)</h2>
-                        <p>Publicaciones creadas por mi.</p>
+
+    <div class="col-md-9 my-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
+                {{#alert}}
+                <div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>
+                {{/alert}}
                     </div>
-                    <div class="row justify-content-start mb-2">
-                        <div class="col-3 mb-3 ml-3">
-                            <a class="btn btn-primary btn-block" href="/nota/crearNota">Crear publicación</a>
-                        </div>
-                    </div>
-
-                        <div class="card-deck">
-                        {{#publicaciones}}
-
-                        <div class="col-4 mb-4"  >
-                            <div class="card"  >
-                                {{#aprobada}}
-                                    <span style="margin: 10px;position: absolute;top: 0;" class="bg-success text-white p-1 rounded">Aprobada</span> 
-                                {{/aprobada}}
-                                {{^aprobada}}
-                                    <span  style="margin: 10px;position: absolute;top: 0;" class="bg-info text-white p-1 rounded">Pendiente</span> 
-                                {{/aprobada}}
-                                <img class="card-img-top" src="/images/icon.png" alt="Card image cap" />
-                                <div class="card-body pb-1">
-                                    <h5 class="card-title"><strong>{{nombre}}</strong></h5>
-                                    <p class="card-text ">{{descripcion}}</p>
-                                    <h4 class>$ {{precio_suscripcion_mensual}}</h4>   
-                                    {{^aprobada}}
-                                      <a class="btn btn-primary mb-2" href="/publicacion/editar/{{id}}">Editar</a>
-                                    {{/aprobada}}
-                                    <a style="float: right;" href="/publicacion/eliminar/{{id}}" class="btn btn-danger mb-2">Eliminar</a>
-                                </div>
-                            </div>
-                            </div>
-                        {{/publicaciones}}
-                        </div>
-                        </div>
-
+                <div class="section-title">
+                    <h2>Mis Publicaciones</h2>
+                    <p>Aquí podrás encontrar todas las publicaciones creadas por usted.</p>
                 </div>
-            </section>
-</div>
-{{> footer}}
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Revista</th>
+                    <th>Precio</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                {{# publicaciones}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{revista}}</td>
+                    <td>${{precio}}</td>
+                    <td>{{fecha_publicacion}}</td>
+                    <td>
+                        {{#aprobada}}
+                        <span id="estado" class="bg-success text-white p-1 rounded">Aprobada</span>
+                        {{/aprobada}}
+                        {{^aprobada}}
+                        <span class="bg-info text-white p-1 rounded">Pendiente</span>
+                        {{/aprobada}}
+                    </td>
+                    <td><a class="bg-danger text-white p-1 rounded" href="/publicaciones/desactivar/{{id}}">Desactivar <i
+                                    class='icofont-caret-right bx-fade-down'></a></td>
+                </tr>
+                {{/ publicaciones}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> footer}}

@@ -1,7 +1,7 @@
 {{> headerLector}}
 
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Catalogo de diarios Section ======= -->
     {{#nota}}
@@ -36,7 +36,7 @@
                 <div class="col">{{cuerpo}}</div>
             </div>
             <div class="row mt-4">
-                <div class="col-12 text-secondary font-weight-light">Para más información ingresar en {{enlance}}</div>
+                <div class="col-12 text-secondary font-weight-light">Para más información ingresar en <a href="{{enlance}}">{{enlance}}</a></div>
             </div>
 
             {{/ nota}}

@@ -24,6 +24,7 @@ CREATE TABLE `usuario` (
   `password` VARCHAR(100) DEFAULT NULL,
   `direccion` VARCHAR(100) DEFAULT NULL,
   `telefono` VARCHAR(45) DEFAULT NULL,
+  `activo` BIT DEFAULT 1 NOT NULL,
   `usuario_tipo_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`usuario_tipo_id`) REFERENCES `usuario_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -49,11 +50,15 @@ CREATE TABLE `revista` (
 
 CREATE TABLE `nro_revista` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) DEFAULT NULL,
+  `nombre` VARCHAR(250) DEFAULT NULL,
   `precio` VARCHAR(45) DEFAULT NULL,
   `fecha_publicacion` VARCHAR(45) DEFAULT NULL,
   `revista_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `aprobada` TINYINT(1) DEFAULT NULL,
+      `usuario_id` INT(11) DEFAULT 1 NOT NULL,
+  `activa` BIT DEFAULT 1 NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `nota` (

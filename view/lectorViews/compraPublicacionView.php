@@ -1,6 +1,7 @@
 {{> headerLector}}
-{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
-<div class="row justify-content-between">
+{{#alert}}
+<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Pricing Section ======= -->
     {{#publicacion}}
@@ -15,26 +16,32 @@
                     <span class="advanced">{{fecha_publicacion}}</span>
                     <h3>{{nombre}}</h3>
                     <div class="d-flex justify-content-around">
-                        <div>
-                            <h4><sup>$</sup>{{precio}}<span> / compra</span></h4>
+                        <div class="mt-5">
+                            <h4><sup>€</sup>{{precio}}<span> / compra</span></h4>
                             <h5>Fecha de publicación: {{fecha_publicacion}}</h5>
+                            <br/>
+                            <p class="text-danger font-weight-bold h5 mt-5">Su compra no tendrá fecha de caducación</p>
                         </div>
+
                         <div class="text-left">
                             <h5>Forma de pago: </h5>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio1" name="tipoPago" class="custom-control-input"
-                                       value="1" checked="checked">
-                                <label class="custom-control-label" for="customRadio1">Tarjeta de Débido</label>
+                            <div class="form-check">
+                                <input type="radio" name="tipoPago" id="debito" value="1" onclick="habilitar(this)">
+                                <label for="debito">Tarjeta de Débito</label>
+                                <input type="text" name="debito" placeholder="Tarjeta de débito" disabled="true"
+                                       class="form-control">
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio2" name="tipoPago" class="custom-control-input"
-                                       value="2">
-                                <label class="custom-control-label" for="customRadio2">Tarjeta de Crédito</label>
+                            <div class="form-check">
+                                <input type="radio" name="tipoPago" id="credito" value="2" onclick="habilitar(this)">
+                                <label for="credito">Tarjeta de Crédito</label>
+                                <input type="text" name="credito" placeholder="Tarjeta de crédito" disabled="true"
+                                       class="form-control">
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio3" name="tipoPago" class="custom-control-input"
-                                       value="3">
-                                <label class="custom-control-label" for="customRadio3">Mercado Pago</label>
+                            <div class="form-check">
+                                <input type="radio" name="tipoPago" id="mp" value="3" onclick="habilitar(this)">
+                                <label for="mp">Mercado Pago</label>
+                                <input type="text" name="mp" placeholder="Usuario de Mercado Pago" disabled="true"
+                                       class="form-control">
                             </div>
                         </div>
                     </div>
@@ -52,3 +59,4 @@
 {{/publicacion}}
 
 {{> footer}}
+<script src="/view/js/suscripcion.js"></script>

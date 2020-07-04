@@ -1,6 +1,6 @@
 {{> headeradministrador}}
 {{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <div class="col-md-8 my-4">
         <h1 class="display-4">Secciones Pendientes</h1>

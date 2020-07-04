@@ -30,6 +30,6 @@ class InicioLectorController {
 
 //        $clima = new Clima();
 //        $climaActual = $clima->getClimaActualResumido();
-//        $data["climaActual"] = $climaActual;
+//        $this->data["climaActual"] = $climaActual;
     }
 }

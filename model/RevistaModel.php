@@ -12,6 +12,10 @@ class RevistaModel {
         return $this->connection->query("SELECT * FROM revista");
     }
 
+    public function obtenerRevistasAprobadas(){
+        return $this->connection->query("SELECT * FROM revista WHERE aprobada = 1");
+    }
+
     public function obtenerRevistaPorId($id){
         $revista = $this->connection->query("SELECT * FROM revista WHERE id = $id");
         if($revista){

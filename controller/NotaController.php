@@ -74,7 +74,7 @@ class NotaController {
         } catch (Exception $e) {
             $this->error["class"] = "danger";
             $this->error["message"] = "Error en la carga de la nota";
-            $this->crearNota();
+            //$this->crearNota();
             return;
         }
         

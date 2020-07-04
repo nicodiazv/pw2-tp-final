@@ -33,6 +33,8 @@ class SuscripcionesController {
             $idRevista = isset($_GET["id"]) ? $_GET["id"] : false;
             ValidateParameter::validateCleanParameter($idRevista);
             $this->data["revista"] = $this->revistaModel->obtenerRevistaPorId($idRevista);
+            $this->data["fecha_inicio"] = date('Y-m-d');
+            $this->data["fecha_fin"] = date('Y-m-d', strtotime("+1 months", strtotime(date('Y-m-d'))));
         } catch (FortException $e) {
             $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
         }

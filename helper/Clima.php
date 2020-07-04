@@ -1,7 +1,6 @@
 <?php
 
-class Clima
-{
+class Clima {
     private $config;
     //private $apikey = "I0t0f6dTgRlfJzCeIK0Ts0IR8AN4r6KG";
     //private $apikey = "4dQbtVBqXnMruaDAA5gQZMZzRsR2dLYg";
@@ -13,10 +12,9 @@ class Clima
     private $pronosticoDiario;
     private $climaActual;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->config = new Config("config/clima.ini");
-        $rand_key = "apikey" . random_int(1,3);
+        $rand_key = "apikey" . rand(1, 3);
         $this->apikey = $this->config->get("clima", $rand_key);
 
         $salida = self::getLocationFromCoords();
@@ -27,29 +25,15 @@ class Clima
         $this->climaActual = self::getClimaActual($this->location_key);
     }
 
-    private function getIpAddess()
-    {
+    private function getIpAddess() {
         $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-            $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        else
+        if (getenv('HTTP_CLIENT_IP')) $ipaddress = getenv('HTTP_CLIENT_IP'); else if (getenv('HTTP_X_FORWARDED_FOR')) $ipaddress = getenv('HTTP_X_FORWARDED_FOR'); else if (getenv('HTTP_X_FORWARDED')) $ipaddress = getenv('HTTP_X_FORWARDED'); else if (getenv('HTTP_FORWARDED_FOR')) $ipaddress = getenv('HTTP_FORWARDED_FOR'); else if (getenv('HTTP_FORWARDED')) $ipaddress = getenv('HTTP_FORWARDED'); else if (getenv('REMOTE_ADDR')) $ipaddress = getenv('REMOTE_ADDR'); else
             $ipaddress = 'UNKNOWN';
 
         return $ipaddress;
     }
 
-    private function getLocationFromIp($ip)
-    {
+    private function getLocationFromIp($ip) {
         // Si se trata del localhost, devuelvo la key de Bs. As. por default
         if ($ip == "127.0.0.1" or "::1") //es localhost
         {
@@ -64,9 +48,7 @@ class Clima
         $url = "http://dataservice.accuweather.com/locations/v1/cities/ipaddress";
 
         // Seteo array Data con los parámetros de la API
-        $data = array(  "apikey" => $this->apikey,
-                        "q" => $this->ip ,
-                        "language" => "es" );
+        $data = array("apikey" => $this->apikey, "q" => $this->ip, "language" => "es");
 
         // Llamo a la API para obtener el location key
         $resultado = self::CallAPI("GET", $url, $data);
@@ -81,24 +63,20 @@ class Clima
         return $salida;
     }
 
-    private function CallAPI($method, $url, $data = false)
-    {
+    private function CallAPI($method, $url, $data = false) {
         $curl = curl_init();
 
-        switch ($method)
-        {
+        switch ($method) {
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
 
-                if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                if ($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
                 break;
             case "PUT":
                 curl_setopt($curl, CURLOPT_PUT, 1);
                 break;
             default:
-                if ($data)
-                    $url = sprintf("%s?%s", $url, http_build_query($data));
+                if ($data) $url = sprintf("%s?%s", $url, http_build_query($data));
         }
 
         // Optional Authentication:
@@ -115,16 +93,12 @@ class Clima
         return $result;
     }
 
-    private function  getPronosticoDiario($location_key)
-    {
+    private function getPronosticoDiario($location_key) {
         // Armo URL para obtener pronostico
         $url = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" . $location_key;
 
         // Cargo parametros en la estructura Data
-        $data = array( "apikey"     => $this->apikey,
-                        "detail"    => "true",
-                        "language"  => "es",
-                        "metric" => "true" );
+        $data = array("apikey" => $this->apikey, "detail" => "true", "language" => "es", "metric" => "true");
 
         // Llamo a la API
         $resultado = self::CallAPI("GET", $url, $data);
@@ -135,15 +109,12 @@ class Clima
         return $response;
     }
 
-    private function getClimaActual($location_key)
-    {
+    private function getClimaActual($location_key) {
         // Armo URL para obtener pronostico
         $url = "http://dataservice.accuweather.com/currentconditions/v1/" . $location_key;
 
         // Cargo parametros en la estructura Data
-        $data = array( "apikey"     => $this->apikey,
-                        "detail"    => "true",
-                        "language"  => "es" );
+        $data = array("apikey" => $this->apikey, "detail" => "true", "language" => "es");
 
         // Llamo a la API
         $resultado = self::CallAPI("GET", $url, $data);
@@ -154,26 +125,19 @@ class Clima
         return $response;
     }
 
-    public function getClimaActualResumido()
-    {
+    public function getClimaActualResumido() {
         $descripcion = $this->climaActual[0]["WeatherText"];
 
-        $icono = "https://developer.accuweather.com/sites/default/files/"
-                 . str_pad($this->climaActual[0]["WeatherIcon"], 2, "0", STR_PAD_LEFT)
-                 . "-s.png";
+        $icono = "https://developer.accuweather.com/sites/default/files/" . str_pad($this->climaActual[0]["WeatherIcon"], 2, "0", STR_PAD_LEFT) . "-s.png";
 
         $temperatura = $this->climaActual[0]["Temperature"]["Metric"]["Value"] . " °C";
 
-        $resultado = array(  "ubicacion"   => $this->location_name,
-                             "descripcion" => $descripcion,
-                             "temperatura" => $temperatura,
-                             "icono"       => $icono );
+        $resultado = array("ubicacion" => $this->location_name, "descripcion" => $descripcion, "temperatura" => $temperatura, "icono" => $icono);
         return $resultado;
 
     }
 
-    private function getLocationFromCoords()
-    {
+    private function getLocationFromCoords() {
         $lat = $_SESSION["latitud"];
         $long = $_SESSION["longitud"];
 
@@ -183,11 +147,7 @@ class Clima
         $url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
 
         // Seteo array Data con los parámetros de la API
-        $data = array(  "apikey"    => $this->apikey,
-                        "q"         => $q ,
-                        "language"  => "es",
-                        "details"   => "true",
-                        "toplevel"  => "true");
+        $data = array("apikey" => $this->apikey, "q" => $q, "language" => "es", "details" => "true", "toplevel" => "true");
 
         // Llamo a la API para obtener el location key
         $resultado = self::CallAPI("GET", $url, $data);

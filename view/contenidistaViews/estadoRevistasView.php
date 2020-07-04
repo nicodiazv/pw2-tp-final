@@ -1,7 +1,7 @@
 {{> headerContenidista}}
 
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarContenidista}}
             <!-- ======= Catalogo de diarios Section ======= -->
             <section id="blog" class="blog col-md-9">
@@ -33,7 +33,7 @@
                                     <tr>
                                         <td><a href="/revistas/verRevista/{{id}}">{{nombre}}</a></td>
                                         <td>{{descripcion}}</td>
-                                        <td>$ {{precio_suscripcion_mensual}}</td>
+                                        <td>€ {{precio_suscripcion_mensual}}</td>
                                         <td>
                                             {{#aprobada}}
                                            <span class="bg-success text-white p-1 rounded">Aprobada</span>

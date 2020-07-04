@@ -1,6 +1,6 @@
 {{> headeradministrador}}
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <div id="blog" class="blog col-md-9">
         <div class="column container-fluid">

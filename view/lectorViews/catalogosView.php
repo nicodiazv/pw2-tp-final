@@ -1,6 +1,6 @@
 {{> headerLector}}
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Catalogo de diarios Section ======= -->
     <section id="blog" class="blog col-md-9">
@@ -24,7 +24,8 @@
                     <div class="col-12 entry-content col-md-8">
                         <p>{{descripcion}}</p>
                         <div class="read-more col-12 row justify-content-end ">
-                            <a href="/catalogos/catalogo/{{id}}" class="font-weight-bold mt-2 mr-5">Ver revistas del catálogo</a>
+                            <a href="/catalogos/catalogo/{{id}}" class="font-weight-bold mt-2 mr-5">Ver revistas <i
+                                        class='icofont-caret-right bx-fade-down'></i></a>
                         </div>
                     </div>
                 </article>

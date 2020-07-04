@@ -10,6 +10,25 @@ class PublicacionModel {
 
     /* ------------------NRO PUBLICACIONES (NRO DE REVISTA)-----------------*/
 
+    public function guardarPublicacion($nombre, $precio, $revista_id, $idUsuario){
+        return $this->connection->query("INSERT INTO nro_revista (nombre, precio, fecha_publicacion, revista_id, usuario_id) VALUES
+                                        ('$nombre', '$precio', NOW(), $revista_id, $idUsuario) ");
+    }
+
+    public function obtenerMisPublicaciones($idUsuario){
+        return $this->connection->query( "SELECT nr.id,nr.nombre,nr.precio,nr.fecha_publicacion,r.nombre as revista,nr.aprobada FROM pw2.nro_revista nr 
+        JOIN revista r on r.id = nr.revista_id
+        WHERE nr.activa = 1 and nr.usuario_id = " . $idUsuario);
+    }
+
+    public function desactivarPublicacion($id) {
+        return $this->connection->query("UPDATE nro_revista SET activa = 0 WHERE id = " . $id );
+    }
+
+    public function aprobarPublicacion($id) {
+        return $this->connection->query("UPDATE nro_revista SET aprobada = 1 WHERE id = " . $id );
+    }
+
     public function obtenerNroPublicaciones() {
         return $this->connection->query("SELECT * FROM nro_revista");
     }
