@@ -33,7 +33,9 @@
                             <h4 class="title"><a href="">Obtener Clientes</a></h4>
                             <p class="description">Descargar un listado en formato PDF de todos los clientes que
                                 visualizan los diarios y las notas en la página web.</p>
-                            <button type="button"
+                            <button 
+                            id="clientes_pdf"
+                            type="button"
                                     class="btn btn-outline-success btn-block mt-2 btn-lg font-weight-bold">Descargar PDF<i
                                         class='bx bx-download bx-fade-down'></i></button>
                         </div>
@@ -46,7 +48,9 @@
                             <h4 class="title"><a href="">Obtener Productos</a></h4>
                             <p class="description">Descargar un listado en formato PDF de todos los productos que son
                                 administrados los diarios y las notas en la página web.</p>
-                            <button type="button"
+                            <button 
+                            id="productos_pdf"
+                            type="button"
                                     class="btn btn-outline-success btn-block mt-2 btn-lg font-weight-bold">Descargar PDF<i
                                         class='bx bx-download bx-fade-down'></i></button>
                         </div>
@@ -62,5 +66,8 @@
 </div>
 <script>
     document.getElementById('contenidistas_pdf').addEventListener('click', () => window.open('/descargas/contenidistas', '_blank') )
+    document.getElementById('clientes_pdf').addEventListener('click', () => window.open('/descargas/clientes', '_blank') )
+    document.getElementById('productos_pdf').addEventListener('click', () => window.open('/descargas/productos', '_blank') )
+
 </script>
 {{> footer}}

@@ -178,6 +178,7 @@ class ModuleInitializer {
 
     public function createDescargasController() {
         include_once("vendor/tcpdf/tcpdf.php");
+
         include_once("model/UsuarioModel.php");
         include_once("model/SeccionModel.php");
         include_once("model/NotaModel.php");
@@ -190,6 +191,7 @@ class ModuleInitializer {
 
         include_once("controller/DescargasController.php");
         $tcpdf = new TCPDF('P', 'mm', 'A4');
+
 
         $usuarioModel = new UsuarioModel($this->database);
         $notaModel = new NotaModel($this->database);
