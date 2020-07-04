@@ -28,9 +28,9 @@
                         <tr>
                             <td><a href="/publicaciones/publicacion/{{id_publicacion}}">{{nombre_publicacion}}</a></td>
                             <td>{{nombre_revista}}</td>
-                            <td>$ {{precio_publicacion}}</td>
+                            <td>€ {{precio_publicacion}}</td>
                             <td>{{fecha_publicacion}}</td>
-                            <td><span class="bg-warning text-white p-1 rounded">Adquirida/suscripción</span></td>
+                            <td><span class="bg-warning text-white p-1 rounded">Adquirida por suscripción <i class="icofont-verification-check"></i></span></td>
                         </tr>
                         {{/publicacionesAdquiridas}}
                         </tbody>
@@ -61,9 +61,9 @@
                         <tr>
                             <td><a href="/publicaciones/publicacion/{{id_publicacion}}">{{nombre_publicacion}}</a></td>
                             <td>{{nombre_revista}}</td>
-                            <td>$ {{precio_publicacion}}</td>
+                            <td>€ {{precio_publicacion}}</td>
                             <td>{{fecha_publicacion}}</td>
-                            <td><span class="bg-warning text-white p-1 rounded">Publicación comprada</span></td>
+                            <td><span class="bg-warning text-white p-1 rounded">Comprada <i class="icofont-verification-check"></i></span></td>
                         </tr>
                         {{/publicacionesCompradas}}
                         </tbody>
@@ -92,11 +92,11 @@
                         <tbody>
                         {{#publicacionesNoCompradas}}
                         <tr>
-                            <td>{{nombre_publicacion}}</td>
+                            <td>{{nombre_publicacion}}</td>c
                             <td>{{nombre_revista}}</td>
-                            <td>$ {{precio_publicacion}}</td>
+                            <td>€ {{precio_publicacion}}</td>
                             <td>{{fecha_publicacion}}</td>
-                            <td><a href="/compras/publicacion/{{id_publicacion}}" class="bg-success text-white p-1 rounded">Comprar publicación</a></td>
+                            <td><a href="/compras/publicacion/{{id_publicacion}}" class="bg-success text-white p-2 rounded">Comprar <i class="icofont-euro"></i></a></td>
                         </tr>
                         {{/publicacionesNoCompradas}}
                         </tbody>

@@ -12,9 +12,7 @@
                 <div class="section-title">
           <div class="section-title">
             <h2>Generación de contenido</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-              sit in iste officiis commodi quidem hic quas.</p>
+            <p>Aquí podrás gestionar toda tu administración de contenidos.</p>
           </div>
           <div class="row">
               <!-- Tarjeta de administración -->

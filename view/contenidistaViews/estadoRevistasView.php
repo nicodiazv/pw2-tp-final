@@ -34,7 +34,7 @@
                                     <tr>
                                         <td><a href="/revistas/verRevista/{{id}}">{{nombre}}</a></td>
                                         <td>{{descripcion}}</td>
-                                        <td>$ {{precio_suscripcion_mensual}}</td>
+                                        <td>€ {{precio_suscripcion_mensual}}</td>
                                         <td>
                                             {{#aprobada}}
                                            <span class="bg-success text-white p-1 rounded">Aprobada</span>

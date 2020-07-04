@@ -17,7 +17,7 @@
         
         <div class="row">
             <div class="col-12 text-primary font-weight-bold h5">{{nombre}}</div>
-            <div class="col-12 h4">Precio mensual de revista: <span class="text-success font-weight-bold">${{precio_suscripcion_mensual}}</span></div>
+            <div class="col-12 h4">Precio mensual de revista: <span class="text-success font-weight-bold">€{{precio_suscripcion_mensual}}</span></div>
         </div>
 
 

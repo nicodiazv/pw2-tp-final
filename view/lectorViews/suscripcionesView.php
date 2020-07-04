@@ -20,12 +20,12 @@
                         <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid " width="100"
                              height="100">
                         <ul class="mt-2">
-                            <li><strong>Precio de revista: </strong>${{precio_suscripcion_mensual}}</li>
+                            <li><strong>Precio de revista: </strong>€{{precio_suscripcion_mensual}}</li>
                             <li><strong>Inicio de suscripción:</strong> {{fecha_inicio}}</li>
                             <li><strong>Vencimiento de suscripción:</strong> {{fecha_fin}}</li>
                         </ul>
                         <div class="btn-wrap">
-                            <a href="/suscripciones/desuscripcionRevista/{{revista_id}}" class="btn btn-danger">Desuscribirse</a>
+                            <a href="/suscripciones/desuscripcionRevista/{{revista_id}}" class="btn btn-danger">Desuscribirse <i class="icofont-close"></i></a>
                         </div>
                     </div>
                 </div>
@@ -64,13 +64,13 @@
                             <h3>{{nombre}}</h3>
                             <img src="/images/revistas/{{imagen_nombre}}" alt="" class="img-fluid w-50">
 
-                            <h4><sup>$</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
+                            <h4><sup>€</sup>{{precio_suscripcion_mensual}}<span> / mes</span></h4>
                             <ul>
                                 <li>Agregamos un campo de descripción para las revistas?</li>
                             </ul>
                             <div class="btn-wrap">
                                 <a href="/suscripciones/suscripcionRevista/{{id}}"
-                                   class="btn btn-success">Suscribirse</a>
+                                   class="btn btn-success">Suscribirse <i class="icofont-dotted-right"></i></a>
                             </div>
                         </div>
                     </div>
