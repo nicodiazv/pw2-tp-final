@@ -62,26 +62,26 @@ INSERT INTO `revista` (id, aprobada, usuario_id,precio_suscripcion_mensual, nomb
 (12,1,3,1500,'Economia Mundial','revista_economiaMundial.png','Esta es la descripcion de la revista.Esta es la descripcion de la revista');
 
 INSERT INTO `nro_revista` (id,nombre,precio,fecha_publicacion,revista_id) VALUES
-(1,'Numero de revista 1 de la revista Clarín',100,'2020-01-01',1),
-(2,'Numero de revista 1 de la revista Olé',140,'2020-01-01',2),
-(3,'Numero de revista 1 de la revista La Nación',120,'2020-01-01',3),
-(4,'Numero de revista 1 de la revista Pronto',150,'2020-01-01',4),
-(5,'Numero de revista 1 de la revista Gente',160,'2020-01-01',5),
-(6,'Numero de revista 1 de la revista UNLAM',70,'2020-01-01',6),
-(8,'Numero de revista 2 de la revista Clarín',400,'2020-01-08',1),
-(9,'Numero de revista 2 de la revista Olé',100,'2020-01-08',2),
-(10,'Numero de revista 2 de la revista La Nación',140,'2020-01-08',3),
-(11,'Numero de revista 2 de la revista Pronto',120,'2020-01-08',4),
-(12,'Numero de revista 2 de la revista Gente',150,'2020-01-08',5),
-(13,'Numero de revista 2 de la revista UNLAM',160,'2020-01-08',6),
-(15,'Numero de revista 3 de la revista Clarín',250,'2020-01-15',1),
-(16,'Numero de revista 3 de la revista Olé',400,'2020-01-15',2),
-(17,'Numero de revista 3 de la revista La Nación',100,'2020-01-15',3),
-(18,'Numero de revista 3 de la revista Pronto',140,'2020-01-15',4),
-(19,'Numero de revista 3 de la revista Gente',120,'2020-01-15',5),
-(20,'Numero de revista 3 de la revista UNLAM',150,'2020-01-15',6),
-(21,'Numero de revista 1 de la revista Economica Argentina',120,'2020-01-15',11),
-(22,'Numero de revista 2 de la revista Economica Argentina',150,'2020-02-15',11);
+(1,'Publicación 1 de la revista Clarín',100,'2020-01-01',1),
+(2,'Publicación 1 de la revista Olé',140,'2020-01-01',2),
+(3,'Publicación 1 de la revista La Nación',120,'2020-01-01',3),
+(4,'Publicación 1 de la revista Pronto',150,'2020-01-01',4),
+(5,'Publicación 1 de la revista Gente',160,'2020-01-01',5),
+(6,'Publicación 1 de la revista UNLAM',70,'2020-01-01',6),
+(8,'Publicación 2 de la revista Clarín',400,'2020-01-08',1),
+(9,'Publicación 2 de la revista Olé',100,'2020-01-08',2),
+(10,'Publicación 2 de la revista La Nación',140,'2020-01-08',3),
+(11,'Publicación 2 de la revista Pronto',120,'2020-01-08',4),
+(12,'Publicación 2 de la revista Gente',150,'2020-01-08',5),
+(13,'Publicación 2 de la revista UNLAM',160,'2020-01-08',6),
+(15,'Publicación 3 de la revista Clarín',250,'2020-01-15',1),
+(16,'Publicación 3 de la revista Olé',400,'2020-01-15',2),
+(17,'Publicación 3 de la revista La Nación',100,'2020-01-15',3),
+(18,'Publicación 3 de la revista Pronto',140,'2020-01-15',4),
+(19,'Publicación 3 de la revista Gente',120,'2020-01-15',5),
+(20,'Publicación 3 de la revista UNLAM',150,'2020-01-15',6),
+(21,'Publicación 1 de la revista Economica Argentina',120,'2020-01-15',11),
+(22,'Publicación 2 de la revista Economica Argentina',150,'2020-02-15',11);
 
 
 INSERT INTO `nro_revista_tiene_notas` (nro_revista_id, nota_id, aprobada) VALUES
