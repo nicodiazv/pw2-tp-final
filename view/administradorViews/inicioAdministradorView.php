@@ -1,6 +1,6 @@
 {{> headeradministrador}}
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <!-- ======= Services Section ======= -->
     <section id="services" class="services col-md-9">

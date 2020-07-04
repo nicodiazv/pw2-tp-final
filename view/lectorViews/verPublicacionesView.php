@@ -1,6 +1,6 @@
 {{> headerLector}}
 
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <div class="col-md-9 my-5">
         <div class="row">

@@ -71,12 +71,12 @@ class ModuleInitializer {
 
     public function createInicioContenidistaController() {
         include_once("model/NotaModel.php");
-
+        include_once("model/PublicacionModel.php");
         include_once("controller/InicioContenidistaController.php");
 
         $notaModel = new NotaModel($this->database);
-
-        return new InicioContenidistaController($notaModel, $this->renderer);
+        $publicacionModel = new PublicacionModel($this->database);
+        return new InicioContenidistaController($notaModel,$publicacionModel, $this->renderer);
     }
 
     public function createInicioLectorController() {
@@ -118,12 +118,12 @@ class ModuleInitializer {
 
     public function createPublicacionesController() {
         include_once("model/PublicacionModel.php");
-
+        include_once("model/RevistaModel.php");
         include_once("controller/PublicacionesController.php");
 
         $publicacionModel = new PublicacionModel($this->database);
-
-        return new PublicacionesController($publicacionModel, $this->renderer);
+        $revistaModel = new RevistaModel($this->database);
+        return new PublicacionesController($publicacionModel,$revistaModel, $this->renderer);
     }
 
     public function createCatalogosController() {

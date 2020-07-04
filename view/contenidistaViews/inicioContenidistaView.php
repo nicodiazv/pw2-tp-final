@@ -1,5 +1,5 @@
 {{> headerContenidista}}
-<div class="row justify-content-between">
+<div class="row col-12 justify-content-between">
     {{> sideBarContenidista}}
 
     <!-- ======= Administracion Section ======= -->
@@ -35,16 +35,7 @@
                   aprobación.</p>
               </div>
             </div>
-            <!-- 
-            <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon-box">
-                <i class="icofont-chart-bar-graph"></i>
-                <h4><a href="#">Crear nota dentro de una revista existente</a></h4>
-                <p>En esta sección usted podrá crear notas para diarios o revistas. El estado de estas pasará a
-                  pendientes de aprobación.</p>
-              </div>
-            </div>
-            -->
+
               <!-- Tarjeta de administración -->
               <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
@@ -55,7 +46,15 @@
                   </div>
               </div>
               <!-- End Tarjeta de administración -->
-
+              <!-- Tarjeta de administración -->
+              <div class="tarjeta col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box">
+                      <i class="icofont-file-document"></i>
+                      <h4><a href="/publicaciones/crearPublicacion">Crear publicación</a></h4>
+                      <p>Aquí podrá generar nuevas entregas asociadas a una revista determinada.</p>
+                  </div>
+              </div>
+              <!-- End Tarjeta de administración -->
           </div>
         </div>
 
