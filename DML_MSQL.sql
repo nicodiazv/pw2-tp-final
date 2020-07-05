@@ -1,4 +1,5 @@
 USE pw2;
+DELETE FROM pw2.voto;
 DELETE FROM pw2.catalogo_agrupa_revistas; 			DELETE FROM pw2.nro_revista_tiene_notas;
 DELETE FROM pw2.usuario_compra_nro_revista; 		DELETE FROM pw2.usuario_suscribe_revista;
 DELETE FROM pw2.nota;								DELETE FROM pw2.nro_revista;
@@ -37,14 +38,14 @@ INSERT INTO `seccion` (id,nombre,aprobada) VALUES
 (9,' Salud',1);
 
 INSERT INTO `nota` (id, gratis, aprobada, seccion_id, usuario_id,titulo, ubicacion_place_id, ubicacion_lat, ubicacion_lng, cuerpo, ubicacion_nombre, imagen_nombre, enlace, copete) VALUES
-(1,0,1,1,5,'Titulo de una nota de General 1',0,0,0,'Cuerpo de una nota de General','Ubicación 1','nota_1.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(2,0,1,2,5,'Titulo de una nota de General 2',0,0,0,'Cuerpo de una nota de General','Ubicación 2','nota_2.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(3,0,1,3,5,'Titulo de una nota de General 3',0,0,0,'Cuerpo de una nota de General','Ubicación 3','nota_3.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(4,0,1,4,1,'Titulo de una nota de General 4',0,0,0,'Cuerpo de una nota de General','Ubicación 4','nota_4.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(5,0,1,5,1,'Titulo de una nota de General 5',0,0,0,'Cuerpo de una nota de General','Ubicación 5','nota_5.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(6,0,1,6,1,'Titulo de una nota de General 6',0,0,0,'Cuerpo de una nota de General','Ubicación 6','nota_6.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(7,0,null,7,1,'Titulo de una nota de General 7',0,0,0,'Cuerpo de una nota de General','Ubicación 7','nota_7.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
-(8,0,null,8,1,'Titulo de una nota de General 8',0,0,0,'Cuerpo de una nota de General','Ubicación 8','nota_8.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota');
+(1,0,1,1,5,'Titulo de una nota de General 1',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 1','nota_1.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(2,0,1,2,5,'Titulo de una nota de General 2',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 2','nota_2.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(3,0,1,3,5,'Titulo de una nota de General 3',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 3','nota_3.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(4,0,1,4,1,'Titulo de una nota de General 4',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 4','nota_4.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(5,0,1,5,1,'Titulo de una nota de General 5',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 5','nota_5.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(6,0,1,6,1,'Titulo de una nota de General 6',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 6','nota_6.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(7,0,null,7,1,'Titulo de una nota de General 7',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 7','nota_7.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota'),
+(8,0,null,8,1,'Titulo de una nota de General 8',0,0,0,'Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General Cuerpo de una nota de General','Ubicación 8','nota_8.jpg','https://www.minutouno.com/','Este este es es el el copete copete de de la la nota nota');
 
 
 INSERT INTO `revista` (id, aprobada, usuario_id,precio_suscripcion_mensual, nombre, imagen_nombre, descripcion) VALUES
@@ -125,3 +126,13 @@ INSERT INTO `catalogo_agrupa_revistas` (catalogo_id, revista_id) VALUES
 (5,11),
 (5,12);
 
+INSERT INTO `voto` (puntaje, usuario_id, nota_id) VALUES
+(1,1,1),
+(1,1,2),
+(2,1,3),
+(1,3,2),
+(1,3,3),
+(1,4,1),
+(1,4,2),
+(1,4,3),
+(1,4,4);

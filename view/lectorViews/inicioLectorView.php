@@ -1,15 +1,11 @@
 {{> headerLector}}
+{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
 <div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <!-- ======= Catalogo de diarios Section ======= -->
-    <section id="services" class="services col-md-9">
+    <section id="services" class="services col-md-9 col-sm-12">
         <div class="container" data-aos="fade-up">
             <div class="col-lg-12 data-aos=" fade-left data-aos-delay="100">
-                {{#alert}}
-                <div class="alert alert-{{class}}" role="alert">
-                    <p>{{message}}</p>
-                </div>
-                {{/alert}}
                 <div class="section-title">
                     <div class="section-title">
                         <h2>Menú principal</h2>
@@ -48,7 +44,7 @@
                              data-aos-delay="100">
                             <div class="icon-box">
                                 <i class="icofont-plus"></i>
-                                <ch4><a href="/suscripciones">Mis suscripciones</a></ch4>
+                                <h4><a href="/suscripciones">Mis suscripciones</a></h4>
                                 <p>En esta sección podrá gestionar sus suscripciones a revistas.</p>
                             </div>
                         </div>

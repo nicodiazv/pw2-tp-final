@@ -84,7 +84,6 @@ CREATE TABLE `nota` (
 CREATE TABLE `nro_revista_tiene_notas` (
   `nro_revista_id` INT(11) NOT NULL,
   `nota_id` INT(11) NOT NULL,
- 
   `aprobada` TINYINT(4),
   PRIMARY KEY (`nro_revista_id`,`nota_id`),
   FOREIGN KEY (`nota_id`) REFERENCES `nota` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -134,4 +133,13 @@ CREATE TABLE `catalogo_agrupa_revistas` (
   PRIMARY KEY (`catalogo_id`,`revista_id`),
   FOREIGN KEY (`catalogo_id`) REFERENCES `catalogo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`revista_id`) REFERENCES `revista` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `voto` (
+  `puntaje` INT(11) NOT NULL,
+  `usuario_id` INT(11) NOT NULL,
+   `nota_id` INT(11) NOT NULL,
+PRIMARY KEY (`usuario_id`,`nota_id`),
+FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+FOREIGN KEY (`nota_id`) REFERENCES `nota` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

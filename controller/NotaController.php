@@ -74,11 +74,13 @@ class NotaController {
         try {
             $nota_id = isset($_GET['id']) ? $_GET['id'] : false;
             ValidateParameter::validateCleanParameter($nota_id);
+            $this->notaModel->validarAccesoNota($this->data["usuario"]["id"], $nota_id);
+            $this->data['nota'] = $this->notaModel->getNota($nota_id);
         } catch (FortException $e) {
-            $this->index();
+            $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
+            echo $this->renderer->render("view/lectorViews/inicioLectorView.php", $this->data);
+            exit();
         }
-
-        $this->data['nota'] = $this->notaModel->getNota($nota_id);
 
         if (ValidateSession::esLector()) {
             echo $this->renderer->render("view/lectorViews/verNotaView.php", $this->data);
@@ -117,6 +119,7 @@ class NotaController {
     public function modelSideBar(&$refArrayData) {
         $this->data["usuario"] = $_SESSION["usuario"];
         if (ValidateSession::esLector()) {
+            $this->data["cantRevistasPorCatalogo"] = $_SESSION["cantRevistasPorCatalogo"];
         }
         if (ValidateSession::esContenidista()) {
             $this->data["notasPorCategoria"] = $_SESSION["notasPorCategoria"];

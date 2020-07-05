@@ -75,4 +75,23 @@ class NotaModel {
         return $this->connexion->query("UPDATE nota set aprobada = 2 where id = $id");
     }
 
+    public function validarAccesoNota($idUsuario, $idNota) {
+        $accesoPermitido =  $this->connexion->query("SELECT 1 -- El usuario esta suscrito a la revista que contiene la publicacion que contiene la nota elegida --
+                                        FROM nro_revista nr
+                                        JOIN usuario_suscribe_revista usr ON (usr.revista_id = nr.revista_id)
+                                        JOIN nro_revista_tiene_notas nrtn ON (nrtn.nro_revista_id = nr.id)
+                                        WHERE nrtn.nota_id = $idNota 
+                                        AND usr.usuario_id = $idUsuario
+                                        UNION
+                                        SELECT 1 -- El usuario compro compro la publicacion que contiene la nota elegida -- 
+                                        FROM nro_revista nr
+                                        JOIN usuario_compra_nro_revista ucnr ON (ucnr.nro_revista_id = nr.revista_id)
+                                        JOIN nro_revista_tiene_notas nrtn ON (nrtn.nro_revista_id = ucnr.nro_revista_id)
+                                        WHERE nrtn.nota_id = $idNota 
+                                        AND ucnr.usuario_id = $idUsuario");
+        if(!$accesoPermitido){
+            throw new FortException("No tiene acceso a esta nota.");
+        }
+    }
+
 }
