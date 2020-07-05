@@ -1,5 +1,4 @@
 {{> headerLector}}
-
 <div class="row col-12 justify-content-between">
     {{> sideBarLector}}
     <div class="col-md-9 my-4">
@@ -7,10 +6,9 @@
             <div class="col-sm-12">
                 {{#nombre_revista}}
                 <div class="section-title">
-
-                    <h2>Publicaciones de la revista  {{nombre_revista}} </h2>
-                    <p>Aquí podrás encontrar todas las publicaciones disponibles de la revista {{nombre_revista}} para usted</p>
-
+                    <h2>Publicaciones de la revista {{nombre_revista}} </h2>
+                    <p>Aquí podrás encontrar todas las publicaciones disponibles de la revista {{nombre_revista}} para
+                        usted</p>
                 </div>
             </div>
             <table class="table table-hover">
@@ -30,6 +28,7 @@
                 {{/publicacionesDeRevista}}
                 </tbody>
             </table>
+            <a href="/revistas/misRevistas" class="h5">Volver</a>
             {{/nombre_revista}}
         </div>
     </div>

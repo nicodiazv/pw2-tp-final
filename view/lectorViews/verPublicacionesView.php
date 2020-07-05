@@ -30,6 +30,7 @@
                 {{/ publicaciones}}
                 </tbody>
             </table>
+            <a href="/" class="h5">Volver</a>
         </div>
     </div>
     {{> footer}}

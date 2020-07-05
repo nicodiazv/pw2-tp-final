@@ -29,7 +29,7 @@
             {{^notasDePublicacion}}
             <h5 class="text-danger ml-5">Esta publicación aún no posee notas.</h5>
             {{/notasDePublicacion}}
-
+            <a href="/publicaciones" class="h5">Volver</a>
         </div>
 
 </div>

@@ -256,6 +256,15 @@ class ModuleInitializer {
 
         return new ReportesController($tcpdf,$usuarioModel, $notaModel, $seccionModel, $revistaModel, $publicacionModel, $this->renderer);
     }
+    public function createVotosController() {
+        include_once("model/VotosModel.php");
+
+        include_once("controller/VotosController.php");
+
+        $votosModel = new VotosModel($this->database);
+
+        return new VotosController($votosModel, $this->renderer);
+    }
 
     public function createDefaultController() {
         return $this->createHomeController();
