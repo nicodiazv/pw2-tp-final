@@ -200,6 +200,16 @@ class ModuleInitializer {
         return new ComprasController($comprasModel, $publicacionModel, $transaccionModel, $this->renderer);
     }
 
+    public function createVotosController() {
+        include_once("model/VotosModel.php");
+
+        include_once("controller/VotosController.php");
+
+        $votosModel = new VotosModel($this->database);
+
+        return new VotosController($votosModel, $this->renderer);
+    }
+
     public function createDefaultController() {
         return $this->createHomeController();
     }
