@@ -32,7 +32,7 @@
                 <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon-box">
                         <i class="bx bxs-bar-chart-alt-2"></i>
-                        <h4><a href="#">Visualización de gráficos de rendimiento</a></h4>
+                        <h4><a href="/graficos">Visualización de gráficos de rendimiento</a></h4>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                             pariatur</p>
                     </div>

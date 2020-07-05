@@ -47,4 +47,33 @@ class GraficoModel
         return $response;
     }
 
+    public function cantidadComprasPorMes(){
+        return $this->connection->query("SELECT 
+        COUNT(*) AS cantidad, MONTH(t.fecha) AS mes
+    FROM
+        usuario_compra_nro_revista ucr
+            JOIN
+        transaccion t ON t.id = ucr.transaccion_id
+    WHERE
+        YEAR(t.fecha) = 2020
+    GROUP BY MONTH(t.fecha)
+    ORDER BY MONTH(t.fecha) ASC");
+
+    }
+
+    public function cantidadSuscripcionesPorMes(){
+        return $this->connection->query("SELECT 
+        COUNT(*) AS cantidad, MONTH(t.fecha) AS mes
+    FROM
+        usuario_suscribe_revista usr
+            JOIN
+        transaccion t ON t.id = usr.transaccion_id
+    WHERE
+        YEAR(t.fecha) = 2020
+    GROUP BY MONTH(t.fecha)
+    ORDER BY MONTH(t.fecha) ASC");
+
+    }
+
+
 }

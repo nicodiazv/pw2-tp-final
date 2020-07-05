@@ -26,14 +26,21 @@ class GraficosController {
         $this->data['secciones'] = $this->seccionModel->cantidad_seccionesPendientesAprobacion();
         $this->data['revistas'] = $this->revistaModel->cantidad_revistasPendientesAprobacion();
 
-        echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $this->data);
+        echo $this->renderer->render("view/administradorViews/graficosView.php", $this->data);
     }
 
     public function notas(){
         $this->data["notasPorSeccion"] = $this->graficoModel->notasCreadasPorSecciones();
         $this->data["cantidadNotas"] = $this->graficoModel->cantidadNotas();
 
-        echo $this->renderer->render("view/administradorViews/graficosView.php", $this->data);
+        echo $this->renderer->render("view/administradorViews/graficosNotasView.php", $this->data);
+    }
+
+    public function comprasYSuscripciones(){
+        $this->data["compras"] = $this->graficoModel->cantidadComprasPorMes();
+        $this->data["suscripciones"] = $this->graficoModel->cantidadSuscripcionesPorMes();
+
+        echo $this->renderer->render("view/administradorViews/graficosComprasSuscripcionesView.php", $this->data);
     }
 
     public function modelSideBar(&$refArrayData) {
