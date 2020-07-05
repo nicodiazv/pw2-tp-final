@@ -29,8 +29,10 @@ class GraficosController {
         echo $this->renderer->render("view/administradorViews/aprobacionesView.php", $this->data);
     }
 
-    public function grafico(){
+    public function notas(){
         $this->data["notasPorSeccion"] = $this->graficoModel->notasCreadasPorSecciones();
+        $this->data["cantidadNotas"] = $this->graficoModel->cantidadNotas();
+
         echo $this->renderer->render("view/administradorViews/graficosView.php", $this->data);
     }
 
