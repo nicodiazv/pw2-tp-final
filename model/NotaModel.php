@@ -111,4 +111,29 @@ class NotaModel {
         }
     }
 
+    public function notasPermitidas($usuario_id){
+        return $this->connexion->query("SELECT 
+        *
+    FROM
+        nota
+    WHERE
+        id IN (SELECT 
+                nrtn.nota_id
+            FROM
+                pw2.usuario_compra_nro_revista ucr
+                    JOIN
+                nro_revista_tiene_notas nrtn ON nrtn.nro_revista_id = ucr.nro_revista_id
+            WHERE
+                ucr.usuario_id = $usuario_id UNION SELECT 
+                nrtn.nota_id
+            FROM
+                pw2.usuario_suscribe_revista usr
+                    JOIN
+                nro_revista nr ON nr.revista_id = usr.revista_id
+                    JOIN
+                nro_revista_tiene_notas nrtn ON nrtn.nro_revista_id = nr.id
+            WHERE
+                usr.usuario_id = $usuario_id)");
+    }
+
 }

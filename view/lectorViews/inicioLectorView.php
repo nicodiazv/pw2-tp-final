@@ -88,7 +88,10 @@
     document.addEventListener("DOMContentLoaded", () => {
         // const host = window.location.hostname;
         // const protocol = window.location.protocol;
-        const url = `/api/notas/read.php`
+        {{#usuario}}
+            const url = `/api/notas/read.php?id={{id}}`
+        {{/usuario}}
+        
         fetch(url)
             .then(res => res.json())
             .then(lugares => {
