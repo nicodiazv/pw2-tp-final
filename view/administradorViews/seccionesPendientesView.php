@@ -22,6 +22,9 @@
             {{/ seccionesPendientesAprobacion}}
             </tbody>
         </table>
+        {{^seccionesPendientesAprobacion}}
+        <h5 class="text-danger ml-5">No hay secciones pendientes de aprobación.</h5>
+        {{/seccionesPendientesAprobacion}}
     </div>
 </div>
 {{> footer}}

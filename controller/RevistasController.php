@@ -85,6 +85,7 @@ class RevistasController {
         }
         if (ValidateSession::esContenidista()) {
             $this->data["notasPorCategoria"] = $_SESSION["notasPorCategoria"];
+            $this->data["publicaciones"] = $_SESSION["publicaciones"];
         }
     }
 

@@ -19,7 +19,7 @@
                     <th></th>
                 </tr>
                 <tbody>
-                {{# publicaciones}}
+                {{#publicaciones}}
                 <tr>
                     <td><a href="/publicaciones/publicacion/{{id_publicacion}}">{{nombre_publicacion}}</a></td>
                     <td>{{nombre_revista}}</td>
@@ -27,10 +27,13 @@
                     <td><a class="btn btn-primary" href="/publicaciones/publicacion/{{id_publicacion}}">Ver notas <i
                                     class='icofont-caret-right bx-fade-down'></a></td>
                 </tr>
-                {{/ publicaciones}}
+                {{/publicaciones}}
                 </tbody>
             </table>
-            <a href="/" class="h5">Volver</a>
+            {{^publicaciones}}
+            <h5 class="text-danger ml-5" >No has adquirido ninguna publicación aún.</h5>
+            {{/publicaciones}}
         </div>
+        <div class="mt-5"><a href="/" class="h5">Volver</a></div>
     </div>
     {{> footer}}

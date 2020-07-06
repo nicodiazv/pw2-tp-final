@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text">€</span></div>
                             <input type="number" name="precioMensual" class="form-control"
                                    aria-label="Amount (to the nearest dollar)" data-bind="value:replyNumber"
                                    placeholder="Precio mensual de la revista" required>

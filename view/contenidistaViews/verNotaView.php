@@ -57,7 +57,7 @@
                         </div>
                     {{/ nota}}
                     {{^nota}}
-                        <h1>La nota solicitada no existe!</h1>
+                    <h5 class="text-danger">La nota solicitada no existe!</h5>
                     {{/nota}}
 
 
