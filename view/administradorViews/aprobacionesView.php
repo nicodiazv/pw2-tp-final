@@ -1,5 +1,5 @@
 {{> headeradministrador}}
-
+{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
 <div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
 
@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Notas <i class=" icofont-notepad icofont-1x"></i></h5>
-                    <p class="card-text">Aquí se agrupan las notas creadas por los contenidistas</p>
+                    <p class="card-text">Aquí podrá aprobar las nuevas notas solicitadas por los contenidistas.</p>
                     <p class="card-text">
                         <small class="text-muted">
 
@@ -27,8 +27,8 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Publicaciones <i class="icofont-newspaper icofont-1x"></i></h5>
-                    <p class="card-text">Aquí se agrupan las publicaciones creadas por los contenidistas</p>
+                    <h5 class="card-title">Notas en publicaciones <i class="icofont-newspaper icofont-1x"></i></h5>
+                    <p class="card-text">Aquí podrá aprobar las nuevas solicitudes de notas para publicaciones por los contenidistas.</p>
                     <p class="card-text">
                         <small class="text-muted">
 
@@ -46,7 +46,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Secciones <i class="icofont-chart-flow-1 icofont-1x"></i></h5>
-                    <p class="card-text">Aquí se agrupan las secciones creadas por los contenidistas</p>
+                    <p class="card-text">Aquí podrá aprobar las nuevas secciones solicitadas por los contenidistas.</p>
                     <p class="card-text">
                         <small class="text-muted">
 
@@ -59,8 +59,8 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Revistas/diarios <i class="icofont-files-stack icofont-1x"></i></h5>
-                    <p class="card-text">Aquí se agrupan las revistas/diarios creadas por los contenidistas</p>
+                    <h5 class="card-title">Revistas <i class="icofont-files-stack icofont-1x"></i></h5>
+                    <p class="card-text">Aquí podrá aprobar las nuevas revistas solicitadas por los contenidistas.</p>
                     <p class="card-text">
                         <small class="text-muted">
 

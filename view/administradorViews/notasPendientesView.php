@@ -30,6 +30,9 @@
             {{/ notasPendientesAprobacion}}
             </tbody>
         </table>
+        {{^notasPendientesAprobacion}}
+        <h5 class="text-danger ml-5">No hay notas pendientes de aprobación.</h5>
+        {{/notasPendientesAprobacion}}
     </div>
 </div>
 {{> footer}}

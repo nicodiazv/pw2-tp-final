@@ -6,7 +6,7 @@
         <div class="column container-fluid">
             <div class="section-title">
                 <h2>Notas en publicaciones</h2>
-                <p>pendientes de aprobacion</p>
+                <p>Notas pendientes de aprobación en publicaciones específicas</p>
             </div>
             <table class="table table-hover">
                 <thead>
@@ -29,7 +29,7 @@
                             <td>{{ubicacion_nombre}}</td>
                             <td>{{usuario_apellido}}, {{usuario_nombre}}</td>
                             <td>{{publicacion_nombre}}</td>
-                            <td><a href="./notaspendientes/{{nota_id}}">Ver</a></td>
+                            <td></td>
                             <td>
                                 <form action="/aprobaciones/aprobarNotaEnNroPublicacion" method="POST">
                                     <input type="hidden" name="nota_id" value="{{nota_id}}">
@@ -38,13 +38,13 @@
                                     <button type="submit" class="btn btn-primary btn-sm">Aprobar</button>
                                 </form>
                             </td>
-
-
-
                         </tr>
                         {{/ notasEnPublicacionPendientesAprobacion}}
                 </tbody>
             </table>
+            {{^notasEnPublicacionPendientesAprobacion}}
+            <h5 class="text-danger ml-5">No hay solicitudes pendientes de aprobación.</h5>
+            {{/notasEnPublicacionPendientesAprobacion}}
         </div>
     </div>
 </div>

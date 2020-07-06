@@ -80,7 +80,8 @@
                                 {{/votos_negativos}}
                                 </tbody>
                             </table>
-                            {{^votos_negativos}}<h5 class="text-success ml-5">Todavía no hay votos negativos.</h5>
+                            {{^votos_negativos}}
+                            <h5 class="text-success ml-5">Todavía no hay votos negativos.</h5>
                             {{/votos_negativos}}
                         </div>
                     </div>

@@ -20,9 +20,10 @@ class InicioContenidistaController {
 
     public function modelSideBar(&$refArrayData) {
         $this->data["usuario"] = $_SESSION["usuario"];
-        $usuario_id = $_SESSION["usuario"]["id"];
         $_SESSION["notasPorCategoria"] = $this->notaModel->cantidadNotasPorSeccionYUsuario($_SESSION["usuario"]["id"]);
-        $this->data["publicaciones"] = $this->publicacionModel->obtenerMisPublicaciones($usuario_id);
+        $_SESSION["publicaciones"]  = $this->publicacionModel->obtenerMisPublicaciones($_SESSION["usuario"]["id"]);
+        $this->data["notasPorCategoria"] = $_SESSION["notasPorCategoria"];
+        $this->data["publicaciones"] = $_SESSION["publicaciones"];
     }
 
 }

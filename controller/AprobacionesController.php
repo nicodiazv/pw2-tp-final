@@ -65,6 +65,7 @@ class AprobacionesController {
         $nota_id = ValidateParameter::validateCleanParameter($_POST['nota_id']);
         $publicacion_id = ValidateParameter::validateCleanParameter($_POST['publicacion_id']);
         $this->publicacionModel->aprobarNotaEnNroPublicacion($nota_id, $publicacion_id);
+        $this->data["alert"] = array("class" => "success", "message" => "La nota ha sido aprobada correctamente en la publicación.");
         $this->index();
     }
 

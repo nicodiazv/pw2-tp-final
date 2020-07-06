@@ -18,7 +18,7 @@ class NotaController {
         $this->publicacionModel = $publicacionModel;
     }
 
-    public function index() {
+    public function index($data = null) {
         if (ValidateSession::esContenidista()) {
             $this->data['notas'] = $this->notaModel->obtenerNotasCreadas($this->data["usuario"]["id"]);
             echo $this->renderer->render("view/contenidistaViews/verNotasView.php", $this->data);
@@ -74,28 +74,31 @@ class NotaController {
         try {
             $nota_id = isset($_GET['id']) ? $_GET['id'] : false;
             ValidateParameter::validateCleanParameter($nota_id);
-            $this->notaModel->validarAccesoNota($this->data["usuario"]["id"], $nota_id);
-            $this->data['nota'] = $this->notaModel->getNota($nota_id);
+            if (ValidateSession::esLector()) {
+                $this->notaModel->validarAccesoNota($this->data["usuario"]["id"], $nota_id);
+                $this->data['nota'] = $this->notaModel->getNota($nota_id);
+                echo $this->renderer->render("view/lectorViews/verNotaView.php", $this->data);
+            }
+            if (ValidateSession::esContenidista()) {
+                $this->data['nota'] = $this->notaModel->getNota($nota_id);
+                echo $this->renderer->render("view/contenidistaViews/verNotaView.php", $this->data);
+            }
+
         } catch (FortException $e) {
             $this->data["alert"] = array("class" => "danger", "message" => $e->getMessage());
-            echo $this->renderer->render("view/lectorViews/inicioLectorView.php", $this->data);
-            exit();
+            if (ValidateSession::esLector()) {
+                echo $this->renderer->render("view/lectorViews/inicioLectorView.php", $this->data);
+            }
+            if (ValidateSession::esContenidista()) {
+                echo $this->renderer->render("view/contenidistaViews/inicioContenidista.php", $this->data);
+            }
         }
-
-        if (ValidateSession::esLector()) {
-            echo $this->renderer->render("view/lectorViews/verNotaView.php", $this->data);
-            exit();
-        }
-
-        $this->data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
-        echo $this->renderer->render("view/contenidistaViews/verNotaView.php", $this->data);
     }
 
     public function agregarNotaAPublicacion() {
         ValidateSession::validarSesionContenidista();
         $nota_id = ValidateParameter::validateCleanParameter($_GET['id']);
         $this->data['nota'] = $this->notaModel->getNota($nota_id);
-        $this->data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
         $this->data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPorNotaId($nota_id);
         echo $this->renderer->render("view/contenidistaViews/agregarNotaAPublicacionView.php", $this->data);
     }
@@ -112,8 +115,9 @@ class NotaController {
         ValidateSession::validarSesionContenidista();
         $nota_id = ValidateParameter::validateCleanParameter($_POST['nota_id']);
         $publicacion_id = ValidateParameter::validateCleanParameter($_POST['publicacion_id']);
-        $resultado = $this->publicacionModel->enviarSolicitudNota($nota_id, $publicacion_id);
-        $this->index();
+        $this->publicacionModel->enviarSolicitudNota($nota_id, $publicacion_id);
+        $this->data["alert"] = array("class" => "success", "message" => "Solicitud enviada correctamente");
+        $this->index($this->data);
     }
 
     public function modelSideBar(&$refArrayData) {
@@ -123,6 +127,7 @@ class NotaController {
         }
         if (ValidateSession::esContenidista()) {
             $this->data["notasPorCategoria"] = $_SESSION["notasPorCategoria"];
+            $this->data["publicaciones"] = $_SESSION["publicaciones"];
         }
     }
 }
