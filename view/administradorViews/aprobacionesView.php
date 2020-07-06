@@ -1,10 +1,10 @@
 {{> headeradministrador}}
-{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
+
 <div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
 
     <div id="blog" class="blog col-md-9">
-
+        {{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
             <div class="section-title">
                 <h2>Contenidos pendientes</h2>
                 <p>Aquí podrá aprobar secciones, revistas, publicaciones y notas pendientes de aprobacion</p>

@@ -1,8 +1,9 @@
 {{> headeradministrador}}
-{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
+
 <div class="row col-12 justify-content-between">
     {{> sideBarAdministrador}}
     <div id="blog" class="blog col-md-9">
+        {{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
         <div class="section-title">
             <h2>Notas Pendientes</h2>
             <p>Haga click en 'ver' para abrir la nota y aprobarla/rechazarla</p>
