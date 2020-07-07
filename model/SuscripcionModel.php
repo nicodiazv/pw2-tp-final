@@ -45,4 +45,10 @@ class SuscripcionModel {
             return true;
         }
     }
+
+    public function obtenerCantidadSuscripcionesPorRevista($revista_id){
+        return $this->connection->query("SELECT count(usr.revista_id) as suscripciones FROM pw2.usuario_suscribe_revista usr 
+        where usr.revista_id = $revista_id
+        group by usr.revista_id");
+    }
 }

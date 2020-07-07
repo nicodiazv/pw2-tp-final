@@ -12,9 +12,9 @@
       <!-- ======= Crear nota Section ======= -->
       <section id="" class="contact col-md-9">
         <div class="container-fluid" data-aos="fade-up">
-          <div class="col-lg-12 data-aos=" fade-left" data-aos-delay="100">
+          <div class="col-lg-12" data-aos="fade-left" data-aos-delay="100">
             <div class="section-title">
-              <h2>Agregar una nota</h2>
+              <h2>Editar nota</h2>
             </div>
             <!-- formulario para crear una nota -->
             <form action="/nota/guardarNota" method="POST" role="form" enctype="multipart/form-data">

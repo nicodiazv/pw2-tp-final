@@ -33,6 +33,7 @@ class RegistroController {
             $this->model->validarQueEmailNoExista($data["email"]);
             //Registra al usuario
             $this->model->registrarUsuarioLector($data);
+            SubscribeEmail::subscribe($data["email"]);
 
             $data["alert"] = array("class" => "success", "message" => "Usuario registrado correctamente");
 

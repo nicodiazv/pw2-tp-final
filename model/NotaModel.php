@@ -12,6 +12,23 @@ class NotaModel {
         return $this->connexion->query("INSERT INTO nota 
             (titulo, ubicacion_nombre,ubicacion_place_id,ubicacion_lat,ubicacion_lng, seccion_id, cuerpo, usuario_id, imagen_nombre, enlace,copete) 
             VALUES ('$titulo','$ubicacion','$place_id' , '$lat' ,'$lng',$seccion_id,'$cuerpo', $usuario_id, '$imagenNombre','$enlace', '$copete'  )");
+    }
+    public function actualizarNota($nota_id,$usuario_id, $titulo, $ubicacion, $place_id, $lat, $lng, $seccion_id, $cuerpo, $imagenNombre, $enlace, $copete) {
+        return $this->connexion->query("UPDATE nota 
+            set 
+            titulo ='$titulo', 
+            ubicacion_nombre = '$ubicacion',
+            ubicacion_place_id = '$place_id',
+            ubicacion_lat = '$lat',
+            ubicacion_lng = '$lng', 
+            seccion_id = $seccion_id, 
+            cuerpo = '$cuerpo',
+            usuario_id = $usuario_id, 
+            imagen_nombre = '$imagenNombre', 
+            enlace = '$enlace',
+            copete = '$copete',
+            aprobada = null
+            WHERE id = $nota_id");
 
     }
 
@@ -92,6 +109,31 @@ class NotaModel {
         if(!$accesoPermitido){
             throw new FortException("No tiene acceso a esta nota.");
         }
+    }
+
+    public function notasPermitidas($usuario_id){
+        return $this->connexion->query("SELECT 
+        *
+    FROM
+        nota
+    WHERE
+        id IN (SELECT 
+                nrtn.nota_id
+            FROM
+                pw2.usuario_compra_nro_revista ucr
+                    JOIN
+                nro_revista_tiene_notas nrtn ON nrtn.nro_revista_id = ucr.nro_revista_id
+            WHERE
+                ucr.usuario_id = $usuario_id UNION SELECT 
+                nrtn.nota_id
+            FROM
+                pw2.usuario_suscribe_revista usr
+                    JOIN
+                nro_revista nr ON nr.revista_id = usr.revista_id
+                    JOIN
+                nro_revista_tiene_notas nrtn ON nrtn.nro_revista_id = nr.id
+            WHERE
+                usr.usuario_id = $usuario_id)");
     }
 
 }

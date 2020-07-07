@@ -46,6 +46,7 @@
 <script src="/view/vendor/venobox/venobox.min.js"></script>
 <script src="/view/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="/view/vendor/aos/aos.js"></script>
+
 <!-- Template Main JS File -->
 <script src="/view/js/main.js"></script>
 <script src="/view/js/modoOscuro.js"></script>
@@ -53,6 +54,27 @@
 <script src="/view/js/aprobaciones.js"></script>
 <script src="/view/js/baile.js"></script>
 
+{{! Data Tables }}
+<script type="text/javascript"  charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<script>
+
+</script>
+
+
+<script>
+
+    if(window.location.pathname == "/nota" || window.location.pathname == "/revistas/estadoRevistas" ){
+        $(document).ready( function () {
+            $('#dataTable').DataTable({
+                "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                    }
+            });
+        });
+    }
+    
+</script>
 </body>
 
 </html>

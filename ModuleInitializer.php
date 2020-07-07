@@ -177,13 +177,31 @@ class ModuleInitializer {
     }
 
     public function createDescargasController() {
-        include_once("model/DescargasModel.php");
+        include_once("vendor/tcpdf/tcpdf.php");
+
+        include_once("model/UsuarioModel.php");
+        include_once("model/SeccionModel.php");
+        include_once("model/NotaModel.php");
+        include_once("model/RevistaModel.php");
+        include_once("model/PublicacionModel.php");
+        include_once("model/SuscripcionModel.php");
+
+        include_once("model/ComprasModel.php");
+
 
         include_once("controller/DescargasController.php");
+        $tcpdf = new TCPDF('P', 'mm', 'A4');
 
-        $descargasModel = new DescargasModel($this->database);
 
-        return new DescargasController($descargasModel,$this->renderer);
+        $usuarioModel = new UsuarioModel($this->database);
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        $revistaModel = new RevistaModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
+        $suscripcionModel = new SuscripcionModel($this->database);
+        $comprasModel = new ComprasModel($this->database);
+
+        return new DescargasController($tcpdf,$usuarioModel, $notaModel, $seccionModel, $revistaModel, $publicacionModel,$suscripcionModel,$comprasModel, $this->renderer);
     }
 
     public function createComprasController() {
@@ -200,6 +218,44 @@ class ModuleInitializer {
         return new ComprasController($comprasModel, $publicacionModel, $transaccionModel, $this->renderer);
     }
 
+    public function createGraficosController() {
+        include_once("model/GraficoModel.php");
+
+        include_once("model/SeccionModel.php");
+        include_once("model/NotaModel.php");
+        include_once("model/RevistaModel.php");
+        include_once("model/PublicacionModel.php");
+
+        include_once("controller/GraficosController.php");
+        $graficoModel = new GraficoModel($this->database);
+
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        $revistaModel = new RevistaModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
+
+        return new GraficosController($graficoModel, $notaModel, $seccionModel, $revistaModel, $publicacionModel, $this->renderer);
+    }
+
+    public function createReportesController() {
+        include_once("vendor/tcpdf/tcpdf.php");
+        include_once("model/UsuarioModel.php");
+        include_once("model/SeccionModel.php");
+        include_once("model/NotaModel.php");
+        include_once("model/RevistaModel.php");
+        include_once("model/PublicacionModel.php");
+
+        include_once("controller/ReportesController.php");
+        $tcpdf = new TCPDF('P', 'mm', 'A4');
+
+        $usuarioModel = new UsuarioModel($this->database);
+        $notaModel = new NotaModel($this->database);
+        $seccionModel = new SeccionModel($this->database);
+        $revistaModel = new RevistaModel($this->database);
+        $publicacionModel = new PublicacionModel($this->database);
+
+        return new ReportesController($tcpdf,$usuarioModel, $notaModel, $seccionModel, $revistaModel, $publicacionModel, $this->renderer);
+    }
     public function createVotosController() {
         include_once("model/VotosModel.php");
 

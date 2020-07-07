@@ -105,4 +105,10 @@ class RevistaModel {
                                         WHERE id = $id");
     }
 
+    public function obtenerCantidadEdicionesPorRevista($revista_id){
+        return $this->connection->query("SELECT count(nr.revista_id) as ediciones FROM pw2.nro_revista nr
+        where nr.revista_id = $revista_id
+        group by nr.revista_id");
+    }
+
 }

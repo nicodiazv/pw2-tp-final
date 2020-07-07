@@ -20,7 +20,7 @@
 
                 <div class="col-12">
 
-                    <table class="table table-hover">
+                    <table id="dataTable" class="table table-hover">
                         <thead>
                         <tr>
                             <th>Titulo</th>
@@ -38,15 +38,18 @@
                             <td>{{ubicacion_nombre}}</td>
                             <td>
                                 {{#aprobada}}
-                                <span id="estado" class="bg-success text-white p-1 rounded">Aprobada</span>
+                                <span id="estado" class="bg-success text-white p-1 rounded">Habilitada</span>
                                 {{/aprobada}}
                                 {{^aprobada}}
-                                <span class="bg-info text-white p-1 rounded">Pendiente</span>
+                                <span class="bg-danger text-white p-1 rounded">Deshabilitada</span>
                                 {{/aprobada}}
                             </td>
                             <td>
                                 {{#aprobada}}
                                 <a href="/nota/agregarNotaAPublicacion/{{id}}">Agregar a Publicación</a>
+                                {{/aprobada}}
+                                {{^aprobada}}
+                                <a href="/nota/editarNota/{{id}}">Editar</a>
                                 {{/aprobada}}
                             </td>
                         </tr>
@@ -62,4 +65,5 @@
 </section>
 <!-- End Catalogo de diarios -->
 </div>
+
 {{> footer}}
