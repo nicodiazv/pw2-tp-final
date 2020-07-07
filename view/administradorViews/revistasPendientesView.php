@@ -30,6 +30,9 @@
             {{/ revistasPendientesAprobacion}}
             </tbody>
         </table>
+        {{^revistasPendientesAprobacion}}
+        <h5 class="text-danger ml-5">No hay revistas pendientes de aprobación.</h5>
+        {{/revistasPendientesAprobacion}}
     </div>
 </div>
 {{> footer}}

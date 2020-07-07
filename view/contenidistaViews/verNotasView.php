@@ -1,6 +1,6 @@
 {{> headerContenidista}}
 
-
+{{#alert}}<div class="alert alert-{{class}}" role="alert"><p>{{message}}</p></div>{{/alert}}
 <div class="row col-12 justify-content-between">
     {{> sideBarContenidista}}
     <!-- ======= Catalogo de diarios Section ======= -->
