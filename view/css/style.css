@@ -2283,4 +2283,9 @@ section {
 .left-panel {
   background-color: #00172b;
   color: white;
+  min-height: 350px;
+}
+
+main{
+  min-height: 350px;
 }
