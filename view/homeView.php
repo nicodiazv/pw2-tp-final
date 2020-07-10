@@ -68,7 +68,7 @@
                             <br>
                             <!-- <div class="or-seperator"><i>or</i></div>
                              <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>-->
-                            <div class="hint-text small">No tienes cuenta? <a href="#" style="cursor:pointer;"
+                            <div class="hint-text small">No tienes cuenta? <a style="cursor:pointer;"
                                                                               class="text-success"
                                                                               onclick="Registrarse();">Registrate
                                     ahora!</a></div>
@@ -119,23 +119,27 @@
                         </div>
                         <div class="text-center">
                             <button type="submit">Registrarse</button>
-                            <div class="hint-text small">Ya tienes cuenta? <a href="#" style="cursor:pointer;"
+                            <div class="hint-text small">Ya tienes cuenta? <a style="cursor:pointer;"
                                                                               class="text-success"
                                                                               onclick="volver();">Iniciá sesión
                                     ahora!</a></div>
                         </div>
+
                     </form>
+
                 </div>
             </div>
             <!-- END Formulario de Registro -->
-
+            <img src="/view/img/rickyhome1.png" id="rickiSelañando" alt=""
+                 style="display: none; height: 500px; width: 600px">
         </div>
+
         <!-- END Seccion Formularios -->
     </div>
 </section>
 <!-- End Contact Section -->
 
-<script src="/view/js/ubicacion.js"></script>
+
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk95kpZ90NBtlkoHX3MrerMAzHVokLInc&libraries=places&callback=buscarLugar"></script>
         ======= Clima de google =======
         <section id="cta" class="cta">
