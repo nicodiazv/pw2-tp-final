@@ -53,18 +53,14 @@
         </div>
         {{/alert}}
 
-        <div class="section-title"><a class="h1" href="index.html#login" id="lblIniciarSesion">Inicia Sesión</a></div>
-
-
         <!-- Seccion Formularios -->
         <div class="row mt-1 d-flex justify-content-center">
-
             <!-- Formulario de Iniciar Sesión -->
             <div class="col-lg-6" data-aos="fade-right" id="pnlSesion" data-aos-delay="100">
                 <div class="col-lg-8 mx-auto">
-
                     <form action="/login/validarLogin" method="POST" class="php-email-form">
                         <div class="col-md-12 form-group">
+                            <p class="h2 font-weight-bold">Iniciar Sesión</p>
                             <input type="text" name="email" class="form-control"
                                    placeholder="Ingrese su e-mail" required/>
                             <input type="password" class="form-control mt-2" name="password"
@@ -72,7 +68,8 @@
                             <br>
                             <!-- <div class="or-seperator"><i>or</i></div>
                              <a href="#" class="btn btn-danger btn-block mb-3"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>-->
-                            <div class="hint-text small">No tienes cuenta? <a href="#" class="text-success"
+                            <div class="hint-text small">No tienes cuenta? <a href="#" style="cursor:pointer;"
+                                                                              class="text-success"
                                                                               onclick="Registrarse();">Registrate
                                     ahora!</a></div>
                             <input type="hidden" name="latitud" id="lat" value="">
@@ -87,10 +84,11 @@
             <!-- END Formulario de Iniciar Sesion -->
 
             <!-- Formulario de Registro -->
-            <div class="col-lg-6" style="display: none;" data-aos="fade-right" id="pnlRegistro" data-aos-delay="100">
+            <div class="col-lg-6" style="" data-aos="fade-right" id="pnlRegistro" data-aos-delay="100">
                 <div class="col-lg-8 mx-auto">
 
                     <form action="/registro/registrar" method="POST" class="php-email-form">
+                        <p class="h2 font-weight-bold">Registrarse</p>
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="nombre" class="form-control"
@@ -121,8 +119,11 @@
                         </div>
                         <div class="text-center">
                             <button type="submit">Registrarse</button>
+                            <div class="hint-text small">Ya tienes cuenta? <a href="#" style="cursor:pointer;"
+                                                                              class="text-success"
+                                                                              onclick="volver();">Iniciá sesión
+                                    ahora!</a></div>
                         </div>
-                        <div class="text-center"><a href="#" onclick="volver();">Volver</a></div>
                     </form>
                 </div>
             </div>
@@ -146,29 +147,7 @@
         </section>-->
 <a class="weatherwidget-io" href="https://forecast7.com/es/n34d60n58d38/buenos-aires/" data-label_1="BUENOS AIRES"
    data-label_2="CLIMA" data-theme="original">BUENOS AIRES CLIMA</a>
+
+<a class="weatherwidget-io" href="https://forecast7.com/en/25d79n80d13/miami-beach/" data-label_1="MIAMI BEACH"
+   data-label_2="WEATHER" data-theme="hexellence">MIAMI BEACH WEATHER</a>
 {{> footer}}
-<script>
-    function volver() {
-        $("#lblIniciarSesion").text('Inicia Sesión');
-        $("#pnlSesion").show();
-        $("#pnlRegistro").hide();
-    }
-
-    function Registrarse() {
-        $("#lblIniciarSesion").text('Registrarse');
-        $("#pnlSesion").hide();
-        $("#pnlRegistro").show();
-    }
-</script>
-
-<script>
-    !function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'weatherwidget-io-js');
-</script>

@@ -1,11 +1,11 @@
 <!-- Sidebar -->
-<div class="col-md-2 left-panel" style="font-weight: 100;" >
+<div class="col-md-2 left-panel" style="font-weight: 100;">
     {{#usuario}}
-        <h3 class="mt-2" >Bienvenido <strong>{{nombre}}</strong></h3>
+        <h3 class="mt-2">Bienvenido <strong>{{nombre}}</strong></h3>
     {{/usuario}}
     <h5>Lector</h5>
     <a href="/login/cerrarSesion" class="badge badge-danger">Cerrar sesión</a>
-    <br />
+    <br/>
     <a href="/" class="badge badge-info">Ir al inicio</a>
     <br>
     <!-- Catálogos -->
@@ -13,7 +13,8 @@
     <div class="categories">
         <ul>
             {{#cantRevistasPorCatalogo}}
-                <li><a href="/catalogos/catalogo/{{id}}" class="text-white">{{nombre}} <span>({{cantidad}})</span></a></li>
+                <li><a href="/catalogos/catalogo/{{id}}" class="text-white">{{nombre}} <span>({{cantidad}})</span></a>
+                </li>
             {{/cantRevistasPorCatalogo}}
             <a href="/revistas" class="text-white"> <em><strong>Todas las revistas</strong></em></a>
 
@@ -31,10 +32,19 @@
     </div>
     <br>
     <!-- End Clima de google -->
-    <button onclick="document.getElementById('demo').play()" class="btn btn-primary mb-2"  id="botonPlayMusic"><i class="icofont-play"></i></button>
-    <button onclick="document.getElementById('demo').pause()" class="btn btn-primary mb-2" id="botonPauseMusic"><i class="icofont-ui-pause"></i></button>
-    <button onclick="document.getElementById('demo').volume+=0.1" class="btn btn-primary mb-2"><i class="icofont-volume-up"></i></button>
-    <button onclick="document.getElementById('demo').volume-=0.1" class="btn btn-primary mb-2"><i class="icofont-volume-down"></i></button>
-    <img src="/view/img/bailando.gif" id="bailandoMusica"  hidden width="200">
+    <button onclick="document.getElementById('demo').play()" class="btn btn-primary mb-2" id="botonPlayMusic"><i
+            class="icofont-play"></i></button>
+    <button onclick="document.getElementById('demo').pause()" class="btn btn-primary mb-2" id="botonPauseMusic"><i
+            class="icofont-ui-pause"></i></button>
+    <button onclick="document.getElementById('demo').volume+=0.1" class="btn btn-primary mb-2"><i
+            class="icofont-volume-up"></i></button>
+    <button onclick="document.getElementById('demo').volume-=0.1" class="btn btn-primary mb-2"><i
+            class="icofont-volume-down"></i></button>
+    <img src="/view/img/bailando.gif" id="bailandoMusica" hidden width="200">
+
+
+    <a class="weatherwidget-io" href="https://forecast7.com/en/25d79n80d13/miami-beach/" data-label_1="MIAMEE BEACH"
+       data-label_2="WEATHER" data-mode="Current" data-days="3" data-theme="random_grey">MIAMEE BEACH WEATHER</a>
 </div>
 <!-- End Sidebar -->
+
