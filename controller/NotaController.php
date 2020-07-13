@@ -124,6 +124,7 @@ class NotaController {
         $nota_id = ValidateParameter::validateCleanParameter($_GET['id']);
         $this->data['nota'] = $this->notaModel->getNota($nota_id);
         $this->data['notasPublicaciones'] = $this->publicacionModel->obtenerNotasEnNroPublicacionesPorNotaId($nota_id);
+        $this->data['publicaciones'] = $this->publicacionModel->obtenerNroPublicaciones();
         echo $this->renderer->render("view/contenidistaViews/agregarNotaAPublicacionView.php", $this->data);
     }
 
