@@ -1,34 +1,40 @@
 <?php
 
-class CatalogoModel{
+class CatalogoModel
+{
 
     private $connection;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->connection = $database;
     }
 
-    public function obtenerCatalogos(){
+    public function obtenerCatalogos()
+    {
         return $this->connection->query("SELECT * FROM catalogo");
     }
 
-    public function obtenerCatalogo($id){
+    public function obtenerCatalogo($id)
+    {
         $catalogo =  $this->connection->query("SELECT * FROM catalogo WHERE id = $id");
-        if($catalogo){
+        if ($catalogo) {
             return $catalogo;
-        } else{
+        } else {
             throw new FortException("El catálogo no existe.");
         }
     }
 
-    public function cantRevistasPorCatalogo(){
+    public function cantRevistasPorCatalogo()
+    {
         return $this->connection->query("SELECT ca.id, ca.nombre,COUNT(*) as cantidad
                                         FROM catalogo_agrupa_revistas car
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
                                         GROUP BY (catalogo_id)");
     }
 
-    public function revistasPorCatalogo($catalogo_id){
+    public function revistasPorCatalogo($catalogo_id)
+    {
         return $this->connection->query("SELECT * 
                                         FROM catalogo_agrupa_revistas car
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
@@ -37,7 +43,8 @@ class CatalogoModel{
                                               AND re.aprobada = 1");
     }
 
-    public function misRevistasPorCatalogo($catalogo_id, $usuario_id){
+    public function misRevistasPorCatalogo($catalogo_id, $usuario_id)
+    {
         return $this->connection->query("SELECT * -- revistas a las que esta suscrito el usuario --
                                         FROM catalogo_agrupa_revistas car
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
@@ -49,7 +56,8 @@ class CatalogoModel{
                                             AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin");
     }
 
-    public function revistasNoAdquiridasDelCatalogo($catalogo_id, $usuario_id){
+    public function revistasNoAdquiridasDelCatalogo($catalogo_id, $usuario_id)
+    {
         return $this->connection->query("SELECT *
                                         FROM catalogo_agrupa_revistas car
                                         JOIN catalogo ca ON ( car.catalogo_id = ca.id)
@@ -65,5 +73,4 @@ class CatalogoModel{
                                                                     AND usr.usuario_id = $usuario_id
                                                                     AND CURDATE() BETWEEN usr.fecha_inicio AND usr.fecha_fin)");
     }
-
 }
